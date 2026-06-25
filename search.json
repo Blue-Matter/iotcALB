@@ -1,0 +1,16 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "IOTC Albacore Management Strategy Evaluation",
+    "section": "",
+    "text": "This site hosts the materials for the Management Strategy Evaluation (MSE) process for Indian Ocean Tuna Commission (IOTC) albacore tuna, developed by Blue Matter Science.\nThe MSE process tests candidate management procedures against a range of plausible operating models for the stock and fishery, to evaluate their performance against management objectives under uncertainty."
+  },
+  {
+    "objectID": "index.html#materials",
+    "href": "index.html#materials",
+    "title": "IOTC Albacore Management Strategy Evaluation",
+    "section": "Materials",
+    "text": "Materials\n\nTrial Specifications Document: the operating models, management procedures, and performance metrics used in the MSE.\niotcALB R package: the R package implementing the MSE analysis, with full technical/code documentation."
+  }
+]
