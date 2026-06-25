@@ -1,0 +1,18 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "IOTC Albacore MSE"
+  site-url: https://iotcalb.bluematterscience.com/
+  navbar:
+    left:
+      - text: "Trial Specifications"
+        href: https://iotcalb.bluematterscience.com/tsd/
+      - text: "R Package"
+        href: https://iotcalb.bluematterscience.com/pkg/
+
+format:
+  html:
+    theme: cosmo
+    page-layout: full

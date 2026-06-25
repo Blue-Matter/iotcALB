@@ -1,0 +1,35 @@
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - "tsd/**"
+      - ".github/workflows/tsd-book.yaml"
+  workflow_dispatch:
+
+name: tsd-book.yaml
+
+permissions: read-all
+
+jobs:
+  tsd-book:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: tsd-book-${{ github.event_name != 'pull_request' || github.run_id }}
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Render TSD book
+        run: quarto render tsd
+
+      - name: Deploy to GitHub pages 🚀
+        if: github.event_name != 'pull_request'
+        uses: JamesIves/github-pages-deploy-action@d92aa235d04922e8f08b40ce78cc5442fcfbfa2f # v4.8.0
+        with:
+          clean: false
+          branch: gh-pages
+          folder: tsd/_book
+          target-folder: tsd

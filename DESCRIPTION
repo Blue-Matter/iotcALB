@@ -11,9 +11,9 @@ Authors@R: c(
   )
 Description: More about what it does (maybe more than one line).
     Continuation lines should be indented.
-License: What license is it under?
+License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 Config/roxygen2/version: 8.0.0
-URL: https://github.com/Blue-Matter/iotcALB
+URL: https://github.com/Blue-Matter/iotcALB, https://blue-matter.github.io/iotcALB/
 BugReports: https://github.com/Blue-Matter/iotcALB/issues

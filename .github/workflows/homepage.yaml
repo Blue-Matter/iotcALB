@@ -1,0 +1,40 @@
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - "homepage/**"
+      - ".github/workflows/homepage.yaml"
+  workflow_dispatch:
+
+name: homepage.yaml
+
+permissions: read-all
+
+jobs:
+  homepage:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: homepage-${{ github.event_name != 'pull_request' || github.run_id }}
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Render homepage
+        run: quarto render homepage
+
+      - name: Add CNAME
+        run: echo "iotcalb.bluematterscience.com" > homepage/_site/CNAME
+
+      - name: Add .nojekyll
+        run: touch homepage/_site/.nojekyll
+
+      - name: Deploy to GitHub pages 🚀
+        if: github.event_name != 'pull_request'
+        uses: JamesIves/github-pages-deploy-action@d92aa235d04922e8f08b40ce78cc5442fcfbfa2f # v4.8.0
+        with:
+          clean: false
+          branch: gh-pages
+          folder: homepage/_site

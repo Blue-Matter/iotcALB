@@ -2,3 +2,14 @@
 ^\.Rproj\.user$
 ^\.positai$
 ^\.claude$
+^LICENSE\.md$
+^README\.Rmd$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^\.github$
+^data-raw$
+^tsd$
+^homepage$
+^analysis$
+^_quarto\.yml$

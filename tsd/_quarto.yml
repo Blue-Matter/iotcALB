@@ -1,0 +1,20 @@
+project:
+  type: book
+  output-dir: _book
+
+book:
+  title: "iotcALB Trial Specifications"
+  site-url: https://iotcalb.bluematterscience.com/tsd/
+  repo-url: https://github.com/Blue-Matter/iotcALB
+  chapters:
+    - index.qmd
+    - 01-context.qmd
+    - 02-operating-models.qmd
+    - 03-management-procedures.qmd
+    - 04-performance-metrics.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
