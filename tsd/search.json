@@ -1,0 +1,52 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "iotcALB Trial Specifications",
+    "section": "",
+    "text": "Preface\nThis is the Trial Specifications Document (TSD) for the Indian Ocean Tuna Commission (IOTC) albacore Management Strategy Evaluation (MSE).",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "01-context.html",
+    "href": "01-context.html",
+    "title": "1  Context",
+    "section": "",
+    "text": "Background and context for the IOTC albacore MSE.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Context</span>"
+    ]
+  },
+  {
+    "objectID": "02-operating-models.html",
+    "href": "02-operating-models.html",
+    "title": "2  Operating Models",
+    "section": "",
+    "text": "Description of the operating models used in the MSE.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Operating Models</span>"
+    ]
+  },
+  {
+    "objectID": "03-management-procedures.html",
+    "href": "03-management-procedures.html",
+    "title": "3  Management Procedures",
+    "section": "",
+    "text": "Description of the candidate management procedures evaluated.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Management Procedures</span>"
+    ]
+  },
+  {
+    "objectID": "04-performance-metrics.html",
+    "href": "04-performance-metrics.html",
+    "title": "4  Performance Metrics",
+    "section": "",
+    "text": "Description of the performance metrics used to evaluate management procedures.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Performance Metrics</span>"
+    ]
+  }
+]
