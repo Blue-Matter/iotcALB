@@ -133,16 +133,94 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This site hosts the materials for the Management Strategy Evaluation (MSE) process for Indian Ocean Tuna Commission (IOTC) albacore tuna, developed by Blue Matter Science.</p>
-<p>The MSE process tests candidate management procedures against a range of plausible operating models for the stock and fishery, to evaluate their performance against management objectives under uncertainty.</p>
+<p>This site hosts the materials for the Management Strategy Evaluation (MSE) process for Indian Ocean albacore tuna (<em>Thunnus alalunga</em>), conducted under the auspices of the <a href="https://www.iotc.org">Indian Ocean Tuna Commission (IOTC)</a>, and developed by Blue Matter Science.</p>
+<p>The MSE tests candidate management procedures against a range of plausible operating models to evaluate their performance against management objectives under uncertainty.</p>
 <section id="materials" class="level2">
 <h2 class="anchored" data-anchor-id="materials">Materials</h2>
 <ul>
 <li><a href="tsd/"><strong>Trial Specifications Document</strong></a>: the operating models, management procedures, and performance metrics used in the MSE.</li>
-<li><a href="pkg/"><strong><code>iotcALB</code> R package</strong></a>: the R package implementing the MSE analysis, with full technical/code documentation.</li>
+<li><a href="pkg/"><strong><code>iotcALB</code> R package</strong></a>: R package implementing the MSE analysis, with full technical documentation.</li>
 </ul>
+</section>
+<section id="background-reference-materials" class="level2">
+<h2 class="anchored" data-anchor-id="background-reference-materials">Background &amp; Reference Materials</h2>
+<section id="operating-model-conditioning-methodology" class="level3">
+<h3 class="anchored" data-anchor-id="operating-model-conditioning-methodology">Operating Model Conditioning Methodology</h3>
+<p>-<a href="../reference/ALB_OMcondv3.pdf"><strong>Conditioning IOTC Albacore OMs using the ABC approach</strong></a></p>
+</section>
+<section id="mse-progress-reports" class="level3">
+<h3 class="anchored" data-anchor-id="mse-progress-reports">MSE Progress Reports</h3>
+<p><strong>2026</strong> - <a href="../reference/IOTC-2026-WPM17MSE-03-ALB_MSE.pdf"><strong>Technical development of Management Strategy Evaluation for Indian ocean albacore tuna: 2025 progress report and current status</strong></a></p>
+<p><strong>2025</strong></p>
+<ul>
+<li><a href="../reference/IOTC-2025-WPM16-11-ALB_MSE.pdf"><strong>Simulation testing of management procedures for Indian ocean albacore tuna based on ABC operating models: report on progress</strong></a></li>
+</ul>
+</section>
+</section>
+<section id="repository-structure" class="level2">
+<h2 class="anchored" data-anchor-id="repository-structure">Repository Structure</h2>
+<p>The <a href="https://github.com/Blue-Matter/iotcALB"><code>iotcALB</code> repository</a> is organised as follows:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Directory / File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>R/</code></td>
+<td>Package functions and objects</td>
+</tr>
+<tr class="even">
+<td><code>analysis/</code></td>
+<td>Analysis scripts that run the MSE (import OMs, run simulations, apply MPs, summarise results)</td>
+</tr>
+<tr class="odd">
+<td><code>data/</code>, <code>data-raw/</code></td>
+<td>Conditioning output and other data bundled with the package</td>
+</tr>
+<tr class="even">
+<td><code>objects/</code></td>
+<td>Saved R objects produced by the analysis scripts (<code>OM/</code>, <code>Hist/</code>, etc.)</td>
+</tr>
+<tr class="odd">
+<td><code>tsd/</code></td>
+<td>Quarto source for the Trial Specifications Document</td>
+</tr>
+<tr class="even">
+<td><code>reference/</code></td>
+<td>Background documents and working papers (PDFs)</td>
+</tr>
+<tr class="odd">
+<td><code>homepage/</code></td>
+<td>Quarto source for this website</td>
+</tr>
+</tbody>
+</table>
+<section id="key-package-components" class="level3">
+<h3 class="anchored" data-anchor-id="key-package-components">Key package components</h3>
+<p><strong>Functions</strong></p>
+<ul>
+<li><code>ImportOM()</code>: converts MCMC conditioning output into a multi-stock, multi-fleet <code>MSEtool</code> <code>OM</code> object (quarterly, sex-structured, 6 fleets)</li>
+<li><code>ValidateOM()</code>: validates simulated numbers-at-age against the conditioning model reference</li>
+</ul>
+<p><strong>Datasets</strong></p>
+<ul>
+<li><code>Cond_BaseCase</code>: base-case conditioning output (MCMC posterior samples, biological schedules, indices)</li>
+</ul>
+</section>
+<section id="analysis-workflow" class="level3">
+<h3 class="anchored" data-anchor-id="analysis-workflow">Analysis workflow</h3>
+<pre><code>analysis/01-import-OMs.R   import conditioning output → OM objects → objects/OM/
+                           simulate historical period  → Hist objects → objects/Hist/</code></pre>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

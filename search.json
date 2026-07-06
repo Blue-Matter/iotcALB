@@ -4,13 +4,27 @@
     "href": "index.html",
     "title": "IOTC Albacore Management Strategy Evaluation",
     "section": "",
-    "text": "This site hosts the materials for the Management Strategy Evaluation (MSE) process for Indian Ocean Tuna Commission (IOTC) albacore tuna, developed by Blue Matter Science.\nThe MSE process tests candidate management procedures against a range of plausible operating models for the stock and fishery, to evaluate their performance against management objectives under uncertainty."
+    "text": "This site hosts the materials for the Management Strategy Evaluation (MSE) process for Indian Ocean albacore tuna (Thunnus alalunga), conducted under the auspices of the Indian Ocean Tuna Commission (IOTC), and developed by Blue Matter Science.\nThe MSE tests candidate management procedures against a range of plausible operating models to evaluate their performance against management objectives under uncertainty."
   },
   {
     "objectID": "index.html#materials",
     "href": "index.html#materials",
     "title": "IOTC Albacore Management Strategy Evaluation",
     "section": "Materials",
-    "text": "Materials\n\nTrial Specifications Document: the operating models, management procedures, and performance metrics used in the MSE.\niotcALB R package: the R package implementing the MSE analysis, with full technical/code documentation."
+    "text": "Materials\n\nTrial Specifications Document: the operating models, management procedures, and performance metrics used in the MSE.\niotcALB R package: R package implementing the MSE analysis, with full technical documentation."
+  },
+  {
+    "objectID": "index.html#background-reference-materials",
+    "href": "index.html#background-reference-materials",
+    "title": "IOTC Albacore Management Strategy Evaluation",
+    "section": "Background & Reference Materials",
+    "text": "Background & Reference Materials\n\nOperating Model Conditioning Methodology\n-Conditioning IOTC Albacore OMs using the ABC approach\n\n\nMSE Progress Reports\n2026 - Technical development of Management Strategy Evaluation for Indian ocean albacore tuna: 2025 progress report and current status\n2025\n\nSimulation testing of management procedures for Indian ocean albacore tuna based on ABC operating models: report on progress"
+  },
+  {
+    "objectID": "index.html#repository-structure",
+    "href": "index.html#repository-structure",
+    "title": "IOTC Albacore Management Strategy Evaluation",
+    "section": "Repository Structure",
+    "text": "Repository Structure\nThe iotcALB repository is organised as follows:\n\n\n\n\n\n\n\nDirectory / File\nPurpose\n\n\n\n\nR/\nPackage functions and objects\n\n\nanalysis/\nAnalysis scripts that run the MSE (import OMs, run simulations, apply MPs, summarise results)\n\n\ndata/, data-raw/\nConditioning output and other data bundled with the package\n\n\nobjects/\nSaved R objects produced by the analysis scripts (OM/, Hist/, etc.)\n\n\ntsd/\nQuarto source for the Trial Specifications Document\n\n\nreference/\nBackground documents and working papers (PDFs)\n\n\nhomepage/\nQuarto source for this website\n\n\n\n\nKey package components\nFunctions\n\nImportOM(): converts MCMC conditioning output into a multi-stock, multi-fleet MSEtool OM object (quarterly, sex-structured, 6 fleets)\nValidateOM(): validates simulated numbers-at-age against the conditioning model reference\n\nDatasets\n\nCond_BaseCase: base-case conditioning output (MCMC posterior samples, biological schedules, indices)\n\n\n\nAnalysis workflow\nanalysis/01-import-OMs.R   import conditioning output → OM objects → objects/OM/\n                           simulate historical period  → Hist objects → objects/Hist/"
   }
 ]
