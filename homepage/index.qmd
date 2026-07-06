@@ -16,7 +16,7 @@ and I. Mosqueira (see *Background & Reference Materials* below).
 
 In 2026, [Blue Matter Science](https://www.bluematterscience.com/) was contracted 
 to continue the work on the MSE. The MSE analysis uses the `iotcALB` R package
-built for this purpose, and relies on the the [openMSE](https://openmse.com/) framework.
+built for this purpose, and is built on the [openMSE](https://openmse.com/) framework.
 
 ## Materials
 
