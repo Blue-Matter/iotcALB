@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "IOTC Albacore Management Strategy Evaluation",
     "section": "",
-    "text": "This site hosts the materials for the Management Strategy Evaluation (MSE) process for Indian Ocean albacore tuna (Thunnus alalunga), conducted under the auspices of the Indian Ocean Tuna Commission (IOTC), and developed by Blue Matter Science.\nThe MSE tests candidate management procedures against a range of plausible operating models to evaluate their performance against management objectives under uncertainty."
+    "text": "This site hosts the materials for the Management Strategy Evaluation (MSE) process for Indian Ocean albacore tuna (Thunnus alalunga), managed by the Indian Ocean Tuna Commission (IOTC).\nThe MSE tests candidate management procedures against a range of plausible operating models to evaluate their performance against management objectives under uncertainty.\nThe initial work on the MSE framework and analysis, including conditioning of the Base Case and Robustness Operating Models (OMs), was conducted by R. M. Hillary and I. Mosqueira (see Background & Reference Materials below).\nIn 2026, Blue Matter Science was contracted to continue the work on the MSE. The MSE analysis uses the iotcALB R package built for this purpose, and relies on the the openMSE framework."
   },
   {
     "objectID": "index.html#materials",
@@ -18,7 +18,7 @@
     "href": "index.html#background-reference-materials",
     "title": "IOTC Albacore Management Strategy Evaluation",
     "section": "Background & Reference Materials",
-    "text": "Background & Reference Materials\n\nOperating Model Conditioning Methodology\n-Conditioning IOTC Albacore OMs using the ABC approach\n\n\nMSE Progress Reports\n2026 - Technical development of Management Strategy Evaluation for Indian ocean albacore tuna: 2025 progress report and current status\n2025\n\nSimulation testing of management procedures for Indian ocean albacore tuna based on ABC operating models: report on progress"
+    "text": "Background & Reference Materials\n\nOperating Model Conditioning Methodology\n\nConditioning IOTC Albacore OMs using the ABC approach\n\n\n\nMSE Progress Reports\n2026\n\nTechnical development of Management Strategy Evaluation for Indian ocean albacore tuna: 2025 progress report and current status\n\n2025\n\nSimulation testing of management procedures for Indian ocean albacore tuna based on ABC operating models: report on progress"
   },
   {
     "objectID": "index.html#repository-structure",
