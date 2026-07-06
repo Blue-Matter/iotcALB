@@ -3,14 +3,20 @@ title: "IOTC Albacore Management Strategy Evaluation"
 ---
 
 This site hosts the materials for the Management Strategy Evaluation (MSE)
-process for Indian Ocean albacore tuna (*Thunnus alalunga*), conducted under
-the auspices of the [Indian Ocean Tuna Commission (IOTC)](https://www.iotc.org),
-and developed by Blue Matter Science.
+process for Indian Ocean albacore tuna (*Thunnus alalunga*), managed by the
+[Indian Ocean Tuna Commission (IOTC)](https://www.iotc.org).
 
 The MSE tests candidate management procedures against a range of plausible
 operating models to evaluate their performance against management objectives
 under uncertainty.
 
+The initial work on the MSE framework and analysis, including conditioning of 
+the Base Case and Robustness Operating Models (OMs), was conducted by R. M. Hillary 
+and I. Mosqueira (see *Background & Reference Materials* below).
+
+In 2026, [Blue Matter Science](https://www.bluematterscience.com/) was contracted 
+to continue the work on the MSE. The MSE analysis uses the `iotcALB` R package
+built for this purpose, and relies on the the [openMSE](https://openmse.com/) framework.
 
 ## Materials
 
@@ -23,16 +29,18 @@ under uncertainty.
 ## Background & Reference Materials  
 
 ### Operating Model Conditioning Methodology
--[**Conditioning IOTC Albacore OMs using the ABC approach**](../reference/ALB_OMcondv3.pdf)
+
+1. [**Conditioning IOTC Albacore OMs using the ABC approach**](../reference/ALB_OMcondv3.pdf)
 
 ### MSE Progress Reports
 
 **2026**
-- [**Technical development of Management Strategy Evaluation for Indian ocean albacore tuna: 2025 progress report and current status**](../reference/IOTC-2026-WPM17MSE-03-ALB_MSE.pdf)
+
+1. [**Technical development of Management Strategy Evaluation for Indian ocean albacore tuna: 2025 progress report and current status**](../reference/IOTC-2026-WPM17MSE-03-ALB_MSE.pdf)
 
 **2025**
 
-- [**Simulation testing of management procedures for Indian ocean albacore tuna based on ABC operating models: report on progress**](../reference/IOTC-2025-WPM16-11-ALB_MSE.pdf)
+1. [**Simulation testing of management procedures for Indian ocean albacore tuna based on ABC operating models: report on progress**](../reference/IOTC-2025-WPM16-11-ALB_MSE.pdf)
 
 
 ## Repository Structure
@@ -41,7 +49,7 @@ The [`iotcALB` repository](https://github.com/Blue-Matter/iotcALB) is organised 
 
 | Directory / File | Purpose |
 |---|---|
-| `R/` | Package functions and objects
+| `R/` | Package functions and objects |
 | `analysis/` | Analysis scripts that run the MSE (import OMs, run simulations, apply MPs, summarise results) |
 | `data/`, `data-raw/` | Conditioning output and other data bundled with the package |
 | `objects/` | Saved R objects produced by the analysis scripts (`OM/`, `Hist/`, etc.) |
