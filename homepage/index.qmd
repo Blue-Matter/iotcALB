@@ -3,17 +3,68 @@ title: "IOTC Albacore Management Strategy Evaluation"
 ---
 
 This site hosts the materials for the Management Strategy Evaluation (MSE)
-process for Indian Ocean Tuna Commission (IOTC) albacore tuna, developed by
-Blue Matter Science.
+process for Indian Ocean albacore tuna (*Thunnus alalunga*), conducted under
+the auspices of the [Indian Ocean Tuna Commission (IOTC)](https://www.iotc.org),
+and developed by Blue Matter Science.
 
-The MSE process tests candidate management procedures against a range of
-plausible operating models for the stock and fishery, to evaluate their
-performance against management objectives under uncertainty.
+The MSE tests candidate management procedures against a range of plausible
+operating models to evaluate their performance against management objectives
+under uncertainty.
+
 
 ## Materials
 
-- [**Trial Specifications Document**](tsd/): the operating models,
-  management procedures, and performance metrics used in the MSE.
-- [**`iotcALB` R package**](pkg/): the R package implementing the MSE
-  analysis, with full technical/code documentation.
+- [**Trial Specifications Document**](tsd/): the operating models, management
+  procedures, and performance metrics used in the MSE.
+- [**`iotcALB` R package**](pkg/): R package implementing the MSE analysis,
+  with full technical documentation.
+  
+
+## Background & Reference Materials  
+
+### Operating Model Conditioning Methodology
+-[**Conditioning IOTC Albacore OMs using the ABC approach**](../reference/ALB_OMcondv3.pdf)
+
+### MSE Progress Reports
+
+**2026**
+- [**Technical development of Management Strategy Evaluation for Indian ocean albacore tuna: 2025 progress report and current status**](../reference/IOTC-2026-WPM17MSE-03-ALB_MSE.pdf)
+
+**2025**
+
+- [**Simulation testing of management procedures for Indian ocean albacore tuna based on ABC operating models: report on progress**](../reference/IOTC-2025-WPM16-11-ALB_MSE.pdf)
+
+
+## Repository Structure
+
+The [`iotcALB` repository](https://github.com/Blue-Matter/iotcALB) is organised as follows:
+
+| Directory / File | Purpose |
+|---|---|
+| `R/` | Package functions and objects
+| `analysis/` | Analysis scripts that run the MSE (import OMs, run simulations, apply MPs, summarise results) |
+| `data/`, `data-raw/` | Conditioning output and other data bundled with the package |
+| `objects/` | Saved R objects produced by the analysis scripts (`OM/`, `Hist/`, etc.) |
+| `tsd/` | Quarto source for the Trial Specifications Document |
+| `reference/` | Background documents and working papers (PDFs) |
+| `homepage/` | Quarto source for this website |
+
+### Key package components
+
+**Functions**
+
+- `ImportOM()`: converts MCMC conditioning output into a multi-stock, multi-fleet `MSEtool` `OM` object (quarterly, sex-structured, 6 fleets)
+- `ValidateOM()`: validates simulated numbers-at-age against the conditioning model reference
+
+**Datasets**
+
+- `Cond_BaseCase`: base-case conditioning output (MCMC posterior samples, biological schedules, indices)
+
+### Analysis workflow
+
+```
+analysis/01-import-OMs.R   import conditioning output → OM objects → objects/OM/
+                           simulate historical period  → Hist objects → objects/Hist/
+```
+
 

@@ -1,19 +1,29 @@
 Package: iotcALB
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Indian Ocean Albacore Management Strategy Evaluation
 Version: 0.1.0
 Authors@R: c(
     person(
-      "Jane", "Doe",
-      email = "jane@example.com",
+      "Adrian", "Hordyk",
+      email = "adrian@bluematterscience.com",
       role = c("aut", "cre")
     )
   )
-Description: More about what it does (maybe more than one line).
-    Continuation lines should be indented.
+Description: Operating models, management procedures, and analysis tools
+    for the Management Strategy Evaluation (MSE) of Indian Ocean albacore
+    tuna. 
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 Config/roxygen2/version: 8.0.0
+Roxygen: list(markdown = TRUE)
 URL: https://github.com/Blue-Matter/iotcALB, https://blue-matter.github.io/iotcALB/
 BugReports: https://github.com/Blue-Matter/iotcALB/issues
+Imports:
+    nnls,
+    purrr
+Depends:
+    R (>= 3.5),
+    MSEtool (>= 4.0.0)
+Remotes:
+    blue-matter/MSEtool
