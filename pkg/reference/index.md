@@ -10,4 +10,4 @@
 - [`ImportOM()`](https://iotcalb.bluematterscience.com/pkg/reference/ImportOM.md)
   : Import an MSEtool OM from IOTC Albacore conditioning output
 - [`ValidateOM()`](https://iotcalb.bluematterscience.com/pkg/reference/ValidateOM.md)
-  : Compare OM N-at-age against conditioning model reference
+  : Compare OM reference quantities against the conditioning model

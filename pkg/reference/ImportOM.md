@@ -45,6 +45,4 @@ ready to pass to
 Biological schedules (weight, maturity, natural mortality) and
 stock-recruit parameters are drawn directly from the conditioning
 object. Historical fishing mortality is recovered from the MCMC
-numbers-at-age via N-at-age transitions, which exactly reproduces the
-reference model's survival without requiring knowledge of the internal H
-parameterisation.
+numbers-at-age via N-at-age transitions.
