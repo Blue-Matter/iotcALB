@@ -23,7 +23,6 @@ Imports:
     cli,
     dplyr,
     ggplot2,
-    nnls,
     purrr
 Depends:
     R (>= 3.5),

@@ -2,7 +2,7 @@ on:
   push:
     branches: [main, master]
     paths:
-      - "tsd/**"
+      - "tsd/_book/**"
       - ".github/workflows/tsd-book.yaml"
   workflow_dispatch:
 
@@ -20,11 +20,6 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - uses: quarto-dev/quarto-actions/setup@v2
-
-      - name: Render TSD book
-        run: quarto render tsd
-
       - name: Deploy to GitHub pages 🚀
         if: github.event_name != 'pull_request'
         uses: JamesIves/github-pages-deploy-action@d92aa235d04922e8f08b40ce78cc5442fcfbfa2f # v4.8.0
@@ -33,3 +28,4 @@ jobs:
           branch: gh-pages
           folder: tsd/_book
           target-folder: tsd
+

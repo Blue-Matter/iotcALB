@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>2&nbsp; Operating Model Conditioning – Trial Specifications Document</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./operating-model-base-case.html" rel="next">
+<link href="./index.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-364982630eef5352dd1537128a8ed5cb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./operating-model-overview.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Operating Model Conditioning</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Trial Specifications Document</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/Blue-Matter/iotcALB" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./operating-model-overview.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Operating Model Conditioning</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./operating-model-base-case.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Base Case Operating Model</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./operating-model-robustness.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Robustness Operating Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./fishery-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Fishery Data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./forward-projections.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Forward Projections</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./management-procedures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Management Procedures</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./performance-metrics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Performance Metrics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./presentation-results.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Presentation of Results</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#approximate-bayesian-computation-abc-model" id="toc-approximate-bayesian-computation-abc-model" class="nav-link active" data-scroll-target="#approximate-bayesian-computation-abc-model"><span class="header-section-number">2.1</span> Approximate Bayesian Computation (ABC) Model</a></li>
+  <li><a href="#overview-of-operating-models" id="toc-overview-of-operating-models" class="nav-link" data-scroll-target="#overview-of-operating-models"><span class="header-section-number">2.2</span> Overview of Operating Models</a></li>
+  <li><a href="#sec-differences" id="toc-sec-differences" class="nav-link" data-scroll-target="#sec-differences"><span class="header-section-number">2.3</span> Differences Between the ABC Conditioning Model and the <code>iotcALB</code> OM</a>
+  <ul class="collapse">
+  <li><a href="#harvest-rate-vs.-instantaneous-fishing-mortality" id="toc-harvest-rate-vs.-instantaneous-fishing-mortality" class="nav-link" data-scroll-target="#harvest-rate-vs.-instantaneous-fishing-mortality"><span class="header-section-number">2.3.1</span> Harvest Rate vs.&nbsp;Instantaneous Fishing Mortality</a></li>
+  <li><a href="#potential-remedies" id="toc-potential-remedies" class="nav-link" data-scroll-target="#potential-remedies"><span class="header-section-number">2.3.2</span> Potential Remedies</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">2.4</span> References</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-omOverview" class="quarto-section-identifier"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Operating Model Conditioning</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="approximate-bayesian-computation-abc-model" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="approximate-bayesian-computation-abc-model"><span class="header-section-number">2.1</span> Approximate Bayesian Computation (ABC) Model</h2>
+<p>The Operating Models used in this MSE were conditioned using the Approximate Bayesian Computation (ABC) approach developed for IOTC tuna species <span class="citation" data-cites="hillaryConditioningIOTCAlbacore">(<a href="#ref-hillaryConditioningIOTCAlbacore" role="doc-biblioref">Hillary &amp; Mosqueira, 2024</a>)</span>. The ABC approach generates a distribution of plausible historical stock dynamics that is consistent with available data and a set of prior beliefs about current and historical stock status.</p>
+<p>The population model underlying the ABC conditioning mirrors the structure of the most recent Indian Ocean Albacore stock assessment. The key structural features are:</p>
+<ul>
+<li><p>Annual age structure with four seasons per year and recruitment occurring in last quarter;</p></li>
+<li><p>Sex-structured population dynamics with sex-specific growth and weight-at-age;</p></li>
+<li><p>Six fleets: four longline fleets (LL1–LL4), a purse seine fleet, and an “other” fleet;</p></li>
+<li><p>A Beverton-Holt stock-recruit relationship with lognormally distributed recruitment deviations (prior mean <span class="math inline">\(\sigma_R = 0.3\)</span>);</p></li>
+<li><p>Conditioning period: 2000 – 2020.</p></li>
+</ul>
+<p>The ABC algorithm is implemented as an MCMC sampler (ABC-MCMC) and is fitted to two primary data sources: seasonal longline CPUE indices and length-frequency composition data aggregated across years and seasons within each fleet.</p>
+</section>
+<section id="overview-of-operating-models" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="overview-of-operating-models"><span class="header-section-number">2.2</span> Overview of Operating Models</h2>
+<p>The operating models (OMs) included in the <code>iotcALB</code> framework were constructed by importing the ABC output for the relevant conditioned models into an <code>openMSE</code> OM object using the <a href="https://iotcalb.bluematterscience.com/pkg/reference/ImportOM.html"><code>iotcALB::ImportOM()</code></a> function, which aimed to reproduce the fishery dynamics described in the ABC output as closely as possible in the OMs (see <a href="#sec-differences" class="quarto-xref"><span>Section 2.3</span></a>).</p>
+<p>The following specifications are common to all OMs:</p>
+<ul>
+<li><p><strong>Number of independent simulations</strong>: 500 (from the ABC MCMC posteriors; <code>nSim = 500</code>)</p></li>
+<li><p><strong>Historical period</strong>: 2000 – 2020 (<code>nYear = 21</code>)</p></li>
+<li><p><strong>Projection period</strong>: 2021 – 2050 (<code>pYear = 30</code>)</p></li>
+</ul>
+<p>The OMs included in the <code>iotcALB</code> MSE framework are described in <a href="#tbl-om-scenarios" class="quarto-xref">Table&nbsp;<span>2.1</span></a>. See <a href="operating-model-base-case.html" class="quarto-xref"><span>Chapter 3</span></a> and <a href="operating-model-robustness.html" class="quarto-xref"><span>Chapter 4</span></a> for specific details on these OMs.</p>
+<div id="tbl-om-scenarios" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-om-scenarios-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.1: Overview of Operating Models in the <code>iotcALB</code> framework. Code refers to the names of the ABC conditioned models. Name refers to the name of the OM object in the <code>iotcALB</code> package.
+</figcaption>
+<div aria-describedby="tbl-om-scenarios-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 36%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Code</th>
+<th>Description</th>
+<th>Type</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>BaseCase</td>
+<td>OM5b</td>
+<td>Uses the LL1 (NW) CPUE series as index of abundance</td>
+<td>Base Case</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>R1</td>
+<td>OM5a</td>
+<td>Uses the LL2 (SW) CPUE series as index of abundance</td>
+<td>Robustness</td>
+<td><em>Not imported yet</em></td>
+</tr>
+<tr class="odd">
+<td>R2</td>
+<td>OM6b</td>
+<td>Includes a 1% annual increase in LL fisheries catchability</td>
+<td>Robustness</td>
+<td><em>Not imported yet</em></td>
+</tr>
+<tr class="even">
+<td>R3</td>
+<td>OM5b_cc</td>
+<td>Base case OM with climate change effects on recruitment, maturity, growth and carrying capacity</td>
+<td>Robustness</td>
+<td><em>Not imported yet</em></td>
+</tr>
+<tr class="odd">
+<td>R4</td>
+<td>OM5b_rec</td>
+<td>Base case OM with effects of sudden reductions in recruitment</td>
+<td>Robustness</td>
+<td><em>Not imported yet</em></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note on More Recent Data
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="citation" data-cites="mosqueiraSimulationTestingManagement">Mosqueira &amp; Hillary (<a href="#ref-mosqueiraSimulationTestingManagement" role="doc-biblioref">2025a</a>)</span> and <span class="citation" data-cites="mosqueiraTechnicalDevelopmentManagement">Mosqueira &amp; Hillary (<a href="#ref-mosqueiraTechnicalDevelopmentManagement" role="doc-biblioref">2025b</a>)</span> refer to more recent data that include catch and CPUE data up to 2023. The OMs have not been reconditioned with this data and are based on the 2022 stock assessment <span class="citation" data-cites="IOTC2022WPTmT08ASRE__FINAL">(<a href="#ref-IOTC2022WPTmT08ASRE__FINAL" role="doc-biblioref">IOTC, 2022</a>)</span>, with data up to 2020.</p>
+<p>The updated catch and CPUE data can be incorporated into directly in the projection period (see <a href="forward-projections.html" class="quarto-xref"><span>Chapter 6</span></a>). Alternatively, the OMs could be reconditioned with the updated data, but that is outside of the scope of the current project.</p>
+</div>
+</div>
+</section>
+<section id="sec-differences" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="sec-differences"><span class="header-section-number">2.3</span> Differences Between the ABC Conditioning Model and the <code>iotcALB</code> OM</h2>
+<section id="harvest-rate-vs.-instantaneous-fishing-mortality" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="harvest-rate-vs.-instantaneous-fishing-mortality"><span class="header-section-number">2.3.1</span> Harvest Rate vs.&nbsp;Instantaneous Fishing Mortality</h3>
+<p>The ABC model and the <code>iotcALB</code> OM differ in how they represent the removal of fish by fishing activity. This difference has implications for how the OM reproduces the stock dynamics of the conditioning model.</p>
+<p>The ABC model uses a <strong><em>harvest rate approach</em></strong>, sometimes referred to as Pope’s approximation, while the <code>iotcALB</code> model uses the <strong><em>Baranov catch equation</em></strong>.</p>
+<p>Under the harvest rate formulation, fishing occurs as a discrete pulse within each time step: a fixed proportion <span class="math inline">\(H\)</span> of the vulnerable population is removed instantaneously, after which natural mortality acts on the survivors. The within-season dynamics are described as:</p>
+<p><span id="eq-popes-n"><span class="math display">\[
+N_{t+1} = N_t \cdot \prod_f \left(1 - H_{f,t} \cdot s_{a,f}\right) \cdot e^{-M}
+\tag{2.1}\]</span></span></p>
+<p>where <span class="math inline">\(s_{a,f}\)</span> is the age- and fleet-specific selectivity and <span class="math inline">\(M\)</span> is the instantaneous natural mortality rate. Catch by fleet is:</p>
+<p><span id="eq-popes-c"><span class="math display">\[
+C_{f,t} = N_t \cdot H_{f,t} \cdot s_{a,f}
+\tag{2.2}\]</span></span></p>
+<p>The Baranov catch equation approach assumes fishing and natural mortality act simultaneously and continuously throughout the time step. Total mortality <span class="math inline">\(Z\)</span> is: <span id="eq-baranov-z"><span class="math display">\[
+Z_t = M + \sum_f F_{f,t} \cdot s_{a,f}
+\tag{2.3}\]</span></span></p>
+<p>and catch by fleet is: <span id="eq-baranov-c"><span class="math display">\[
+C_{f,t} = N_t \cdot \frac{F_{f,t} \cdot s_{a,f}}{Z_t} \cdot \left(1 - e^{-Z_t}\right)
+\tag{2.4}\]</span></span></p>
+<p>To import the ABC output into <code>iotcALB</code>, fleet-specific harvest rates are converted to instantaneous fishing mortality as: <span id="eq-convert"><span class="math display">\[
+F_f = -\log(1 - H_f)
+\tag{2.5}\]</span></span></p>
+<p>While this conversion is exact in a mathematical sense, the two formulations differ in how total mortality is partitioned between fishing and natural causes. Under Pope’s approximation, the full harvest rate <span class="math inline">\(H_f\)</span> is applied to the population at the start of the time step, and natural mortality then acts on the survivors (<a href="#eq-popes-c" class="quarto-xref">Equation&nbsp;<span>2.2</span></a>). Under the Baranov equation, fishing and natural mortality act simultaneously, so a larger share of total mortality is attributed to natural causes and a correspondingly smaller share to fishing (<a href="#eq-baranov-c" class="quarto-xref">Equation&nbsp;<span>2.4</span></a>).</p>
+<p>The consequence of this difference in model structure is that for the same <span class="math inline">\(F_f = -\log(1 - H_f)\)</span>, the Baranov equation produces lower catches than Pope’s approximation, with the deficit increasing with both fishing mortality and natural mortality rates. At partially-selected ages (<span class="math inline">\(s_{a,f} &lt; 1\)</span>), the Baranov equation removes slightly more fish in total than Pope’s approximation, leaving fewer survivors. Both effects compound across the historical period: the <code>iotcALB</code> OM accumulates slightly fewer fish each season than the ABC model, which reduces female spawning biomass and in turn suppresses recruitment via the Beverton-Holt relationship. After 21 years of compounding, the OM can deviate from the conditioning model by up to approximately 5% in numbers for most simulations, with a small number of simulations (those characterised by high exploitation rates or extreme stock-recruit parameters) diverging by up to ~20% in the final years of the historical period (see <a href="operating-model-base-case.html#sec-basecaseCompare" class="quarto-xref"><span>Section 3.2</span></a>).</p>
+<p>The choice between harvest rate and instantaneous F reflects an assumption about how fishing activity actually occurs in time. The harvest rate (pulse) approach is more appropriate when fishing is concentrated into a brief period within the season, such as a single large pulse of effort. The Baranov (continuous) approach is more appropriate when fishing effort is spread continuously throughout the season.</p>
+</section>
+<section id="potential-remedies" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="potential-remedies"><span class="header-section-number">2.3.2</span> Potential Remedies</h3>
+<p>Two options exist to resolve the discrepancy between the conditioning model and the <code>iotcALB</code> OMs:</p>
+<ol type="1">
+<li><p><strong>Extension of the <code>openMSE</code> framework to support pulse fishing.</strong> It is technically possible to implement a harvest rate option within the <code>openMSE</code> framework (which <code>iotcALB</code> depends on) to replicate the ABC model dynamics exactly. Under this approach, the population dynamics would use Pope’s approximation rather than the Baranov equation. However, this represents a non-trivial software development effort requiring changes to the core simulation engine, and is considered outside the scope of the present project.</p></li>
+<li><p><strong>Reconditioning the ABC model using instantaneous F.</strong> An alternative remedy is to convert the ABC conditioning model to use the Baranov catch equation and recondition the model on the available data. Reconditioning may in any case become necessary given that the current ABC model is conditioned on data through 2020 (see note above). However, the extent of modifications required to convert the ABC model to use instantaneous F is not yet known.</p></li>
+</ol>
+<p>The decision of whether to reconcile these differences, and which approach to pursue, will be made collaboratively by the managers and scientists involved in this MSE process. At present, the discrepancy between the two approaches is considered acceptable for the purposes of this MSE. The median trajectory of the <code>iotcALB</code> OM closely tracks that of the ABC model across all key stock dynamic quantities and the parameter uncertainty captured across simulations substantially exceeds the bias introduced by the harvest rate conversion (see <a href="operating-model-base-case.html#sec-basecaseCompare" class="quarto-xref"><span>Section 3.2</span></a>).</p>
+</section>
+</section>
+<section id="references" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="references"><span class="header-section-number">2.4</span> References</h2>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-hillaryConditioningIOTCAlbacore" class="csl-entry" role="listitem">
+Hillary, R., &amp; Mosqueira, I. (2024). <em>Conditioning <span>IOTC Albacore OMs</span> using the <span>ABC</span> approach</em> (No. IOTC-2024-WPM15-08). Indian Ocean Tuna Commission (IOTC). Retrieved from Indian Ocean Tuna Commission (IOTC) website: <a href="https://iotc.org/sites/default/files/documents/2024/10/IOTC-2024-WPM15-08_-_ALB_MSE_0.pdf">https://iotc.org/sites/default/files/documents/2024/10/IOTC-2024-WPM15-08_-_ALB_MSE_0.pdf</a>
+</div>
+<div id="ref-IOTC2022WPTmT08ASRE__FINAL" class="csl-entry" role="listitem">
+IOTC. (2022). <em>Report of the 8th <span>Session</span> of the <span>IOTC Working Party</span> on <span>Temperate Tunas</span>: <span>Assessment Meeting</span></em> (No. IOTC–2022–WPTmT08(AS)–R[E]). Indian Ocean Tuna Commission (IOTC). Retrieved from Indian Ocean Tuna Commission (IOTC) website: <a href="https://iotc.org/sites/default/files/documents/2025/10/IOTC-2025-WPM16-11-ALB_MSE.pdf">https://iotc.org/sites/default/files/documents/2025/10/IOTC-2025-WPM16-11-ALB_MSE.pdf</a>
+</div>
+<div id="ref-mosqueiraSimulationTestingManagement" class="csl-entry" role="listitem">
+Mosqueira, I., &amp; Hillary, R. (2025a). <em>Simulation testing of management procedures for <span>Indian</span> ocean albacore tuna based on <span>ABC</span> operating models: Report on progress</em> (No. IOTC-2025-WPM16-11). Indian Ocean Tuna Commission (IOTC). Retrieved from Indian Ocean Tuna Commission (IOTC) website: <a href="https://iotc.org/sites/default/files/documents/2025/10/IOTC-2025-WPM16-11-ALB_MSE.pdf">https://iotc.org/sites/default/files/documents/2025/10/IOTC-2025-WPM16-11-ALB_MSE.pdf</a>
+</div>
+<div id="ref-mosqueiraTechnicalDevelopmentManagement" class="csl-entry" role="listitem">
+Mosqueira, I., &amp; Hillary, R. (2025b). <em>Technical development of <span>Management Strategy Evaluation</span> for <span>Indian</span> ocean albacore tuna: 2025 progress report and current status</em> (No. IOTC-20260WPM17(MSE)-03). Indian Ocean Tuna Commission (IOTC). Retrieved from Indian Ocean Tuna Commission (IOTC) website: <a href="https://iotc.org/sites/default/files/documents/2026/03/IOTC-2026-WPM17MSE-03-ALB_MSE.pdf">https://iotc.org/sites/default/files/documents/2026/03/IOTC-2026-WPM17MSE-03-ALB_MSE.pdf</a>
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/iotcalb\.bluematterscience\.com\/tsd\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link" aria-label="Introduction">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./operating-model-base-case.html" class="pagination-link" aria-label="Base Case Operating Model">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Base Case Operating Model</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
