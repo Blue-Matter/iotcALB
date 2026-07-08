@@ -30,12 +30,12 @@ built for this purpose, and is built on the [openMSE](https://openmse.com/) fram
 
 ### Operating Model Conditioning Methodology
 
-1. [Conditioning IOTC Albacore OMs using the ABC approach**](../reference/ALB_OMcondv3.pdf)
+1. [Conditioning IOTC Albacore OMs using the ABC approach**](https://iotc.org/sites/default/files/documents/2024/10/IOTC-2024-WPM15-08_-_ALB_MSE_0.pdf)
 
 ### MSE Progress Reports
 
-1. [Technical development of Management Strategy Evaluation for Indian ocean albacore tuna: 2025 progress report and current status( 2026)](../reference/IOTC-2026-WPM17MSE-03-ALB_MSE.pdf)
-1. [Simulation testing of management procedures for Indian ocean albacore tuna based on ABC operating models: report on progress (2025)](../reference/IOTC-2025-WPM16-11-ALB_MSE.pdf)
+1. [Technical development of Management Strategy Evaluation for Indian ocean albacore tuna: 2025 progress report and current status( 2026)](https://iotc.org/sites/default/files/documents/2026/04/IOTC-2026-TCMP10-INF04.pdf)
+1. [Simulation testing of management procedures for Indian ocean albacore tuna based on ABC operating models: report on progress (2025)](https://iotc.org/sites/default/files/documents/2025/10/IOTC-2025-WPM16-11-ALB_MSE.pdf)
 
 
 ## Repository Structure
@@ -44,13 +44,13 @@ The [`iotcALB` repository](https://github.com/Blue-Matter/iotcALB) is organised 
 
 | Directory / File | Purpose |
 |---|---|
-| `R/` | Package functions and objects |
-| `analysis/` | Analysis scripts that run the MSE (import OMs, run simulations, apply MPs, summarise results) |
+| `R/`                 | Package functions and objects |
+| `analysis/`          | Analysis scripts that run the MSE (import OMs, run simulations, apply MPs, summarise results) |
 | `data/`, `data-raw/` | Conditioning output and other data bundled with the package |
-| `objects/` | Saved R objects produced by the analysis scripts (`OM/`, `Hist/`, etc.) |
-| `tsd/` | Quarto source for the Trial Specifications Document |
-| `reference/` | Background documents and working papers (PDFs) |
-| `homepage/` | Quarto source for this website |
+| `objects/`           | Saved R objects produced by the analysis scripts (`OM/`, `Hist/`, etc.) |
+| `tsd/`               | Quarto source for the Trial Specifications Document |
+| `reference/`         | Background documents and working papers (PDFs) |
+| `homepage/`          | Quarto source for this website |
 
 ### Key package components
 
