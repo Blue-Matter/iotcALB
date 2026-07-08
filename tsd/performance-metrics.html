@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Trial Specifications Document</title>
+<title>8&nbsp; Performance Metrics – Trial Specifications Document</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -50,7 +30,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./operating-model-overview.html" rel="next">
+<link href="./presentation-results.html" rel="next">
+<link href="./management-procedures.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -101,7 +82,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./performance-metrics.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Performance Metrics</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -131,7 +112,7 @@ div.csl-indent {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
@@ -173,7 +154,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./performance-metrics.html" class="sidebar-item-text sidebar-link">
+  <a href="./performance-metrics.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Performance Metrics</span></span></a>
   </div>
 </li>
@@ -188,26 +169,15 @@ div.csl-indent {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a>
-  <ul class="collapse">
-  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background"><span class="header-section-number">1.1</span> Background</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">1.2</span> References</a></li>
-  </ul></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Trial Specifications Document</h1>
-<p class="subtitle lead">Indian Ocean Albacore MSE</p>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Performance Metrics</span></h1>
 </div>
 
 
@@ -224,39 +194,11 @@ div.csl-indent {
 </header>
 
 
-<section id="introduction" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
-<p>This Trial Specifications Document (TSD) describes the design and technical details of the Management Strategy Evaluation (MSE) for Indian Ocean albacore tuna (<em>Thunnus alalunga</em>), including the operating models, candidate management procedures, and performance metrics used to evaluate them.</p>
-<p>It is a <strong>living document</strong> that will be updated as the MSE progresses to reflect the current state of the analysis.</p>
-<section id="background" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="background"><span class="header-section-number">1.1</span> Background</h2>
-<p>Indian Ocean albacore tuna is managed by the <a href="https://www.iotc.org">Indian Ocean Tuna Commission (IOTC)</a>. MSE is being used as a tool to support harvest strategy development for this stock, providing a structured framework for testing candidate management procedures against a range of plausible representations of stock and fishery dynamics before adoption of a management procedure.</p>
-<p>The initial development of the MSE framework, including the design and conditioning of the Base Case and Robustness Operating Models (OMs), was conducted by R. Hillary (CSIRO, Australia) and I. Mosqueira (Wageningen Marine Research, Netherlands). Key outputs of that work include:</p>
-<ul>
-<li><p><span class="citation" data-cites="hillaryConditioningIOTCAlbacore">Hillary &amp; Mosqueira (<a href="#ref-hillaryConditioningIOTCAlbacore" role="doc-biblioref">2024</a>)</span></p></li>
-<li><p><span class="citation" data-cites="mosqueiraSimulationTestingManagement">Mosqueira &amp; Hillary (<a href="#ref-mosqueiraSimulationTestingManagement" role="doc-biblioref">2025a</a>)</span></p></li>
-<li><p><span class="citation" data-cites="mosqueiraTechnicalDevelopmentManagement">Mosqueira &amp; Hillary (<a href="#ref-mosqueiraTechnicalDevelopmentManagement" role="doc-biblioref">2025b</a>)</span></p></li>
-</ul>
-<p>In 2026, <a href="https://www.bluematterscience.com/">Blue Matter Science</a> was contracted to continue work on the Albacore MSE. The analysis is implemented in the <a href="https://github.com/Blue-Matter/iotcALB"><code>iotcALB</code></a> R package, built using the <a href="https://openmse.com/">openMSE</a> framework, and builds directly on the conditioning outputs produced in the earlier phase of work.</p>
-<p>For more information on the IO Albacore MSE process see the project <a href="https://iotcalb.bluematterscience.com/">homepage</a>.</p>
-</section>
-<section id="references" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="references"><span class="header-section-number">1.2</span> References</h2>
+<blockquote class="blockquote">
+<p>This chapter is incomplete</p>
+</blockquote>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
-<div id="ref-hillaryConditioningIOTCAlbacore" class="csl-entry" role="listitem">
-Hillary, R., &amp; Mosqueira, I. (2024). <em>Conditioning <span>IOTC Albacore OMs</span> using the <span>ABC</span> approach</em> (No. IOTC-2024-WPM15-08). Indian Ocean Tuna Commission (IOTC). Retrieved from Indian Ocean Tuna Commission (IOTC) website: <a href="https://iotc.org/sites/default/files/documents/2024/10/IOTC-2024-WPM15-08_-_ALB_MSE_0.pdf">https://iotc.org/sites/default/files/documents/2024/10/IOTC-2024-WPM15-08_-_ALB_MSE_0.pdf</a>
-</div>
-<div id="ref-mosqueiraSimulationTestingManagement" class="csl-entry" role="listitem">
-Mosqueira, I., &amp; Hillary, R. (2025a). <em>Simulation testing of management procedures for <span>Indian</span> ocean albacore tuna based on <span>ABC</span> operating models: Report on progress</em> (No. IOTC-2025-WPM16-11). Indian Ocean Tuna Commission (IOTC). Retrieved from Indian Ocean Tuna Commission (IOTC) website: <a href="https://iotc.org/sites/default/files/documents/2025/10/IOTC-2025-WPM16-11-ALB_MSE.pdf">https://iotc.org/sites/default/files/documents/2025/10/IOTC-2025-WPM16-11-ALB_MSE.pdf</a>
-</div>
-<div id="ref-mosqueiraTechnicalDevelopmentManagement" class="csl-entry" role="listitem">
-Mosqueira, I., &amp; Hillary, R. (2025b). <em>Technical development of <span>Management Strategy Evaluation</span> for <span>Indian</span> ocean albacore tuna: 2025 progress report and current status</em> (No. IOTC-20260WPM17(MSE)-03). Indian Ocean Tuna Commission (IOTC). Retrieved from Indian Ocean Tuna Commission (IOTC) website: <a href="https://iotc.org/sites/default/files/documents/2026/03/IOTC-2026-WPM17MSE-03-ALB_MSE.pdf">https://iotc.org/sites/default/files/documents/2026/03/IOTC-2026-WPM17MSE-03-ALB_MSE.pdf</a>
-</div>
-</div>
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -660,10 +602,13 @@ Mosqueira, I., &amp; Hillary, R. (2025b). <em>Technical development of <span>Man
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./management-procedures.html" class="pagination-link" aria-label="Management Procedures">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Management Procedures</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./operating-model-overview.html" class="pagination-link" aria-label="Operating Model Conditioning">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Operating Model Conditioning</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./presentation-results.html" class="pagination-link" aria-label="Presentation of Results">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Presentation of Results</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
