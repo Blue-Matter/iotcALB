@@ -20,6 +20,9 @@ Roxygen: list(markdown = TRUE)
 URL: https://github.com/Blue-Matter/iotcALB, https://blue-matter.github.io/iotcALB/
 BugReports: https://github.com/Blue-Matter/iotcALB/issues
 Imports:
+    cli,
+    dplyr,
+    ggplot2,
     nnls,
     purrr
 Depends:

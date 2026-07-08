@@ -20,9 +20,9 @@ built for this purpose, and is built on the [openMSE](https://openmse.com/) fram
 
 ## Materials
 
-- [**Trial Specifications Document**](tsd/): the operating models, management
+- [Trial Specifications Document](tsd/): the operating models, management
   procedures, and performance metrics used in the MSE.
-- [**`iotcALB` R package**](pkg/): R package implementing the MSE analysis,
+- [`iotcALB` R package](pkg/): R package implementing the MSE analysis,
   with full technical documentation.
   
 
@@ -30,17 +30,12 @@ built for this purpose, and is built on the [openMSE](https://openmse.com/) fram
 
 ### Operating Model Conditioning Methodology
 
-1. [**Conditioning IOTC Albacore OMs using the ABC approach**](../reference/ALB_OMcondv3.pdf)
+1. [Conditioning IOTC Albacore OMs using the ABC approach**](../reference/ALB_OMcondv3.pdf)
 
 ### MSE Progress Reports
 
-**2026**
-
-1. [**Technical development of Management Strategy Evaluation for Indian ocean albacore tuna: 2025 progress report and current status**](../reference/IOTC-2026-WPM17MSE-03-ALB_MSE.pdf)
-
-**2025**
-
-1. [**Simulation testing of management procedures for Indian ocean albacore tuna based on ABC operating models: report on progress**](../reference/IOTC-2025-WPM16-11-ALB_MSE.pdf)
+1. [Technical development of Management Strategy Evaluation for Indian ocean albacore tuna: 2025 progress report and current status( 2026)](../reference/IOTC-2026-WPM17MSE-03-ALB_MSE.pdf)
+1. [Simulation testing of management procedures for Indian ocean albacore tuna based on ABC operating models: report on progress (2025)](../reference/IOTC-2025-WPM16-11-ALB_MSE.pdf)
 
 
 ## Repository Structure

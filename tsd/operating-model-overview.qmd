@@ -1,0 +1,112 @@
+# Operating Model Conditioning {#sec-omOverview}
+
+```{r}
+#| include: false
+rnorm(5)
+```
+
+## Approximate Bayesian Computation (ABC) Model
+
+The Operating Models used in this MSE were conditioned using the Approximate Bayesian Computation (ABC) approach developed for IOTC tuna species [@hillaryConditioningIOTCAlbacore]. The ABC approach generates a distribution of plausible historical stock dynamics that is consistent with available data and a set of prior beliefs about current and historical stock status.
+
+The population model underlying the ABC conditioning mirrors the structure of the most recent Indian Ocean Albacore stock assessment. The key structural features are:
+
+- Annual age structure with four seasons per year and recruitment occurring in last quarter;
+
+- Sex-structured population dynamics with sex-specific growth and weight-at-age;
+
+- Six fleets: four longline fleets (LL1–LL4), a purse seine fleet, and an "other" fleet;
+
+- A Beverton-Holt stock-recruit relationship with lognormally distributed recruitment deviations (prior mean $\sigma_R = 0.3$);
+
+- Conditioning period: 2000 -- 2020.
+
+The ABC algorithm is implemented as an MCMC sampler (ABC-MCMC) and is fitted to two primary data sources: seasonal longline CPUE indices and length-frequency composition data aggregated across years and seasons within each fleet.
+
+## Overview of Operating Models
+
+The operating models (OMs) included in the `iotcALB` framework were constructed by importing the ABC output for the relevant conditioned models into an `openMSE` OM object using the [`iotcALB::ImportOM()`](https://iotcalb.bluematterscience.com/pkg/reference/ImportOM.html) function, which aimed to reproduce the fishery dynamics described in the ABC output as closely as possible in the OMs (see @sec-differences).
+
+The following specifications are common to all OMs:
+
+- **Number of independent simulations**: 500 (from the ABC MCMC posteriors; `nSim = 500`)
+
+- **Historical period**: 2000 -- 2020 (`nYear = 21`)
+
+- **Projection period**: 2021 -- 2050 (`pYear = 30`)
+
+The OMs included in the `iotcALB` MSE framework are described in @tbl-om-scenarios. See @sec-basecaseOM and @sec-robustnessOMs for specific details on these OMs.
+
+| Name | Code | Description | Type | Comment |
+|------------|------------|---------------------------|------------|------------|
+| BaseCase | OM5b | Uses the LL1 (NW) CPUE series as index of abundance | Base Case |  |
+| R1 | OM5a | Uses the LL2 (SW) CPUE series as index of abundance | Robustness | *Not imported yet* |
+| R2 | OM6b | Includes a 1% annual increase in LL fisheries catchability | Robustness | *Not imported yet* |
+| R3 | OM5b_cc | Base case OM with climate change effects on recruitment, maturity, growth and carrying capacity | Robustness | *Not imported yet* |
+| R4 | OM5b_rec | Base case OM with effects of sudden reductions in recruitment | Robustness | *Not imported yet* |
+
+: Overview of Operating Models in the `iotcALB` framework. Code refers to the names of the ABC conditioned models. Name refers to the name of the OM object in the `iotcALB` package. {#tbl-om-scenarios}
+
+::: callout-note
+# Note on More Recent Data
+@mosqueiraSimulationTestingManagement and @mosqueiraTechnicalDevelopmentManagement refer to more recent data that include catch and CPUE data up to 2023. The OMs have not been reconditioned with this data and are based on the 2022 stock assessment [@IOTC2022WPTmT08ASRE__FINAL], with data up to 2020.
+
+The updated catch and CPUE data can be incorporated into directly in the projection period (see @sec-forwardprojections). Alternatively, the OMs could be reconditioned with the updated data, but that is outside of the scope of the current project.
+:::
+
+## Differences Between the ABC Conditioning Model and the `iotcALB` OM {#sec-differences}
+
+### Harvest Rate vs. Instantaneous Fishing Mortality
+
+The ABC model and the `iotcALB` OM differ in how they represent the removal of fish by fishing activity. This difference has implications for how the OM reproduces the stock dynamics of the conditioning model.
+
+The ABC model uses a ***harvest rate approach***, sometimes referred to as Pope's approximation, while the `iotcALB` model uses the ***Baranov catch equation***.
+
+Under the harvest rate formulation, fishing occurs as a discrete pulse within each time step: a fixed proportion $H$ of the vulnerable population is removed instantaneously, after which natural mortality acts on the survivors. The within-season dynamics are described as:
+
+$$
+N_{t+1} = N_t \cdot \prod_f \left(1 - H_{f,t} \cdot s_{a,f}\right) \cdot e^{-M}
+$$ {#eq-popes-n}
+
+where $s_{a,f}$ is the age- and fleet-specific selectivity and $M$ is the instantaneous
+natural mortality rate. Catch by fleet is:
+
+$$
+C_{f,t} = N_t \cdot H_{f,t} \cdot s_{a,f}
+$$ {#eq-popes-c}
+
+The Baranov catch equation approach assumes fishing and natural mortality act simultaneously and continuously throughout the time step.
+Total mortality $Z$ is:
+$$
+Z_t = M + \sum_f F_{f,t} \cdot s_{a,f}
+$$ {#eq-baranov-z}
+
+and catch by fleet is:
+$$
+C_{f,t} = N_t \cdot \frac{F_{f,t} \cdot s_{a,f}}{Z_t} \cdot \left(1 - e^{-Z_t}\right)
+$$  {#eq-baranov-c}
+
+To import the ABC output into `iotcALB`, fleet-specific harvest rates are converted to instantaneous fishing mortality as:
+$$
+F_f = -\log(1 - H_f)
+$$ {#eq-convert}
+
+While this conversion is exact in a mathematical sense, the two formulations differ in how total mortality is partitioned between fishing and natural causes. Under Pope's approximation, the full harvest rate $H_f$ is applied to the population at the start of the time step, and natural mortality then acts on the survivors (@eq-popes-c).  Under the Baranov equation, fishing and natural mortality act simultaneously, so a larger share of total mortality is attributed to natural causes and a correspondingly smaller share to fishing (@eq-baranov-c). 
+
+The consequence of this difference in model structure is that for the same $F_f = -\log(1 - H_f)$, the Baranov equation produces lower catches than Pope's approximation, with the deficit increasing with both fishing mortality and natural mortality rates. At partially-selected ages ($s_{a,f} < 1$), the Baranov equation removes slightly more fish in total than Pope's approximation, leaving fewer survivors. Both effects compound across the historical period: the `iotcALB` OM accumulates slightly fewer fish each season than the ABC model, which reduces female spawning biomass and in turn suppresses recruitment via the Beverton-Holt relationship. After 21 years of compounding, the OM can deviate from the conditioning model by up to approximately 5% in numbers for most simulations, with a small number of simulations (those characterised by high exploitation rates or extreme stock-recruit parameters) diverging by up to ~20% in the final years of the historical period (see @sec-basecaseCompare).
+
+The choice between harvest rate and instantaneous F reflects an assumption about how fishing activity actually occurs in time. The harvest rate (pulse) approach is more appropriate when fishing is concentrated into a brief period within the season, such as a single large pulse of effort. The Baranov (continuous) approach is more appropriate when fishing effort is spread continuously throughout the season. 
+
+### Potential Remedies
+
+Two options exist to resolve the discrepancy between the conditioning model and the `iotcALB` OMs:
+
+1. **Extension of the `openMSE` framework to support pulse fishing.** 
+    It is technically possible to implement a harvest rate option within the `openMSE` framework (which `iotcALB` depends on) to replicate the ABC model dynamics exactly. Under this approach, the population dynamics would use Pope's approximation rather than the Baranov equation. However, this represents a non-trivial software development effort requiring changes to the core simulation engine, and is considered outside the scope of the present project.
+
+2. **Reconditioning the ABC model using instantaneous F.** 
+    An alternative remedy is to convert the ABC conditioning model to use the Baranov catch equation and recondition the model on the available data. Reconditioning may in any case become necessary given that the current ABC model is conditioned on data through 2020 (see note above). However, the extent of modifications required to convert the ABC model to use instantaneous F is not yet known. 
+    
+The decision of whether to reconcile these differences, and which approach to pursue, will be made collaboratively by the managers and scientists involved in this MSE process. At present, the discrepancy between the two approaches is considered acceptable for the purposes of this MSE. The median trajectory of the `iotcALB` OM closely tracks that of the ABC model across all key stock dynamic quantities and the parameter uncertainty captured across simulations substantially exceeds the bias introduced by the harvest rate conversion (see @sec-basecaseCompare).
+
+## References

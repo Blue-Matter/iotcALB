@@ -2,31 +2,82 @@
 % Please edit documentation in R/ValidateOM.R
 \name{ValidateOM}
 \alias{ValidateOM}
-\title{Compare OM N-at-age against conditioning model reference}
+\title{Compare OM reference quantities against the conditioning model}
 \usage{
-ValidateOM(hist, object = Cond_BaseCase, tol = 0.02, min_pct = 0.02)
+ValidateOM(
+  Hist,
+  object = Cond_BaseCase,
+  tol = 0.05,
+  min_pct = 0.02,
+  alpha = 0.2,
+  probs = c(0.1, 0.9),
+  save_plots = TRUE,
+  outdir = "figures/diagnostics/OM",
+  width = NULL,
+  height = NULL,
+  verbose = TRUE
+)
 }
 \arguments{
-\item{hist}{A \code{\link[MSEtool:Hist]{MSEtool::Hist()}} object produced by \code{\link[MSEtool:Simulate]{MSEtool::Simulate()}}.}
+\item{Hist}{A \code{\link[MSEtool:Hist]{MSEtool::Hist()}} object produced by \code{\link[MSEtool:Simulate]{MSEtool::Simulate()}}}
 
 \item{object}{A named list of conditioning output (same object passed to
-\code{\link[=ImportOM]{ImportOM()}}). Defaults to \link{Cond_BaseCase}.}
+\code{\link[=ImportOM]{ImportOM()}}). Defaults to \link{Cond_BaseCase}. Must contain \code{mcmcvars}
+(a list of MCMC iterations, each with arrays \code{N}, \code{H}, \code{sela}, \code{SSB})
+and \code{weight}.}
 
 \item{tol}{Numeric. Ratio threshold outside \verb{[1-tol, 1+tol]} that triggers
-a printed warning. Defaults to \code{0.02} (2\%).}
+a printed warning for the N-at-age comparison. Defaults to \code{0.02} (2\%).}
 
-\item{min_pct}{Numeric. Minimum fraction of cells (0–1) that must exceed
-\code{tol} before the worst-offenders table is printed. Defaults to \code{0.02}
-(2\%).}
+\item{min_pct}{Numeric. Minimum fraction of N-at-age cells (0-1) that must
+exceed \code{tol} before the worst-offenders table is printed. Defaults to
+\code{0.05} (5\%).}
+
+\item{alpha}{Numeric. Transparency used for ribbon fills and
+per-simulation ratio lines. Defaults to \code{0.2}.}
+
+\item{probs}{Numeric vector of length 2 giving the lower/upper quantiles
+used for ribbon plots. Defaults to \code{c(0.1, 0.9)}.}
+
+\item{save_plots}{Logical. If \code{TRUE} (default), diagnostic plots are
+written as PNG files to \code{file.path(outdir, Hist@OM@Name)}.}
+
+\item{outdir}{Character. Base directory for saved plots. Defaults to
+\code{"figures/diagnostics/OM"}.}
+
+\item{width, height}{Numeric. Width/height (inches) passed to
+\code{\link[ggplot2:ggsave]{ggplot2::ggsave()}}. If \code{NULL} (default), each plot is sized
+automatically from its number of facet panels: single-panel plots
+(Number, SSB) use 6 x 4; the Catch-by-fleet and N-at-age plots, which
+facet by fleet/season, scale up accordingly. Set either to a number to
+use that fixed size for every saved plot instead.}
+
+\item{verbose}{Logical. If \code{TRUE} (default), print N-at-age match
+diagnostics (success/warning messages and the worst-offenders table).}
 }
 \value{
-Invisibly returns a data frame of OM vs reference N-at-age with
-columns \code{Stock}, \code{Sim}, \code{Age}, \code{Timestep}, \code{Season}, \code{Year}, \code{OM}, \code{Ref},
-\code{Ratio}.
+Invisibly returns a named list:
+\itemize{
+\item \code{n}, \code{ssb}, \code{catch}: each a list with \code{ref} and \code{om} data frames
+\item \code{natage}: long data frame of OM vs reference N-at-age with columns
+\code{Stock}, \code{Sim}, \code{Age}, \code{Timestep}, \code{Season}, \code{Year}, \code{OM}, \code{Ref},
+\code{Ratio}
+}
 }
 \description{
-Maps each MCMC iteration's N-at-age into the OM's quarterly age × timestep
-layout and compares it against the simulated N-at-age from a
-\code{\link[MSEtool:Hist]{MSEtool::Hist()}} object. Diagnostics are computed across all simulations;
-the plot summarises the distribution of OM/Reference ratios as a ribbon.
+Compares an \code{\link[MSEtool:Hist]{MSEtool::Hist()}} simulation against the reference quantities
+recovered from the MCMC posterior of the conditioning model: total
+numbers, spawning biomass, catch-by-fleet, and numbers-at-age.
+}
+\details{
+For total numbers, spawning biomass, and catch, a ribbon plot (median with a
+10th-90th percentile band, OM vs. reference) and a per-simulation ratio
+plot (OM / reference) are produced.
+
+Numbers-at-age is compared by mapping
+each MCMC iteration's N-at-age into the OM's quarterly age x timestep
+layout; the distribution of OM/reference ratios is summarised as a ribbon
+by quarterly age class and season, and cell-level diagnostics are printed.
+
+All plots are optionally saved to disk.
 }

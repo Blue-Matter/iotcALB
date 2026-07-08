@@ -1,6 +1,32 @@
-# Preface {.unnumbered}
+---
+bibliography: references.bib
+---
 
-This is the Trial Specifications Document (TSD) for the Indian Ocean Tuna
-Commission (IOTC) albacore Management Strategy Evaluation (MSE).
+# Introduction
 
+```{r}
+#| include: false
+rnorm(5)
+```
 
+This Trial Specifications Document (TSD) describes the design and technical details of the Management Strategy Evaluation (MSE) for Indian Ocean albacore tuna (*Thunnus alalunga*), including the operating models, candidate management procedures, and performance metrics used to evaluate them.
+
+It is a **living document** that will be updated as the MSE progresses to reflect the current state of the analysis.
+
+## Background
+
+Indian Ocean albacore tuna is managed by the [Indian Ocean Tuna Commission (IOTC)](https://www.iotc.org). MSE is being used as a tool to support harvest strategy development for this stock, providing a structured framework for testing candidate management procedures against a range of plausible representations of stock and fishery dynamics before adoption of a management procedure.
+
+The initial development of the MSE framework, including the design and conditioning of the Base Case and Robustness Operating Models (OMs), was conducted by R. Hillary (CSIRO, Australia) and I. Mosqueira (Wageningen Marine Research, Netherlands). Key outputs of that work include:
+
+- @hillaryConditioningIOTCAlbacore
+
+- @mosqueiraSimulationTestingManagement
+
+- @mosqueiraTechnicalDevelopmentManagement
+
+In 2026, [Blue Matter Science](https://www.bluematterscience.com/) was contracted to continue work on the Albacore MSE. The analysis is implemented in the [`iotcALB`](https://github.com/Blue-Matter/iotcALB) R package, built using the [openMSE](https://openmse.com/) framework, and builds directly on the conditioning outputs produced in the earlier phase of work.
+
+For more information on the IO Albacore MSE process see the project [homepage](https://iotcalb.bluematterscience.com/).
+
+## References

@@ -1,0 +1,20 @@
+# Forward Projections {#sec-forwardprojections}
+
+```{r}
+#| include: false
+rnorm(5)
+OM <- readRDS('../objects/OM/Base Case.om')
+```
+
+> This chapter is incomplete
+
+## Specifications
+
+Number of projection years: `r OM@nYear` 
+Management interval: **TBD**
+
+## Generation of Simulated Fishery Data 
+
+
+
+

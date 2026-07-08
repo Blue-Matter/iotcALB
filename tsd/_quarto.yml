@@ -3,17 +3,24 @@ project:
   output-dir: _book
 
 book:
-  title: "iotcALB Trial Specifications"
+  title: "Trial Specifications Document"
+  subtitle: "Indian Ocean Albacore MSE"
   site-url: https://iotcalb.bluematterscience.com/tsd/
   repo-url: https://github.com/Blue-Matter/iotcALB
   chapters:
     - index.qmd
-    - 01-context.qmd
-    - 02-operating-models.qmd
-    - 03-management-procedures.qmd
-    - 04-performance-metrics.qmd
+    - operating-model-overview.qmd
+    - operating-model-base-case.qmd
+    - operating-model-robustness.qmd   
+    - fishery-data.qmd
+    - forward-projections.qmd
+    - management-procedures.qmd
+    - performance-metrics.qmd
+    - presentation-results.qmd
 
 bibliography: references.bib
+csl: apa.csl
+link-citations: true
 
 format:
   html:

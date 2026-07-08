@@ -1,3 +1,0 @@
-# Context
-
-Background and context for the IOTC albacore MSE.

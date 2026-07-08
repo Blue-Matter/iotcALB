@@ -1,0 +1,25 @@
+# Fishery Data 
+
+```{r}
+#| include: false
+rnorm(5)
+library(iotcALB)
+```
+
+The available fishery data include indices of abundance and fleet-specific catch information. 
+
+> This chapter is incomplete
+
+## Indices of Abundance
+
+```{r}
+#| include: false
+#Hist <- readRDS('../objects/Hist/Base Case.hist')
+#Hist@Data$`1`$Combined@CPUE@Value
+#matplot(Hist@Data$`2`$Combined@CPUE@Value, type='l')
+```
+
+
+## Catch Data
+
+

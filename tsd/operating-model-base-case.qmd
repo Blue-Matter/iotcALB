@@ -1,0 +1,71 @@
+# Base Case Operating Model {#sec-basecaseOM}
+
+```{r}
+#| include: false
+rnorm(5)
+library(MSEtool)
+library(ggplot2)
+```
+
+The Base case OM (OM5b) uses the LL1 (NW) CPUE series as the index of abundance as the primary data used in the OM conditioning (see @sec-omOverview).
+
+## Overview of OM Dynamics
+
+This figures below show the historical dynamics of the Base Case OM: female spawning biomass (@fig-basecase-ssb) and total catch summed over stocks and fleets (@fig-basecase-catch). 
+
+In each figure, the black line shows the median across simulations and the grey ribbon the 5th–95th percentile interval.
+
+```{r loadBaseCaseHist}
+#| echo: false
+Hist <- readRDS('../objects/Hist/Base Case.hist')
+```
+
+```{r plotBiomass}
+#| echo: false
+#| label: fig-basecase-ssb
+#| fig-cap: "Female spawning biomass (SSB) from the Base Case OM. Black line is the median and the grey ribbon the 5th–95th percentile interval across simulations."
+PlotSBiomass(Hist, Season = 3, byFemale = TRUE, byStock = FALSE)
+```
+
+```{r plotCatch}
+#| echo: false
+#| label: fig-basecase-catch
+#| fig-cap: "Total catch, summed over stocks and fleets, from the Base Case OM. Black line is the median and the grey ribbon the 5th–95th percentile interval across simulations."
+t <- PlotLandings(Hist, AggregateYear = TRUE, byFleet = FALSE, byStock = FALSE)
+t + ggplot2::labs(y='Catch')
+```
+
+## Comparision with Conditioning Model {#sec-basecaseCompare}
+
+The figures below compare the Base Case OM dynamics against the ABC conditioning model across 500 MCMC simulations. In each ribbon plot, the line shows the posterior median and the shaded band the 10th–90th percentile interval; red is the ABC conditioning model and blue is the OM. The ratio plots show OM / ABC for each individual simulation, with the dashed red line at 1 indicating perfect agreement.
+
+### Total Numbers
+
+![Total numbers: posterior median and 10–90th percentile interval for the ABC conditioning model (red) and the Base Case OM (blue).](figures/diagnostics/OM/Base Case/Number_ribbon.png){#fig-n-ribbon}
+
+![Ratio of OM to conditioning model total numbers by simulation. Lines close to 1 indicate good agreement; divergence in later years reflects compounding of the Baranov vs. Pope's approximation discrepancy (see @sec-differences).](figures/diagnostics/OM/Base Case/Number_ratio.png){#fig-n-ratio}
+
+Overall, the OM tracks the conditioning model closely in total numbers (@fig-n-ribbon). The per-simulation ratios (@fig-n-ratio) show that most simulations remain within 5% of the conditioning model throughout the historical period, with a small number of
+simulations diverging by greater amounts, particulary towards the end of the time series.
+
+### Spawning Biomass
+
+![Female spawning biomass (SSB): posterior median and 10–90th percentile interval for the ABC conditioning model (red) and the Base Case OM (blue).](figures/diagnostics/OM/Base Case/SSB_ribbon.png){#fig-ssb-ribbon}
+
+![Ratio of OM to the ABC conditioning model female spawning biomass by simulation.](figures/diagnostics/OM/Base Case/SSB_ratio.png){#fig-ssb-ratio}
+
+The OM reproduces the SSB trajectory of the conditioning model closely (@fig-ssb-ribbon), with the median lines nearly indistinguishable across the historical period. The per-simulation ratios (@fig-ssb-ratio) mirror the pattern seen in total numbers.
+
+### Catch by Fleet
+
+![Catch by fleet: posterior median and 10–90th percentile interval for the ABC conditioning model (red) and the Base Case OM (blue).](figures/diagnostics/OM/Base Case/Catch_ribbon.png){#fig-catch-ribbon}
+
+![Ratio of OM to ABC conditioning model catch by fleet and simulation. A consistent negative bias is expected due to the Baranov equation attributing a larger share of total mortality to natural causes relative to Pope's approximation (see @sec-differences).](figures/diagnostics/OM/Base Case/Catch_ratio.png){#fig-catch-ratio}
+
+Fleet-specific catches in the OM are slightly lower than in the conditioning model across all fleets (@fig-catch-ribbon, @fig-catch-ratio). This is a structural consequence of the Baranov equation attributing a greater proportion of total mortality to natural causes compared to Pope's approximation, as described in @sec-differences. 
+
+### Numbers-at-Age
+
+![Ratio of OM to the ABC conditioning model numbers-at-age by simulation. Values close to 1 indicate good agreement; deviation from 1 reflects the cumulative effect of the Baranov vs. Pope's approximation discrepancy.](figures/diagnostics/OM/Base Case/NatAge_ratio.png){#fig-natage-ratio} 
+
+The numbers-at-age comparison (@fig-natage-ratio) provides the a detailed view of where the OM and conditioning model diverge. Deviations are generally small in the early years of the historical period and grow over time as the Baranov vs. Pope's discrepancy compounds through the population dynamics, with most OM values within ±5% of those from the ABC conditioning model.
