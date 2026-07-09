@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "IOTC Albacore Management Strategy Evaluation",
     "section": "",
-    "text": "This site hosts the materials for the Management Strategy Evaluation (MSE) process for Indian Ocean albacore tuna (Thunnus alalunga), managed by the Indian Ocean Tuna Commission (IOTC).\nThe MSE tests candidate management procedures against a range of plausible operating models to evaluate their performance against management objectives under uncertainty.\nThe initial work on the MSE framework and analysis, including conditioning of the Base Case and Robustness Operating Models (OMs), was conducted by R. M. Hillary and I. Mosqueira (see Background & Reference Materials below).\nIn 2026, Blue Matter Science was contracted to continue the work on the MSE. The MSE analysis uses the iotcALB R package built for this purpose, and is built on the openMSE framework."
+    "text": "This site hosts the materials for the Management Strategy Evaluation (MSE) process for Indian Ocean albacore tuna (Thunnus alalunga), managed by the Indian Ocean Tuna Commission (IOTC).\nThe MSE tests candidate management procedures against a range of plausible operating models to evaluate their performance against management objectives under uncertainty.\nThe initial work on the MSE framework and analysis, including conditioning of the Base Case and Robustness Operating Models (OMs), was conducted by R. M. Hillary and I. Mosqueira (see Background & Reference Materials below).\nIn 2026, Blue Matter Science was contracted to continue the work on the MSE. The MSE analysis uses the iotcALB R package, developed for this purpose and built on the openMSE framework."
   },
   {
     "objectID": "index.html#materials",
