@@ -246,87 +246,115 @@ Figure&nbsp;3.2: Total catch, summed over stocks and fleets, from the Base Case 
 <p>The figures below compare the Base Case OM dynamics against the ABC conditioning model across 500 MCMC simulations. In each ribbon plot, the line shows the posterior median and the shaded band the 10th–90th percentile interval; red is the ABC conditioning model and blue is the OM. The ratio plots show OM / ABC for each individual simulation, with the dashed red line at 1 indicating perfect agreement.</p>
 <section id="total-numbers" class="level3" data-number="3.2.1">
 <h3 data-number="3.2.1" class="anchored" data-anchor-id="total-numbers"><span class="header-section-number">3.2.1</span> Total Numbers</h3>
+<div class="cell">
+<div class="cell-output-display">
 <div id="fig-n-ribbon" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-n-ribbon-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/diagnostics/OM/Base Case/Number_ribbon.png" class="img-fluid figure-img">
+<img src="operating-model-base-case_files/figure-html/fig-n-ribbon-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-n-ribbon-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.3: Total numbers: posterior median and 10–90th percentile interval for the ABC conditioning model (red) and the Base Case OM (blue).
 </figcaption>
 </figure>
 </div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
 <div id="fig-n-ratio" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-n-ratio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/diagnostics/OM/Base Case/Number_ratio.png" class="img-fluid figure-img">
+<img src="operating-model-base-case_files/figure-html/fig-n-ratio-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-n-ratio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.4: Ratio of OM to conditioning model total numbers by simulation. Lines close to 1 indicate good agreement; divergence in later years reflects compounding of the Baranov vs.&nbsp;Pope’s approximation discrepancy (see <a href="operating-model-overview.html#sec-differences" class="quarto-xref"><span>Section 2.3</span></a>).
 </figcaption>
 </figure>
 </div>
+</div>
+</div>
 <p>Overall, the OM tracks the conditioning model closely in total numbers (<a href="#fig-n-ribbon" class="quarto-xref">Figure&nbsp;<span>3.3</span></a>). The per-simulation ratios (<a href="#fig-n-ratio" class="quarto-xref">Figure&nbsp;<span>3.4</span></a>) show that most simulations remain within 5% of the conditioning model throughout the historical period, with a small number of simulations diverging by greater amounts, particulary towards the end of the time series.</p>
 </section>
 <section id="spawning-biomass" class="level3" data-number="3.2.2">
 <h3 data-number="3.2.2" class="anchored" data-anchor-id="spawning-biomass"><span class="header-section-number">3.2.2</span> Spawning Biomass</h3>
+<div class="cell">
+<div class="cell-output-display">
 <div id="fig-ssb-ribbon" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ssb-ribbon-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/diagnostics/OM/Base Case/SSB_ribbon.png" class="img-fluid figure-img">
+<img src="operating-model-base-case_files/figure-html/fig-ssb-ribbon-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ssb-ribbon-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.5: Female spawning biomass (SSB): posterior median and 10–90th percentile interval for the ABC conditioning model (red) and the Base Case OM (blue).
 </figcaption>
 </figure>
 </div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
 <div id="fig-ssb-ratio" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ssb-ratio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/diagnostics/OM/Base Case/SSB_ratio.png" class="img-fluid figure-img">
+<img src="operating-model-base-case_files/figure-html/fig-ssb-ratio-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ssb-ratio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.6: Ratio of OM to the ABC conditioning model female spawning biomass by simulation.
 </figcaption>
 </figure>
 </div>
+</div>
+</div>
 <p>The OM reproduces the SSB trajectory of the conditioning model closely (<a href="#fig-ssb-ribbon" class="quarto-xref">Figure&nbsp;<span>3.5</span></a>), with the median lines nearly indistinguishable across the historical period. The per-simulation ratios (<a href="#fig-ssb-ratio" class="quarto-xref">Figure&nbsp;<span>3.6</span></a>) mirror the pattern seen in total numbers.</p>
 </section>
 <section id="catch-by-fleet" class="level3" data-number="3.2.3">
 <h3 data-number="3.2.3" class="anchored" data-anchor-id="catch-by-fleet"><span class="header-section-number">3.2.3</span> Catch by Fleet</h3>
+<div class="cell">
+<div class="cell-output-display">
 <div id="fig-catch-ribbon" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-catch-ribbon-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/diagnostics/OM/Base Case/Catch_ribbon.png" class="img-fluid figure-img">
+<img src="operating-model-base-case_files/figure-html/fig-catch-ribbon-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-catch-ribbon-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.7: Catch by fleet: posterior median and 10–90th percentile interval for the ABC conditioning model (red) and the Base Case OM (blue).
 </figcaption>
 </figure>
 </div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
 <div id="fig-catch-ratio" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-catch-ratio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/diagnostics/OM/Base Case/Catch_ratio.png" class="img-fluid figure-img">
+<img src="operating-model-base-case_files/figure-html/fig-catch-ratio-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-catch-ratio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.8: Ratio of OM to ABC conditioning model catch by fleet and simulation. A consistent negative bias is expected due to the Baranov equation attributing a larger share of total mortality to natural causes relative to Pope’s approximation (see <a href="operating-model-overview.html#sec-differences" class="quarto-xref"><span>Section 2.3</span></a>).
 </figcaption>
 </figure>
 </div>
+</div>
+</div>
 <p>Fleet-specific catches in the OM are slightly lower than in the conditioning model across all fleets (<a href="#fig-catch-ribbon" class="quarto-xref">Figure&nbsp;<span>3.7</span></a>, <a href="#fig-catch-ratio" class="quarto-xref">Figure&nbsp;<span>3.8</span></a>). This is a structural consequence of the Baranov equation attributing a greater proportion of total mortality to natural causes compared to Pope’s approximation, as described in <a href="operating-model-overview.html#sec-differences" class="quarto-xref"><span>Section 2.3</span></a>.</p>
 </section>
 <section id="numbers-at-age" class="level3" data-number="3.2.4">
 <h3 data-number="3.2.4" class="anchored" data-anchor-id="numbers-at-age"><span class="header-section-number">3.2.4</span> Numbers-at-Age</h3>
+<div class="cell">
+<div class="cell-output-display">
 <div id="fig-natage-ratio" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-natage-ratio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/diagnostics/OM/Base Case/NatAge_ratio.png" class="img-fluid figure-img">
+<img src="operating-model-base-case_files/figure-html/fig-natage-ratio-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-natage-ratio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.9: Ratio of OM to the ABC conditioning model numbers-at-age by simulation. Values close to 1 indicate good agreement; deviation from 1 reflects the cumulative effect of the Baranov vs.&nbsp;Pope’s approximation discrepancy.
 </figcaption>
 </figure>
+</div>
+</div>
 </div>
 <p>The numbers-at-age comparison (<a href="#fig-natage-ratio" class="quarto-xref">Figure&nbsp;<span>3.9</span></a>) provides the a detailed view of where the OM and conditioning model diverge. Deviations are generally small in the early years of the historical period and grow over time as the Baranov vs.&nbsp;Pope’s discrepancy compounds through the population dynamics, with most OM values within ±5% of those from the ABC conditioning model.</p>
 
