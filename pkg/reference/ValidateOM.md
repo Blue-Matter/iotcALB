@@ -97,6 +97,10 @@ Invisibly returns a named list:
   `Stock`, `Sim`, `Age`, `Timestep`, `Season`, `Year`, `OM`, `Ref`,
   `Ratio`
 
+- `plots`: a list of the diagnostic `ggplot` objects — `number_ribbon`,
+  `number_ratio`, `ssb_ribbon`, `ssb_ratio`, `catch_ribbon`,
+  `catch_ratio`, `natage_ratio`
+
 ## Details
 
 For total numbers, spawning biomass, and catch, a ribbon plot (median
