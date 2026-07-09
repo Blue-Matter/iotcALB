@@ -48,6 +48,9 @@
 #'   * `natage`: long data frame of OM vs reference N-at-age with columns
 #'     `Stock`, `Sim`, `Age`, `Timestep`, `Season`, `Year`, `OM`, `Ref`,
 #'     `Ratio`
+#'   * `plots`: a list of the diagnostic `ggplot` objects — `number_ribbon`,
+#'     `number_ratio`, `ssb_ribbon`, `ssb_ratio`, `catch_ribbon`,
+#'     `catch_ratio`, `natage_ratio`
 #'
 #' @export
 ValidateOM <- function(Hist, object = Cond_BaseCase, tol = 0.05, min_pct = 0.02,
@@ -289,7 +292,16 @@ ValidateOM <- function(Hist, object = Cond_BaseCase, tol = 0.05, min_pct = 0.02,
     n      = list(ref = ref_n,     om = om_n),
     ssb    = list(ref = ref_ssb,   om = om_ssb),
     catch  = list(ref = ref_catch, om = om_catch),
-    natage = df
+    natage = df,
+    plots  = list(
+      number_ribbon = n_diag$ribbon,
+      number_ratio  = n_diag$ratio,
+      ssb_ribbon    = ssb_diag$ribbon,
+      ssb_ratio     = ssb_diag$ratio,
+      catch_ribbon  = catch_diag$ribbon,
+      catch_ratio   = catch_diag$ratio,
+      natage_ratio  = p
+    )
   ))
 }
 

@@ -62,6 +62,9 @@ Invisibly returns a named list:
 \item \code{natage}: long data frame of OM vs reference N-at-age with columns
 \code{Stock}, \code{Sim}, \code{Age}, \code{Timestep}, \code{Season}, \code{Year}, \code{OM}, \code{Ref},
 \code{Ratio}
+\item \code{plots}: a list of the diagnostic \code{ggplot} objects — \code{number_ribbon},
+\code{number_ratio}, \code{ssb_ribbon}, \code{ssb_ratio}, \code{catch_ribbon},
+\code{catch_ratio}, \code{natage_ratio}
 }
 }
 \description{
