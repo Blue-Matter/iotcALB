@@ -4,12 +4,12 @@ template:
 
 navbar:
   structure:
-    left:  [homepage, reference, news, tsd]
+    left:  [homepage, tsd, reference, news]
     right: [search, github]
   components:
     homepage:
       text: IOTC Albacore MSE Homepage
-      href: https://example.com
+      href: https://iotcalb.bluematterscience.com/
     tsd:
       text: Trial Specifications Document
       href: https://iotcalb.bluematterscience.com/tsd/
