@@ -93,11 +93,11 @@ ul.task-list li input[type="checkbox"] {
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="https://iotcalb.bluematterscience.com/tsd/"> 
-<span class="menu-text">Trial Specifications</span></a>
+<span class="menu-text">Trial Specifications Document</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="https://iotcalb.bluematterscience.com/pkg/"> 
-<span class="menu-text">R Package</span></a>
+<span class="menu-text">iotcALB R Package</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -149,14 +149,15 @@ ul.task-list li input[type="checkbox"] {
 <section id="operating-model-conditioning-methodology" class="level3">
 <h3 class="anchored" data-anchor-id="operating-model-conditioning-methodology">Operating Model Conditioning Methodology</h3>
 <ol type="1">
-<li><a href="https://iotc.org/sites/default/files/documents/2024/10/IOTC-2024-WPM15-08_-_ALB_MSE_0.pdf">Conditioning IOTC Albacore OMs using the ABC approach**</a></li>
+<li><a href="https://iotc.org/sites/default/files/documents/2024/10/IOTC-2024-WPM15-08_-_ALB_MSE_0.pdf">Conditioning IOTC Albacore OMs using the ABC approach</a></li>
 </ol>
 </section>
 <section id="mse-progress-reports" class="level3">
 <h3 class="anchored" data-anchor-id="mse-progress-reports">MSE Progress Reports</h3>
 <ol type="1">
-<li><a href="https://iotc.org/sites/default/files/documents/2026/04/IOTC-2026-TCMP10-INF04.pdf">Technical development of Management Strategy Evaluation for Indian ocean albacore tuna: 2025 progress report and current status( 2026)</a></li>
-<li><a href="https://iotc.org/sites/default/files/documents/2025/10/IOTC-2025-WPM16-11-ALB_MSE.pdf">Simulation testing of management procedures for Indian ocean albacore tuna based on ABC operating models: report on progress (2025)</a></li>
+<li><p><a href="https://iotc.org/sites/default/files/documents/2026/05/IOTC-2026-TCMP10-04-presenation.pdf">Progress of the Indian Ocean Albacore MSE( 2026)</a></p></li>
+<li><p><a href="https://iotc.org/sites/default/files/documents/2026/04/IOTC-2026-TCMP10-INF04.pdf">Technical development of Management Strategy Evaluation for Indian ocean albacore tuna: 2025 progress report and current status( 2026)</a></p></li>
+<li><p><a href="https://iotc.org/sites/default/files/documents/2025/10/IOTC-2025-WPM16-11-ALB_MSE.pdf">Simulation testing of management procedures for Indian ocean albacore tuna based on ABC operating models: report on progress (2025)</a></p></li>
 </ol>
 </section>
 </section>
@@ -196,10 +197,6 @@ ul.task-list li input[type="checkbox"] {
 <td>Quarto source for the Trial Specifications Document</td>
 </tr>
 <tr class="even">
-<td><code>reference/</code></td>
-<td>Background documents and working papers (PDFs)</td>
-</tr>
-<tr class="odd">
 <td><code>homepage/</code></td>
 <td>Quarto source for this website</td>
 </tr>
@@ -210,11 +207,14 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Functions</strong></p>
 <ul>
 <li><code>ImportOM()</code>: converts MCMC conditioning output into a multi-stock, multi-fleet <code>MSEtool</code> <code>OM</code> object (quarterly, sex-structured, 6 fleets)</li>
-<li><code>ValidateOM()</code>: validates simulated numbers-at-age against the conditioning model reference</li>
+<li><code>ValidateOM()</code>: validates OM dynamics against the ABC conditioning model output</li>
 </ul>
 <p><strong>Datasets</strong></p>
 <ul>
-<li><code>Cond_BaseCase</code>: base-case conditioning output (MCMC posterior samples, biological schedules, indices)</li>
+<li><code>CondData_OM5a</code>, <code>CondData_OM5b</code>, <code>CondData_OM6b</code>: ABC conditioning model output containing MCMC-derived variables for the OM5a (SW CPUE), OM5b (base case, NW CPUE), and OM6b (1% effort creep robustness) operating models;</li>
+<li><code>StockObjectList</code>: <code>MSEtool::Stock</code> objects (Female, Male) with seasonal age structure and length, weight, maturity, and fecundity schedules</li>
+<li><code>albMSE_Biology</code>: raw biological schedules (length, weight, maturity at annual age and season) used to build <code>StockObjectList</code></li>
+<li><code>albMSE_Data</code>: observed catch and CPUE data as an <code>MSEtool::Data</code> object, for use with candidate management procedures</li>
 </ul>
 </section>
 <section id="analysis-workflow" class="level3">
