@@ -2,3 +2,16 @@ url: https://iotcalb.bluematterscience.com/pkg/
 template:
   bootstrap: 5
 
+navbar:
+  structure:
+    left:  [homepage, reference, news, tsd]
+    right: [search, github]
+  components:
+    homepage:
+      text: IOTC Albacore MSE Homepage
+      href: https://example.com
+    tsd:
+      text: Trial Specifications Document
+      href: https://iotcalb.bluematterscience.com/tsd/
+
+
