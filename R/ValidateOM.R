@@ -16,11 +16,10 @@
 #'
 #' All plots are optionally saved to disk.
 #'
-#' @param Hist A [MSEtool::Hist()] object produced by [MSEtool::Simulate()]
-#' @param object A named list of conditioning output (same object passed to
-#'   [ImportOM()]). Defaults to [Cond_BaseCase]. Must contain `mcmcvars`
-#'   (a list of MCMC iterations, each with arrays `N`, `H`, `sela`, `SSB`)
-#'   and `weight`.
+#' @param Hist A [MSEtool::Hist()] object produced by [MSEtool::Simulate()].
+#'   The conditioning data used to build `Hist@OM` is loaded via
+#'   `get(paste0('CondData_', Hist@OM@Name))` (same object used by
+#'   [ImportOM()]).
 #' @param tol Numeric. Ratio threshold outside `[1-tol, 1+tol]` that triggers
 #'   a printed warning for the N-at-age comparison. Defaults to `0.02` (2%).
 #' @param min_pct Numeric. Minimum fraction of N-at-age cells (0-1) that must
@@ -53,7 +52,8 @@
 #'     `catch_ratio`, `natage_ratio`
 #'
 #' @export
-ValidateOM <- function(Hist, object = Cond_BaseCase, tol = 0.05, min_pct = 0.02,
+ValidateOM <- function(Hist,
+                       tol = 0.05, min_pct = 0.02,
                        alpha = 0.2, probs = c(0.1, 0.9), save_plots = TRUE,
                        outdir = 'figures/diagnostics/OM', width = NULL, height = NULL,
                        verbose = TRUE) {
@@ -61,18 +61,14 @@ ValidateOM <- function(Hist, object = Cond_BaseCase, tol = 0.05, min_pct = 0.02,
   if (!inherits(Hist, 'hist'))
     cli::cli_abort('`Hist` must be an {.help MSEtool::Hist} object')
 
-  if (!all(c('mcmcvars', 'weight') %in% names(object)))
-    cli::cli_abort('{.arg object} must contain {.field mcmcvars} and {.field weight} components (see {.fn ImportOM})')
-
-  if (length(object$mcmcvars) == 0L)
-    cli::cli_abort('{.arg object$mcmcvars} must be a non-empty list')
+  OMName <- Hist@OM@Name
+  object <- get(paste0('CondData_', OMName))
 
   req_mcmc_fields <- c('N', 'H', 'sela', 'SSB')
-  missing_fields  <- setdiff(req_mcmc_fields, names(object$mcmcvars[[1]]))
+  missing_fields  <- setdiff(req_mcmc_fields, names(object[[1]]))
   if (length(missing_fields))
-    cli::cli_abort('Each element of {.arg object$mcmcvars} must contain:      {.field {req_mcmc_fields}}')
+    cli::cli_abort('Each element of {.arg object} must contain: {.field {req_mcmc_fields}}')
 
-  OMName     <- Hist@OM@Name
   Seasons    <- 4L
   Years      <- MSEtool::Years(Hist, 'H')
   CalYears   <- floor(Years) |> unique()
@@ -81,13 +77,22 @@ ValidateOM <- function(Hist, object = Cond_BaseCase, tol = 0.05, min_pct = 0.02,
   nAge       <- length(AgeClasses)
   nAnnAge    <- floor(AgeClasses) |> unique() |> length()
   nTS        <- length(Years)
-  nSim       <- min(MSEtool::nSim(Hist), length(object$mcmcvars))
+  nSim       <- min(MSEtool::nSim(Hist), length(object))
   StockNames <- MSEtool::StockNames(Hist)
   FleetNames <- MSEtool::FleetNames(Hist)
   nSex       <- length(StockNames)
   nFleet     <- length(FleetNames)
 
   figdir <- file.path(outdir, OMName)
+
+  # `ImportOM()` feeds `SRR(R0 = ..., Units = 1000)`, so `Hist@Number` (and
+  # anything derived from it: SProduction, Removals) is in thousands of
+  # fish, with biomass (SSB, Catch) coming out directly in tonnes because
+  # weight-at-age is in kg (thousands of fish x kg = tonnes). The reference
+  # `object` is in raw individual fish counts, so its N (and anything
+  # derived from N, i.e. catch) is rescaled to match; SSB needs no rescaling
+  # since it's already reported in tonnes.
+  n_scale <- 1 / 1000
 
   # ---- OM quantities ----
   om_n <- MSEtool::Number(Hist) |>
@@ -108,7 +113,9 @@ ValidateOM <- function(Hist, object = Cond_BaseCase, tol = 0.05, min_pct = 0.02,
     dplyr::summarise(Catch = sum(Value), .groups = 'drop')
 
   # ---- Reference quantities across all MCMC sims ----
-  ref_list <- purrr::imap(object$mcmcvars, \(it, sim) {
+  ref_list <- purrr::imap(object, \(it, sim) {
+
+    it$N <- it$N * n_scale
 
     n   <- data.frame(Sim = sim, Year = CalYears, N = apply(it$N, 1, sum))
     ssb <- data.frame(Sim = sim, Year = CalYears, SSB = it$SSB)
@@ -116,7 +123,7 @@ ValidateOM <- function(Hist, object = Cond_BaseCase, tol = 0.05, min_pct = 0.02,
     catch_fl <- matrix(0, nYear, nFleet)
     for (s in seq_len(Seasons))
       for (sex in seq_len(nSex)) {
-        sw       <- it$sela[, s, sex, ] * object$weight[, s, sex]
+        sw       <- it$sela[, s, sex, ] * albMSE_Biology$wta[, s, sex]
         catch_fl <- catch_fl + it$N[, , s, sex] %*% sw * it$H[, s, ]
       }
 
@@ -134,7 +141,7 @@ ValidateOM <- function(Hist, object = Cond_BaseCase, tol = 0.05, min_pct = 0.02,
 
   # ---- Ribbon / ratio plots: Number, SSB, Catch ----
   n_diag <- .validateOM_diag_plots(ref_n, om_n, value_col = 'N', by = 'Year',
-                                   ylab = 'Numbers', label = 'Total Numbers',
+                                   ylab = "Numbers ('000s)", label = 'Total Numbers',
                                    probs = probs, alpha = alpha)
 
   ssb_diag <- .validateOM_diag_plots(ref_ssb, om_ssb, value_col = 'SSB', by = 'Year',
@@ -160,7 +167,7 @@ ValidateOM <- function(Hist, object = Cond_BaseCase, tol = 0.05, min_pct = 0.02,
 
   # Map reference N[yr, annual_age, seas, st] into OM layout [age_pos, ts]
   ref_mat <- function(it, st) {
-    N_ref <- it$N[, , , st]
+    N_ref <- it$N[, , , st] * n_scale
     mat   <- matrix(0, nAge, nTS)
     for (yr in seq_len(nYear)) {
       for (s in seq_len(Seasons)) {
@@ -183,7 +190,7 @@ ValidateOM <- function(Hist, object = Cond_BaseCase, tol = 0.05, min_pct = 0.02,
   df_list <- vector('list', nSim * length(StockNames))
   idx <- 1L
   for (sim in seq_len(nSim)) {
-    it <- object$mcmcvars[[sim]]
+    it <- object[[sim]]
     for (sti in seq_along(StockNames)) {
       om_arr <- Hist@Number[[StockNames[sti]]][sim, , , 1L]  # [age, ts]
       ref    <- ref_mat(it, sti)

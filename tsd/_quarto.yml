@@ -7,11 +7,18 @@ book:
   subtitle: "Indian Ocean Albacore MSE"
   site-url: https://iotcalb.bluematterscience.com/tsd/
   repo-url: https://github.com/Blue-Matter/iotcALB
+  navbar:
+    left:
+      - text: "Albacore MSE Homepage"
+        href: https://iotcalb.bluematterscience.com/
+      - text: "iotcALB R Package"
+        href: https://iotcalb.bluematterscience.com/pkg/
+
   chapters:
     - index.qmd
     - operating-model-overview.qmd
     - operating-model-base-case.qmd
-    - operating-model-robustness.qmd   
+    - operating-model-robustness.qmd
     - fishery-data.qmd
     - forward-projections.qmd
     - management-procedures.qmd

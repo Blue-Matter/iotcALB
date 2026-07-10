@@ -10,35 +10,59 @@ library(ggplot2)
 
 The Base case OM (OM5b) uses the LL1 (NW) CPUE series as the index of abundance as the primary data used in the OM conditioning (see @sec-omOverview).
 
-## Overview of OM Dynamics
+The figures below show the historical dynamics of the `OM5b`, the Base Case OM:
 
-This figures below show the historical dynamics of the Base Case OM: female spawning biomass (@fig-basecase-ssb) and total catch summed over stocks and fleets (@fig-basecase-catch). 
+ - female spawning biomass (@fig-om5b-ssb);
+ - biomass and spawning biomass relative to unfished levels (@fig-om5b-biomass-rel, @fig-om5b-ssb-rel);
+ - spawning biomass relative to the equilibrium spawning biomass corresponding with maximum sustainable yield (@fig-om5b-ssb-rel-msy); 
+ - total catch summed over stocks and fleets (@fig-om5b-catch).
 
-In each figure, the black line shows the median across simulations and the grey ribbon the 5th–95th percentile interval.
+In each figure, the black line shows the median across simulations and the grey ribbon the 5th–95th percentile interval. 
 
-```{r loadBaseCaseHist}
+```{r load-om5b}
 #| echo: false
-Hist <- readRDS('../objects/Hist/Base Case.hist')
+Hist <- readRDS('../objects/Hist/OM5b.hist')
 ```
 
 ```{r}
 #| echo: false
-#| label: fig-basecase-ssb
-#| fig-cap: "Female spawning biomass (SSB) from the Base Case OM. Black line is the median and the grey ribbon the 5th–95th percentile interval across simulations."
-PlotSBiomass(Hist, Season = 3, byFemale = TRUE, byStock = FALSE)
+#| label: fig-om5b-ssb
+#| fig-cap: "Spawning biomass (SSB) from the Base Case `OM5b`. Black line is the median and the grey ribbon the 5th–95th percentile interval across simulations."
+PlotSBiomass(Hist, Season = 3, Stock = 1)
 ```
 
 ```{r}
 #| echo: false
-#| label: fig-basecase-catch
-#| fig-cap: "Total catch, summed over stocks and fleets, from the Base Case OM. Black line is the median and the grey ribbon the 5th–95th percentile interval across simulations."
+#| label: fig-om5b-biomass-rel
+#| fig-cap: "Total biomass relative to unfished biomass (B/B0), by stock, from the Base Case `OM5b`. Black line is the median and the grey ribbon the 5th–95th percentile interval across simulations."
+PlotBiomass(Hist, Season = 3, byStock = TRUE, relative = "B0") 
+```
+
+```{r}
+#| echo: false
+#| label: fig-om5b-ssb-rel
+#| fig-cap: "Female spawning biomass relative to unfished spawning biomass (SSB/SB0) from the Base Case `OM5b`. Black line is the median and the grey ribbon the 5th–95th percentile interval across simulations."
+PlotSBiomass(Hist, Season = 3, Stock = 'Female', relative = "B0") 
+```
+
+```{r}
+#| echo: false
+#| label: fig-om5b-ssb-rel-msy
+#| fig-cap: "Female spawning biomass relative to equilbrium spawning biomass at MSY (SSB/SBMSY) from the Base Case `OM5b`. Black line is the median and the grey ribbon the 5th–95th percentile interval across simulations."
+PlotSBiomass(Hist, Season = 3, Stock = 'Female', relative = "BMSY")
+```
+
+```{r}
+#| echo: false
+#| label: fig-om5b-catch
+#| fig-cap: "Total catch, summed over stocks and fleets, from the Base Case `OM5b`. Black line is the median and the grey ribbon the 5th–95th percentile interval across simulations."
 t <- PlotLandings(Hist, AggregateYear = TRUE, byFleet = FALSE, byStock = FALSE)
 t + ggplot2::labs(y='Catch')
 ```
 
 ## Comparision with Conditioning Model {#sec-basecaseCompare}
 
-The figures below compare the Base Case OM dynamics against the ABC conditioning model across 500 MCMC simulations. In each ribbon plot, the line shows the posterior median and the shaded band the 10th–90th percentile interval; red is the ABC conditioning model and blue is the OM. The ratio plots show OM / ABC for each individual simulation, with the dashed red line at 1 indicating perfect agreement.
+The figures below compare the Base Case OM dynamics against the ABC conditioning model across 500 MCMC simulations. In each ribbon plot, the line shows the posterior median and the shaded band the 10th–90th percentile interval for the ABC model (red) and the OM (blue). The ratio plots show OM / ABC for each individual simulation, with the dashed red line at 1 indicating perfect agreement.
 
 ```{r compareOM}
 #| echo: false
@@ -62,9 +86,6 @@ comp$plots$number_ribbon
 comp$plots$number_ratio
 ```
 
-Overall, the OM tracks the conditioning model closely in total numbers (@fig-n-ribbon). The per-simulation ratios (@fig-n-ratio) show that most simulations remain within 5% of the conditioning model throughout the historical period, with a small number of
-simulations diverging by greater amounts, particulary towards the end of the time series.
-
 ### Spawning Biomass
 
 ```{r}
@@ -80,8 +101,6 @@ comp$plots$ssb_ribbon
 #| fig-cap: "Ratio of OM to the ABC conditioning model female spawning biomass by simulation."
 comp$plots$ssb_ratio
 ```
-
-The OM reproduces the SSB trajectory of the conditioning model closely (@fig-ssb-ribbon), with the median lines nearly indistinguishable across the historical period. The per-simulation ratios (@fig-ssb-ratio) mirror the pattern seen in total numbers.
 
 ### Catch by Fleet
 
@@ -99,8 +118,6 @@ comp$plots$catch_ribbon
 comp$plots$catch_ratio
 ```
 
-Fleet-specific catches in the OM are slightly lower than in the conditioning model across all fleets (@fig-catch-ribbon, @fig-catch-ratio). This is a structural consequence of the Baranov equation attributing a greater proportion of total mortality to natural causes compared to Pope's approximation, as described in @sec-differences.
-
 ### Numbers-at-Age
 
 ```{r}
@@ -109,5 +126,3 @@ Fleet-specific catches in the OM are slightly lower than in the conditioning mod
 #| fig-cap: "Ratio of OM to the ABC conditioning model numbers-at-age by simulation. Values close to 1 indicate good agreement; deviation from 1 reflects the cumulative effect of the Baranov vs. Pope's approximation discrepancy."
 comp$plots$natage_ratio
 ```
-
-The numbers-at-age comparison (@fig-natage-ratio) provides the a detailed view of where the OM and conditioning model diverge. Deviations are generally small in the early years of the historical period and grow over time as the Baranov vs. Pope's discrepancy compounds through the population dynamics, with most OM values within ±5% of those from the ABC conditioning model.

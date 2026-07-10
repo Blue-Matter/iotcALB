@@ -4,22 +4,28 @@
 #| include: false
 rnorm(5)
 library(iotcALB)
+Hist <- readRDS('../objects/Hist/OM5b.hist')
+Data <- Hist@Data[[1]]$Combined
 ```
 
-The available fishery data include indices of abundance and fleet-specific catch information. 
+The observed fishery data included in the OM are: 
 
-> This chapter is incomplete
-
-## Indices of Abundance
+- fleet- and season-specific indices of abundance (CPUE; @fig-data-cpue) 
+- fleet- and season-specific catches (@fig-data-catch). 
 
 ```{r}
-#| include: false
-#Hist <- readRDS('../objects/Hist/Base Case.hist')
-#Hist@Data$`1`$Combined@CPUE@Value
-#matplot(Hist@Data$`2`$Combined@CPUE@Value, type='l')
+#| echo: false
+#| label: fig-data-cpue
+#| fig-cap: "Observed CPUE indices for the six fleets included in the OMs. Each CPUE index has been standardized to mean 1."
+PlotCPUE(Data, byFleet = TRUE)
 ```
 
+```{r}
+#| echo: false
+#| label: fig-data-catch
+#| fig-cap: "Observed catch data for the six fleets included in the OMs."
+PlotLandings(Data, byFleet = TRUE) + ggplot2::labs(y= 'Catch (t)')
+```
 
-## Catch Data
 
 

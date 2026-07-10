@@ -5,27 +5,9 @@
 rnorm(5)
 ```
 
-## Approximate Bayesian Computation (ABC) Model
-
-The Operating Models used in this MSE were conditioned using the Approximate Bayesian Computation (ABC) approach developed for IOTC tuna species [@hillaryConditioningIOTCAlbacore]. The ABC approach generates a distribution of plausible historical stock dynamics that is consistent with available data and a set of prior beliefs about current and historical stock status.
-
-The population model underlying the ABC conditioning mirrors the structure of the most recent Indian Ocean Albacore stock assessment. The key structural features are:
-
-- Annual age structure with four seasons per year and recruitment occurring in last quarter;
-
-- Sex-structured population dynamics with sex-specific growth and weight-at-age;
-
-- Six fleets: four longline fleets (LL1–LL4), a purse seine fleet, and an "other" fleet;
-
-- A Beverton-Holt stock-recruit relationship with lognormally distributed recruitment deviations (prior mean $\sigma_R = 0.3$);
-
-- Conditioning period: 2000 -- 2020.
-
-The ABC algorithm is implemented as an MCMC sampler (ABC-MCMC) and is fitted to two primary data sources: seasonal longline CPUE indices and length-frequency composition data aggregated across years and seasons within each fleet.
-
 ## Overview of Operating Models
 
-The operating models (OMs) included in the `iotcALB` framework were constructed by importing the ABC output for the relevant conditioned models into an `openMSE` OM object using the [`iotcALB::ImportOM()`](https://iotcalb.bluematterscience.com/pkg/reference/ImportOM.html) function, which aimed to reproduce the fishery dynamics described in the ABC output as closely as possible in the OMs (see @sec-differences).
+The Operating Models used in this MSE were conditioned using the Approximate Bayesian Computation (ABC) approach (see @sec-abc), developed for IOTC tuna species [@hillaryConditioningIOTCAlbacore]. The model outputs were downloaded from the [albMSE GitHub repository](https://github.com/iagomosqueira/albMSE) and imported into the `iotcALB` framework.
 
 The following specifications are common to all OMs:
 
@@ -37,22 +19,45 @@ The following specifications are common to all OMs:
 
 The OMs included in the `iotcALB` MSE framework are described in @tbl-om-scenarios. See @sec-basecaseOM and @sec-robustnessOMs for specific details on these OMs.
 
-| Name | Code | Description | Type | Comment |
-|------------|------------|---------------------------|------------|------------|
-| BaseCase | OM5b | Uses the LL1 (NW) CPUE series as index of abundance | Base Case |  |
-| R1 | OM5a | Uses the LL2 (SW) CPUE series as index of abundance | Robustness | *Not imported yet* |
-| R2 | OM6b | Includes a 1% annual increase in LL fisheries catchability | Robustness | *Not imported yet* |
-| R3 | OM5b_cc | Base case OM with climate change effects on recruitment, maturity, growth and carrying capacity | Robustness | *Not imported yet* |
-| R4 | OM5b_rec | Base case OM with effects of sudden reductions in recruitment | Robustness | *Not imported yet* |
-
+| Code | Description | Type |
+|------------|---------------------------|------------|
+| OM5b | Uses the LL1 (NW) CPUE series as index of abundance | Base Case | 
+| OM5a | Uses the LL2 (SW) CPUE series as index of abundance | Robustness | 
+| OM6b | Includes a 1% annual increase in LL fisheries catchability | Robustness |
 : Overview of Operating Models in the `iotcALB` framework. Code refers to the names of the ABC conditioned models. Name refers to the name of the OM object in the `iotcALB` package. {#tbl-om-scenarios}
 
-::: callout-note
-# Note on More Recent Data
-@mosqueiraSimulationTestingManagement and @mosqueiraTechnicalDevelopmentManagement refer to more recent data that include catch and CPUE data up to 2023. The OMs have not been reconditioned with this data and are based on the 2022 stock assessment [@IOTC2022WPTmT08ASRE__FINAL], with data up to 2020.
+### Note on More Recent Data
+@mosqueiraSimulationTestingManagement and @mosqueiraTechnicalDevelopmentManagement refer to more recent data that include catch and CPUE data up to 2023. The OMs in `iotcALB` have not been reconditioned with this data and are based on the 2022 stock assessment [@IOTC2022WPTmT08ASRE__FINAL], with data up to 2020.
 
-The updated catch and CPUE data can be incorporated into directly in the projection period (see @sec-forwardprojections). Alternatively, the OMs could be reconditioned with the updated data, but that is outside of the scope of the current project.
-:::
+The updated catch and CPUE data can be incorporated into directly in the projection period (see @sec-forwardprojections). If the ABC outputs for `OM5b`, `OM5a`, and `OM6b` with data updated to 2023 are available, these could be used to update the OMs in the `iotcALB` framework. Alternatively, the OMs could be reconditioned with the updated data, but that is outside of the scope of the current project.
+
+### Note on Additional Robustness Models
+@mosqueiraTechnicalDevelopmentManagement refer to two addtional robustness OMs:
+
+1. OM5b_cc: the base case operating model with climate change effects on recruitment,maturity, growth and carrying capacity
+2. OM5b_rec: an operating model that explores the effects of sudden reductions in recruitment, with 25 and 50% lower recruitment deviations compared to the base case model
+
+These OMs are not available in the [albMSE GitHub repository](https://github.com/iagomosqueira/albMSE) and are not currently included in the `iotcALB` framework.  
+
+## Approximate Bayesian Computation (ABC) Model {#sec-abc}
+
+The ABC approach generates a distribution of plausible historical stock dynamics that is consistent with available data and a set of prior beliefs about current and historical stock status.
+
+The population model underlying the ABC conditioning mirrors the structure of the most recent Indian Ocean Albacore stock assessment. The key structural features are:
+
+- Annual age structure with four seasons per year and recruitment occurring in last quarter;
+
+- Sex-structured population dynamics with sex-specific growth and weight-at-age;
+
+- Six fleets: four longline fleets (LL1–LL4), a purse seine fleet, and an "other" fleet;
+
+- A Beverton-Holt stock-recruit relationship with lognormally distributed recruitment deviations;
+
+- Conditioning period: 2000 -- 2020.
+
+The ABC algorithm is implemented as an MCMC sampler (ABC-MCMC) and is fitted to two primary data sources: seasonal longline CPUE indices and length-frequency composition data aggregated across years and seasons within each fleet.
+
+
 
 ## Differences Between the ABC Conditioning Model and the `iotcALB` OM {#sec-differences}
 

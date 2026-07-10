@@ -33,4 +33,7 @@ schedules, and observed data from the Indian Ocean Albacore
 base-case OM conditioning, used to condition the MSEtool operating model
 (\code{OM_BaseCase}).
 }
+\details{
+This was built using data sent from Rich Hillary June 2026
+}
 \keyword{datasets}

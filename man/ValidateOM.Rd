@@ -6,7 +6,6 @@
 \usage{
 ValidateOM(
   Hist,
-  object = Cond_BaseCase,
   tol = 0.05,
   min_pct = 0.02,
   alpha = 0.2,
@@ -19,12 +18,10 @@ ValidateOM(
 )
 }
 \arguments{
-\item{Hist}{A \code{\link[MSEtool:Hist]{MSEtool::Hist()}} object produced by \code{\link[MSEtool:Simulate]{MSEtool::Simulate()}}}
-
-\item{object}{A named list of conditioning output (same object passed to
-\code{\link[=ImportOM]{ImportOM()}}). Defaults to \link{Cond_BaseCase}. Must contain \code{mcmcvars}
-(a list of MCMC iterations, each with arrays \code{N}, \code{H}, \code{sela}, \code{SSB})
-and \code{weight}.}
+\item{Hist}{A \code{\link[MSEtool:Hist]{MSEtool::Hist()}} object produced by \code{\link[MSEtool:Simulate]{MSEtool::Simulate()}}.
+The conditioning data used to build \code{Hist@OM} is loaded via
+\code{get(paste0('CondData_', Hist@OM@Name))} (same object used by
+\code{\link[=ImportOM]{ImportOM()}}).}
 
 \item{tol}{Numeric. Ratio threshold outside \verb{[1-tol, 1+tol]} that triggers
 a printed warning for the N-at-age comparison. Defaults to \code{0.02} (2\%).}

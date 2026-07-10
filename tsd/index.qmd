@@ -19,11 +19,15 @@ Indian Ocean albacore tuna is managed by the [Indian Ocean Tuna Commission (IOTC
 
 The initial development of the MSE framework, including the design and conditioning of the Base Case and Robustness Operating Models (OMs), was conducted by R. Hillary (CSIRO, Australia) and I. Mosqueira (Wageningen Marine Research, Netherlands). Key outputs of that work include:
 
-- @hillaryConditioningIOTCAlbacore
+- @mosqueira2026albacore
 
 - @mosqueiraSimulationTestingManagement
 
 - @mosqueiraTechnicalDevelopmentManagement
+
+<!-- -->
+
+- @hillaryConditioningIOTCAlbacore
 
 In 2026, [Blue Matter Science](https://www.bluematterscience.com/) was contracted to continue work on the Albacore MSE. The analysis is implemented in the [`iotcALB`](https://github.com/Blue-Matter/iotcALB) R package, built using the [openMSE](https://openmse.com/) framework, and builds directly on the conditioning outputs produced in the earlier phase of work.
 

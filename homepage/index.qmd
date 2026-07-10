@@ -36,14 +36,16 @@ contracted to continue the work on the MSE. The MSE analysis uses the
 ### Operating Model Conditioning Methodology
 
 1.  [Conditioning IOTC Albacore OMs using the ABC
-    approach\*\*](https://iotc.org/sites/default/files/documents/2024/10/IOTC-2024-WPM15-08_-_ALB_MSE_0.pdf)
+    approach](https://iotc.org/sites/default/files/documents/2024/10/IOTC-2024-WPM15-08_-_ALB_MSE_0.pdf)
 
 ### MSE Progress Reports
 
-1.  [Technical development of Management Strategy Evaluation for Indian
-    ocean albacore tuna: 2025 progress report and current status(
+1.  [Progress of the Indian Ocean Albacore MSE( 2026)](https://iotc.org/sites/default/files/documents/2026/05/IOTC-2026-TCMP10-04-presenation.pdf)
+    
+2. [Technical development of Management Strategy Evaluation for Indian ocean
+    albacore tuna: 2025 progress report and current status(
     2026)](https://iotc.org/sites/default/files/documents/2026/04/IOTC-2026-TCMP10-INF04.pdf)
-2.  [Simulation testing of management procedures for Indian ocean
+2. [Simulation testing of management procedures for Indian ocean
     albacore tuna based on ABC operating models: report on progress
     (2025)](https://iotc.org/sites/default/files/documents/2025/10/IOTC-2025-WPM16-11-ALB_MSE.pdf)
 
@@ -59,7 +61,6 @@ organised as follows:
 | `data/`, `data-raw/` | Conditioning output and other data bundled with the package |
 | `objects/` | Saved R objects produced by the analysis scripts (`OM/`, `Hist/`, etc.) |
 | `tsd/` | Quarto source for the Trial Specifications Document |
-| `reference/` | Background documents and working papers (PDFs) |
 | `homepage/` | Quarto source for this website |
 
 ### Key package components
@@ -69,13 +70,20 @@ organised as follows:
 - `ImportOM()`: converts MCMC conditioning output into a multi-stock,
   multi-fleet `MSEtool` `OM` object (quarterly, sex-structured, 6
   fleets)
-- `ValidateOM()`: validates simulated numbers-at-age against the
-  conditioning model reference
+- `ValidateOM()`: validates OM dynamics against the ABC conditioning model output
 
 **Datasets**
 
-- `Cond_BaseCase`: base-case conditioning output (MCMC posterior
-  samples, biological schedules, indices)
+- `CondData_OM5a`, `CondData_OM5b`, `CondData_OM6b`: ABC conditioning model output
+  containing MCMC-derived variables for the OM5a (SW CPUE), OM5b (base case, NW
+  CPUE), and OM6b (1% effort creep robustness) operating models; 
+- `StockObjectList`: `MSEtool::Stock` objects (Female, Male) with
+  seasonal age structure and length, weight, maturity, and fecundity
+  schedules
+- `albMSE_Biology`: raw biological schedules (length, weight, maturity
+  at annual age and season) used to build `StockObjectList`
+- `albMSE_Data`: observed catch and CPUE data as an `MSEtool::Data`
+  object, for use with candidate management procedures
 
 ### Analysis workflow
 

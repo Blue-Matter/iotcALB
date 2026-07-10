@@ -4,6 +4,112 @@
 ```{r}
 #| include: false
 rnorm(5)
+library(MSEtool)
+library(iotcALB)
+library(ggplot2)
 ```
 
-> This chapter will be updated once the Robustness OMs have been imported
+## OM5a 
+
+The figures below show the historical dynamics of the Robustness OM `OM5a`: 
+
+ - female spawning biomass (@fig-om5a-ssb);
+ - biomass and spawning biomass relative to unfished levels (@fig-om5a-biomass-rel, @fig-om5a-ssb-rel);
+ - spawning biomass relative to the equilibrium spawning biomass corresponding with maximum sustainable yield (@fig-om5a-ssb-rel-msy); 
+ - total catch summed over stocks and fleets (@fig-om5a-catch).
+
+In each figure, the black line shows the median across simulations and the grey ribbon the 5th–95th percentile interval. 
+
+```{r load-om5a}
+#| echo: false
+Hist <- readRDS('../objects/Hist/OM5a.hist')
+```
+
+```{r}
+#| echo: false
+#| label: fig-om5a-ssb
+#| fig-cap: "Female spawning biomass (SSB) from `OM5a`. Black line is the median and the grey ribbon the 5th–95th percentile interval across simulations."
+PlotSBiomass(Hist, Season = 3, Stock = 1)
+```
+
+```{r}
+#| echo: false
+#| label: fig-om5a-biomass-rel
+#| fig-cap: "Total biomass relative to unfished biomass (B/B0), by stock, from `OM5a`. Black line is the median and the grey ribbon the 5th–95th percentile interval across simulations."
+PlotBiomass(Hist, Season = 3, byStock = TRUE, relative = "B0") 
+```
+
+```{r}
+#| echo: false
+#| label: fig-om5a-ssb-rel
+#| fig-cap: "Female spawning biomass relative to unfished spawning biomass (SSB/SB0) from `OM5a`. Black line is the median and the grey ribbon the 5th–95th percentile interval across simulations."
+PlotSBiomass(Hist, Season = 3, Stock = 'Female', relative = "B0")
+```
+
+```{r}
+#| echo: false
+#| label: fig-om5a-ssb-rel-msy
+#| fig-cap: "Female spawning biomass relative to equilbrium spawning biomass at MSY (SSB/SBMSY) from `OM5a`. Black line is the median and the grey ribbon the 5th–95th percentile interval across simulations."
+PlotSBiomass(Hist, Season = 3, Stock = 'Female', relative = "BMSY")
+```
+
+```{r}
+#| echo: false
+#| label: fig-om5a-catch
+#| fig-cap: "Total catch, summed over stocks and fleets, from `OM5a`. Black line is the median and the grey ribbon the 5th–95th percentile interval across simulations."
+t <- PlotLandings(Hist, AggregateYear = TRUE, byFleet = FALSE, byStock = FALSE)
+t + ggplot2::labs(y='Catch')
+```
+
+## OM6b 
+
+The figures below show the historical dynamics of the Robustness OM `OM6b`: 
+
+ - female spawning biomass (@fig-om6b-ssb);
+ - biomass and spawning biomass relative to unfished levels (@fig-om6b-biomass-rel, @fig-om6b-ssb-rel);
+ - spawning biomass relative to the equilibrium spawning biomass corresponding with maximum sustainable yield (@fig-om6b-ssb-rel-msy); 
+ - total catch summed over stocks and fleets (@fig-om6b-catch).
+ 
+In each figure, the black line shows the median across simulations and the grey ribbon the 5th–95th percentile interval. The relative biomass plots are faceted by stock, as depletion cannot be meaningfully summed across stocks.
+
+```{r load-om6b}
+#| echo: false
+Hist <- readRDS('../objects/Hist/OM6b.hist')
+```
+
+```{r}
+#| echo: false
+#| label: fig-om6b-ssb
+#| fig-cap: "Spawning biomass (SSB) from the `OM6b`. Black line is the median and the grey ribbon the 5th–95th percentile interval across simulations."
+PlotSBiomass(Hist, Season = 3, Stock = 1)
+```
+
+```{r}
+#| echo: false
+#| label: fig-om6b-biomass-rel
+#| fig-cap: "Total biomass relative to unfished biomass (B/B0), by stock, from `OM6b`. Black line is the median and the grey ribbon the 5th–95th percentile interval across simulations."
+PlotBiomass(Hist, Season = 3, byStock = TRUE, relative = "B0") 
+```
+
+```{r}
+#| echo: false
+#| label: fig-om6b-ssb-rel
+#| fig-cap: "Female spawning biomass relative to unfished spawning biomass (SSB/SB0) from `OM6b`. Black line is the median and the grey ribbon the 5th–95th percentile interval across simulations."
+PlotSBiomass(Hist, Season = 3, Stock = 'Female', relative = "B0") 
+```
+
+```{r}
+#| echo: false
+#| label: fig-om6b-ssb-rel-msy
+#| fig-cap: "Female spawning biomass relative to equilbrium spawning biomass at MSY (SSB/SBMSY) from `OM6b`. Black line is the median and the grey ribbon the 5th–95th percentile interval across simulations."
+PlotSBiomass(Hist, Season = 3, Stock = 'Female', relative = "BMSY")
+```
+
+```{r}
+#| echo: false
+#| label: fig-om6b-catch
+#| fig-cap: "Total catch, summed over stocks and fleets, from `OM6b`. Black line is the median and the grey ribbon the 5th–95th percentile interval across simulations."
+t <- PlotLandings(Hist, AggregateYear = TRUE, byFleet = FALSE, byStock = FALSE)
+t + ggplot2::labs(y='Catch')
+```
+

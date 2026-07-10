@@ -1,23 +1,16 @@
 library(iotcALB)
 
-# ---- Base Case ----
+OMNames <- c('OM5a', 'OM5b', 'OM6b')
 
-Name <- 'Base Case'
+for (OMName in OMNames) {
 
-# Import and Save OM
-BaseCase <- ImportOM(object = Cond_BaseCase, Name = Name)
-Save(BaseCase, path = paste0('objects/OM/', Name, '.om'), overwrite = TRUE)
+  cli::cli_h1('{OMName}')
 
-# Simulate Historical Fishery
-Hist_BaseCase <- Simulate(BaseCase)
+  OM <- ImportOM(OMName)
+  MSEtool::Save(OM, path = file.path('objects/OM', paste0(OMName, '.om')), overwrite = TRUE)
 
-# Validate
-ValidateOM(Hist_BaseCase, object = Cond_BaseCase)
+  Hist <- Simulate(OM)
+  ValidateOM(Hist)
+  MSEtool::Save(Hist, path = file.path('objects/Hist', paste0(OMName, '.hist')), overwrite = TRUE)
+}
 
-# Save Hist
-Save(Hist_BaseCase, path = paste0('objects/Hist/', Name, '.hist'), overwrite = TRUE)
-
-
-# ---- Robustness:  ----
-
-# TBD

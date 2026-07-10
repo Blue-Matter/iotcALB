@@ -10,11 +10,11 @@ OM <- readRDS('../objects/OM/Base Case.om')
 
 ## Specifications
 
-Number of projection years: `r OM@nYear` 
-Management interval: **TBD**
+- Number of projection years: `r OM@nYear` 
+- Management interval: **TBD**
 
 ## Generation of Simulated Fishery Data 
 
 
-
+## Implementation of Management Advice
 

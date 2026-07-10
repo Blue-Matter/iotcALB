@@ -4,19 +4,12 @@
 \alias{ImportOM}
 \title{Import an MSEtool OM from IOTC Albacore conditioning output}
 \usage{
-ImportOM(object = Cond_BaseCase, Name = "Base Case")
+ImportOM(OMName = "OM5b")
 }
 \arguments{
-\item{object}{A named list of conditioning output, as produced by the IOTC
-Albacore conditioning model. Defaults to \link{Cond_BaseCase}. Must contain:
-\itemize{
-\item \code{mcmcvars}: list of MCMC iterations, each with arrays \code{N}, \code{H}, \code{sela}
-\item \code{steepness}, \code{natural_mortality}, \code{R0}, \code{sigmaR}: numeric vectors of
-length \code{nSim}
-\item \code{maturity}, \code{weight}: arrays \verb{[annual_age, season, sex]}
-}}
-
-\item{Name}{Character scalar. Name assigned to the returned OM object.}
+\item{OMName}{Character scalar. Suffix identifying which conditioning
+dataset to load, via \code{get(paste0('CondData_', OMName))} (e.g. \code{'OM5b'}
+loads \link{CondData_OM5b}). Also used as the \code{Name} of the returned OM.}
 }
 \value{
 An \code{\link[MSEtool:OM]{MSEtool::OM()}} object with stocks and fleets fully populated
@@ -25,11 +18,20 @@ from the MCMC posterior, ready to pass to \code{\link[MSEtool:Simulate]{MSEtool:
 \description{
 Constructs a multi-stock, multi-fleet MSEtool \code{\link[MSEtool:OM]{MSEtool::OM()}} from the MCMC
 posterior samples produced by the IOTC Albacore conditioning model. The OM
-is quarterly (4 seasons) with two sexes (Female, Male) and six fleets.
+is quarterly (4 seasons) with two sexes (Female, Male; from
+\link{StockObjectList}) and six fleets.
 }
 \details{
-Biological schedules (weight, maturity, natural mortality) and stock-recruit
-parameters are drawn directly from the conditioning object. Historical
-fishing mortality is recovered from the MCMC numbers-at-age via N-at-age
-transitions.
+Natural mortality and stock-recruit parameters are drawn directly from
+\verb{CondData_<OMName>} (e.g. \link{CondData_OM5b}). \code{object$R0} is total
+(both-sex) unfished recruitment and is split evenly between the two
+stocks; recruitment is restricted to the recruitment season (season 4)
+via a mask on \code{R0}, and \code{RecDevInit}/\code{RecDevHist} are derived from the
+conditioning model's own numbers-at-age and recruitment deviations.
+\code{R0} is passed to \code{\link[MSEtool:SRR]{MSEtool::SRR()}} in thousands (\code{Units = 1000}), so
+\code{\link[MSEtool:Simulate]{MSEtool::Simulate()}} output (e.g. \code{Hist@Number}) is in thousands of fish,
+not the raw individual counts used by \verb{CondData_<OMName>}.
+
+Historical fishing mortality is recovered from the MCMC harvest rates
+(\code{object$H}), and fleet selectivity from \code{object$sela}.
 }

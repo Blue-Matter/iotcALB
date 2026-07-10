@@ -7,9 +7,9 @@ website:
   site-url: https://iotcalb.bluematterscience.com/
   navbar:
     left:
-      - text: "Trial Specifications"
+      - text: "Trial Specifications Document"
         href: https://iotcalb.bluematterscience.com/tsd/
-      - text: "R Package"
+      - text: "iotcALB R Package"
         href: https://iotcalb.bluematterscience.com/pkg/
 
 format:
