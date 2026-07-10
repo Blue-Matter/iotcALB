@@ -82,7 +82,7 @@ comp$plots$number_ribbon
 ```{r}
 #| echo: false
 #| label: fig-n-ratio
-#| fig-cap: "Ratio of OM to conditioning model total numbers by simulation. Lines close to 1 indicate good agreement; divergence in later years reflects compounding of the Baranov vs. Pope's approximation discrepancy (see @sec-differences)."
+#| fig-cap: "Ratio of OM to conditioning model total numbers by simulation. Lines close to 1 indicate good agreement; divergence in later years reflects compounding of the Baranov vs. pulse fishing discrepancy (see @sec-differences)."
 comp$plots$number_ratio
 ```
 
@@ -114,7 +114,7 @@ comp$plots$catch_ribbon
 ```{r}
 #| echo: false
 #| label: fig-catch-ratio
-#| fig-cap: "Ratio of OM to ABC conditioning model catch by fleet and simulation. A consistent negative bias is expected due to the Baranov equation attributing a larger share of total mortality to natural causes relative to Pope's approximation (see @sec-differences)."
+#| fig-cap: "Ratio of OM to ABC conditioning model catch by fleet and simulation. A consistent negative bias is expected due to the Baranov equation attributing a larger share of total mortality to natural causes relative to the pulse fishing approach (see @sec-differences)."
 comp$plots$catch_ratio
 ```
 
@@ -123,6 +123,6 @@ comp$plots$catch_ratio
 ```{r}
 #| echo: false
 #| label: fig-natage-ratio
-#| fig-cap: "Ratio of OM to the ABC conditioning model numbers-at-age by simulation. Values close to 1 indicate good agreement; deviation from 1 reflects the cumulative effect of the Baranov vs. Pope's approximation discrepancy."
+#| fig-cap: "Ratio of OM to the ABC conditioning model numbers-at-age by simulation. Values close to 1 indicate good agreement; deviation from 1 reflects the cumulative effect of the Baranov vs. pulse fishing discrepancy."
 comp$plots$natage_ratio
 ```
