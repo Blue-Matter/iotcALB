@@ -47,7 +47,6 @@ numbers, spawning biomass, catch-by-fleet, and numbers-at-age.</p>
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">ValidateOM</span><span class="op">(</span></span>
 <span>  <span class="va">Hist</span>,</span>
-<span>  object <span class="op">=</span> <span class="va">Cond_BaseCase</span>,</span>
 <span>  tol <span class="op">=</span> <span class="fl">0.05</span>,</span>
 <span>  min_pct <span class="op">=</span> <span class="fl">0.02</span>,</span>
 <span>  alpha <span class="op">=</span> <span class="fl">0.2</span>,</span>
@@ -65,14 +64,10 @@ numbers, spawning biomass, catch-by-fleet, and numbers-at-age.</p>
 
 
 <dl><dt id="arg-hist">Hist<a class="anchor" aria-label="anchor" href="#arg-hist"></a></dt>
-<dd><p>A <code><a href="https://msetool.openmse.com/reference/Hist.html" class="external-link">MSEtool::Hist()</a></code> object produced by <code><a href="https://msetool.openmse.com/reference/Simulate.html" class="external-link">MSEtool::Simulate()</a></code></p></dd>
-
-
-<dt id="arg-object">object<a class="anchor" aria-label="anchor" href="#arg-object"></a></dt>
-<dd><p>A named list of conditioning output (same object passed to
-<code><a href="ImportOM.html">ImportOM()</a></code>). Defaults to <a href="Cond_BaseCase.html">Cond_BaseCase</a>. Must contain <code>mcmcvars</code>
-(a list of MCMC iterations, each with arrays <code>N</code>, <code>H</code>, <code>sela</code>, <code>SSB</code>)
-and <code>weight</code>.</p></dd>
+<dd><p>A <code><a href="https://msetool.openmse.com/reference/Hist.html" class="external-link">MSEtool::Hist()</a></code> object produced by <code><a href="https://msetool.openmse.com/reference/Simulate.html" class="external-link">MSEtool::Simulate()</a></code>.
+The conditioning data used to build <code>Hist@OM</code> is loaded via
+<code>get(paste0('CondData_', Hist@OM@Name))</code> (same object used by
+<code><a href="ImportOM.html">ImportOM()</a></code>).</p></dd>
 
 
 <dt id="arg-tol">tol<a class="anchor" aria-label="anchor" href="#arg-tol"></a></dt>

@@ -41,3 +41,7 @@ A named list with the following elements:
 
 - `LengthComp` — Length composition data by year, class, season and
   fleet.
+
+## Details
+
+This was built using data sent from Rich Hillary June 2026

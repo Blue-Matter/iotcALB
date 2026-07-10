@@ -4,10 +4,15 @@
 <url><loc>https://iotcalb.bluematterscience.com/pkg/authors.html</loc></url>
 <url><loc>https://iotcalb.bluematterscience.com/pkg/index.html</loc></url>
 <url><loc>https://iotcalb.bluematterscience.com/pkg/news/index.html</loc></url>
+<url><loc>https://iotcalb.bluematterscience.com/pkg/reference/CondData_OM5a.html</loc></url>
+<url><loc>https://iotcalb.bluematterscience.com/pkg/reference/CondData_OM5b.html</loc></url>
+<url><loc>https://iotcalb.bluematterscience.com/pkg/reference/CondData_OM6b.html</loc></url>
 <url><loc>https://iotcalb.bluematterscience.com/pkg/reference/Cond_BaseCase.html</loc></url>
-<url><loc>https://iotcalb.bluematterscience.com/pkg/reference/ExpandAgeSeason.html</loc></url>
 <url><loc>https://iotcalb.bluematterscience.com/pkg/reference/ImportOM.html</loc></url>
+<url><loc>https://iotcalb.bluematterscience.com/pkg/reference/StockObjectList.html</loc></url>
 <url><loc>https://iotcalb.bluematterscience.com/pkg/reference/ValidateOM.html</loc></url>
+<url><loc>https://iotcalb.bluematterscience.com/pkg/reference/albMSE_Biology.html</loc></url>
+<url><loc>https://iotcalb.bluematterscience.com/pkg/reference/albMSE_Data.html</loc></url>
 <url><loc>https://iotcalb.bluematterscience.com/pkg/reference/index.html</loc></url>
 <url><loc>https://iotcalb.bluematterscience.com/pkg/reference/iotcALB-package.html</loc></url>
 </urlset>

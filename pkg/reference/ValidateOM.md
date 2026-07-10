@@ -11,7 +11,6 @@ catch-by-fleet, and numbers-at-age.
 ``` r
 ValidateOM(
   Hist,
-  object = Cond_BaseCase,
   tol = 0.05,
   min_pct = 0.02,
   alpha = 0.2,
@@ -30,16 +29,10 @@ ValidateOM(
 
   A [`MSEtool::Hist()`](https://msetool.openmse.com/reference/Hist.html)
   object produced by
-  [`MSEtool::Simulate()`](https://msetool.openmse.com/reference/Simulate.html)
-
-- object:
-
-  A named list of conditioning output (same object passed to
+  [`MSEtool::Simulate()`](https://msetool.openmse.com/reference/Simulate.html).
+  The conditioning data used to build `Hist@OM` is loaded via
+  `get(paste0('CondData_', Hist@OM@Name))` (same object used by
   [`ImportOM()`](https://iotcalb.bluematterscience.com/pkg/reference/ImportOM.md)).
-  Defaults to
-  [Cond_BaseCase](https://iotcalb.bluematterscience.com/pkg/reference/Cond_BaseCase.md).
-  Must contain `mcmcvars` (a list of MCMC iterations, each with arrays
-  `N`, `H`, `sela`, `SSB`) and `weight`.
 
 - tol:
 
