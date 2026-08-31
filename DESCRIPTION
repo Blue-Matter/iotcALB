@@ -15,7 +15,7 @@ Description: Operating models, management procedures, and analysis tools
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
-Config/roxygen2/version: 8.0.0
+Config/roxygen2/version: 8.1.0
 Roxygen: list(markdown = TRUE)
 URL: https://github.com/Blue-Matter/iotcALB, https://blue-matter.github.io/iotcALB/
 BugReports: https://github.com/Blue-Matter/iotcALB/issues
