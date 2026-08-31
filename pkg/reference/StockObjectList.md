@@ -13,7 +13,7 @@ StockObjectList
 ## Format
 
 A named list of length 2 (`"Female"`, `"Male"`), each element a
-[MSEtool::stock](https://msetool.openmse.com/reference/Stock-class.html)
+[MSEtool::stock](https://msetool.openmse.com/reference/stock-class.html)
 object with:
 
 - `Ages`: seasonal age classes spanning `min(ages)` to `max(ages) * 4`,
