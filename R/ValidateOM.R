@@ -85,13 +85,6 @@ ValidateOM <- function(Hist,
 
   figdir <- file.path(outdir, OMName)
 
-  # `ImportOM()` feeds `SRR(R0 = ..., Units = 1000)`, so `Hist@Number` (and
-  # anything derived from it: SProduction, Removals) is in thousands of
-  # fish, with biomass (SSB, Catch) coming out directly in tonnes because
-  # weight-at-age is in kg (thousands of fish x kg = tonnes). The reference
-  # `object` is in raw individual fish counts, so its N (and anything
-  # derived from N, i.e. catch) is rescaled to match; SSB needs no rescaling
-  # since it's already reported in tonnes.
   n_scale <- 1 / 1000
 
   # ---- OM quantities ----
