@@ -9,8 +9,8 @@ for (OMName in OMNames) {
   OM <- ImportOM(OMName)
   MSEtool::Save(OM, path = file.path('objects/OM', paste0(OMName, '.om')), overwrite = TRUE)
 
-  Hist <- Simulate(OM)
-  ValidateOM(Hist)
-  MSEtool::Save(Hist, path = file.path('objects/Hist', paste0(OMName, '.hist')), overwrite = TRUE)
+  # Hist <- Simulate(OM)
+  # ValidateOM(Hist)
+  # MSEtool::Save(Hist, path = file.path('objects/Hist', paste0(OMName, '.hist')), overwrite = TRUE)
 }
 
