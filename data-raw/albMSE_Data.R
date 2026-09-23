@@ -61,7 +61,7 @@ ind_array[] <- matrix(I_perm, nrow = nTS, ncol = n_ind)
 ind_array <- ind_array/matrix(apply(ind_array, 'Fleet', mean, na.rm=TRUE), nTS, n_ind, byrow=T)
 
 MSEtool::CPUE(albMSE_Data) <- MSEtool::IndicesData(Name  = FleetNames[seq_len(n_ind)],
-                                            Value = ind_array)
+                                                   Value = ind_array)
 
 # ---- Length Frequencies ----
 # leaving for now as not used by CMPs
