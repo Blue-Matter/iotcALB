@@ -31,9 +31,13 @@ pak::pak("Blue-Matter/iotcALB")
   : Base-case operating model conditioning data for Indian Ocean
   Albacore
 - [`ImportOM()`](https://iotcalb.bluematterscience.com/pkg/reference/ImportOM.md)
-  : Import an MSEtool OM from IOTC Albacore conditioning output
+  : Import an MSEtool OM from Albacore ABC conditioning model output
+- [`ProcessNewData()`](https://iotcalb.bluematterscience.com/pkg/reference/ProcessNewData.md)
+  : Process new catch and CPUE data from an SS3 data file
 - [`StockObjectList`](https://iotcalb.bluematterscience.com/pkg/reference/StockObjectList.md)
   : Albacore operating model stock schedules
+- [`UpdateData()`](https://iotcalb.bluematterscience.com/pkg/reference/UpdateData.md)
+  : Update a simulated Hist object with new catch and CPUE data
 - [`ValidateOM()`](https://iotcalb.bluematterscience.com/pkg/reference/ValidateOM.md)
   : Compare OM reference quantities against the conditioning model
 - [`albMSE_Biology`](https://iotcalb.bluematterscience.com/pkg/reference/albMSE_Biology.md)

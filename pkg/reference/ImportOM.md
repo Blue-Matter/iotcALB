@@ -1,17 +1,27 @@
-# Import an MSEtool OM from IOTC Albacore conditioning output
+# Import an MSEtool OM from Albacore ABC conditioning model output
 
 Constructs a multi-stock, multi-fleet MSEtool
 [`MSEtool::OM()`](https://msetool.openmse.com/reference/OM.html) from
-the MCMC posterior samples produced by the IOTC Albacore conditioning
-model. The OM is quarterly (4 seasons) with two sexes (Female, Male;
-from
+the MCMC posterior samples produced by the ABC conditioning model. The
+OM is quarterly (4 seasons) with two sexes (Female, Male; from
 [StockObjectList](https://iotcalb.bluematterscience.com/pkg/reference/StockObjectList.md))
 and six fleets.
 
 ## Usage
 
 ``` r
-ImportOM(OMName = "OM5b")
+ImportOM(
+  OMName,
+  Interval,
+  Seasons,
+  DataLag,
+  CurrentYear,
+  nYear,
+  pYear,
+  MPStartYear,
+  InterimAdvice,
+  FleetNames
+)
 ```
 
 ## Arguments
