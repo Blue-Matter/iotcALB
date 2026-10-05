@@ -2,9 +2,20 @@
 % Please edit documentation in R/ImportOM.R
 \name{ImportOM}
 \alias{ImportOM}
-\title{Import an MSEtool OM from IOTC Albacore conditioning output}
+\title{Import an MSEtool OM from Albacore ABC conditioning model output}
 \usage{
-ImportOM(OMName = "OM5b")
+ImportOM(
+  OMName,
+  Interval,
+  Seasons,
+  DataLag,
+  CurrentYear,
+  nYear,
+  pYear,
+  MPStartYear,
+  InterimAdvice,
+  FleetNames
+)
 }
 \arguments{
 \item{OMName}{Character scalar. Suffix identifying which conditioning
@@ -17,7 +28,7 @@ from the MCMC posterior, ready to pass to \code{\link[MSEtool:Simulate]{MSEtool:
 }
 \description{
 Constructs a multi-stock, multi-fleet MSEtool \code{\link[MSEtool:OM]{MSEtool::OM()}} from the MCMC
-posterior samples produced by the IOTC Albacore conditioning model. The OM
+posterior samples produced by the ABC conditioning model. The OM
 is quarterly (4 seasons) with two sexes (Female, Male; from
 \link{StockObjectList}) and six fleets.
 }

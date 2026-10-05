@@ -1,7 +1,7 @@
-#' Import an MSEtool OM from IOTC Albacore conditioning output
+#' Import an MSEtool OM from Albacore ABC conditioning model output
 #'
 #' Constructs a multi-stock, multi-fleet MSEtool [MSEtool::OM()] from the MCMC
-#' posterior samples produced by the IOTC Albacore conditioning model. The OM
+#' posterior samples produced by the ABC conditioning model. The OM
 #' is quarterly (4 seasons) with two sexes (Female, Male; from
 #' [StockObjectList]) and six fleets.
 #'
@@ -26,26 +26,28 @@
 #'   from the MCMC posterior, ready to pass to [MSEtool::Simulate()].
 #'
 #' @export
-ImportOM <- function(OMName = 'OM5b') {
+ImportOM <- function(OMName, Interval, Seasons, DataLag, CurrentYear, nYear,
+                     pYear,
+                     MPStartYear, InterimAdvice, FleetNames) {
 
   # ---- Load MCMC output ----
-  object <- get(paste0('CondData_', OMName))
+  object     <- get(paste0('CondData_', OMName))
+  nSim       <- length(object)
+  nFleet     <- length(FleetNames)
 
   # ---- Initialize OM ----
-  Seasons     <- 4
-  nSim        <- length(object)
-  CurrentYear <- 2020
-  nYear       <- length(2000:CurrentYear)
-
-  nFleet     <- 6
-  FleetNames <- c(paste0('LL', 1:4), 'PS', 'Other')
-
-  OM <- MSEtool::OM(Name        = OMName,
-                    Agency      = 'ITOC',
-                    nSim        = nSim,
-                    nYear       = nYear,
-                    CurrentYear = CurrentYear,
-                    Seasons     = Seasons)
+  OM <- MSEtool::OM(Name          = OMName,
+                    Agency        = 'ITOC',
+                    nSim          = nSim,
+                    Interval      = Interval,
+                    Seasons       = Seasons,
+                    DataLag       = DataLag,
+                    CurrentYear   = CurrentYear,
+                    nYear         = nYear,
+                    pYear         = pYear,
+                    MPStartYear   = MPStartYear,
+                    InterimAdvice = InterimAdvice
+                    )
 
   HistYears <- MSEtool::Years(OM, 'H')
 
