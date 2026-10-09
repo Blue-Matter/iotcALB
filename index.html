@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -39,10 +42,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-bba5ebae505b5c03f3f0d8040a416a6b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-55617497126496852ff9f5a59253c640.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -202,28 +205,8 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-<section id="key-package-components" class="level3">
-<h3 class="anchored" data-anchor-id="key-package-components">Key package components</h3>
-<p><strong>Functions</strong></p>
-<ul>
-<li><code>ImportOM()</code>: converts MCMC conditioning output into a multi-stock, multi-fleet <code>MSEtool</code> <code>OM</code> object (quarterly, sex-structured, 6 fleets)</li>
-<li><code>ValidateOM()</code>: validates OM dynamics against the ABC conditioning model output</li>
-</ul>
-<p><strong>Datasets</strong></p>
-<ul>
-<li><code>CondData_OM5a</code>, <code>CondData_OM5b</code>, <code>CondData_OM6b</code>: ABC conditioning model output containing MCMC-derived variables for the OM5a (SW CPUE), OM5b (base case, NW CPUE), and OM6b (1% effort creep robustness) operating models;</li>
-<li><code>StockObjectList</code>: <code>MSEtool::Stock</code> objects (Female, Male) with seasonal age structure and length, weight, maturity, and fecundity schedules</li>
-<li><code>albMSE_Biology</code>: raw biological schedules (length, weight, maturity at annual age and season) used to build <code>StockObjectList</code></li>
-<li><code>albMSE_Data</code>: observed catch and CPUE data as an <code>MSEtool::Data</code> object, for use with candidate management procedures</li>
-</ul>
-</section>
-<section id="analysis-workflow" class="level3">
-<h3 class="anchored" data-anchor-id="analysis-workflow">Analysis workflow</h3>
-<pre><code>analysis/01-import-OMs.R   import conditioning output → OM objects → objects/OM/
-                           simulate historical period  → Hist objects → objects/Hist/</code></pre>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
