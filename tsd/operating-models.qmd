@@ -10,6 +10,15 @@ library(MSEtool)
 library(iotcALB)
 library(ggplot2)
 
+# copy a figure from the repository figures/ directory into the book (images/),
+# so Quarto includes it in _book and the published site
+BookFig <- function(path) {
+  out <- file.path('images', sub('../figures/', '', path, fixed = TRUE))
+  dir.create(dirname(out), recursive = TRUE, showWarnings = FALSE)
+  file.copy(path, out, overwrite = TRUE)
+  out
+}
+
 OMs <- data.frame(OM          = c('OM5b', 'OM5a', 'OM6b'),
                   Type        = c('Base Case', 'Robustness', 'Robustness'),
                   Description = c('LL1 (NW) CPUE series as the index of abundance',
@@ -126,14 +135,14 @@ The revised historical catches are similar to the catches used to condition the 
 #| echo: false
 #| label: fig-data-catch
 #| fig-cap: "Annual catch by fleet in the data used to condition the OMs (2000--2020) and in the updated data from the 2025 stock assessment (2000--2023)."
-knitr::include_graphics('../figures/data/catch_annual_fleet.png')
+knitr::include_graphics(BookFig('../figures/data/catch_annual_fleet.png'))
 ```
 
 ```{r}
 #| echo: false
 #| label: fig-data-cpue
 #| fig-cap: "Annual mean of the longline CPUE indices (standardised to a mean of 1 over 2000--2020) in the data used to condition the OMs and in the updated data from the 2025 stock assessment."
-knitr::include_graphics('../figures/data/index_annual_mean.png')
+knitr::include_graphics(BookFig('../figures/data/index_annual_mean.png'))
 ```
 
 ### Additional Robustness OMs {#sec-additional-robustness}

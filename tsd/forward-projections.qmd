@@ -9,6 +9,15 @@ suppress-bibliography: true
 library(MSEtool)
 library(iotcALB)
 library(ggplot2)
+
+# copy a figure from the repository figures/ directory into the book (images/),
+# so Quarto includes it in _book and the published site
+BookFig <- function(path) {
+  out <- file.path('images', sub('../figures/', '', path, fixed = TRUE))
+  dir.create(dirname(out), recursive = TRUE, showWarnings = FALSE)
+  file.copy(path, out, overwrite = TRUE)
+  out
+}
 Hist <- readRDS("../objects/Hist/OM5b.hist")
 OM   <- Hist@OM
 FirstManagementYear <- MPStartYear(OM)
@@ -142,14 +151,14 @@ These results suggest that these simulations are poorly supported by the data us
 #| label: fig-collapse-sb
 #| echo: false
 #| fig-cap: !expr "paste0('Female spawning biomass relative to SB~MSY~ in the Base Case OM up to ', FirstManagementYear, ', with the reported and assumed catches in the initial projection years (vertical dashed line: end of the historical period). The red lines show the simulations where SB < 0.1 SB~MSY~ in ', FirstManagementYear, '. The dotted lines show the LRP (0.4 SB~MSY~) and SB~MSY~.')"
-knitr::include_graphics('../figures/diagnostics/interim_collapse/SB_SBMSY.png')
+knitr::include_graphics(BookFig('../figures/diagnostics/interim_collapse/SB_SBMSY.png'))
 ```
 
 ```{r}
 #| label: fig-collapse-cpue
 #| echo: false
 #| fig-cap: "Fit of the ABC conditioning model to the LL1 CPUE (annual mean, scaled to a mean of 1; points) for the simulations where the stock collapses before the CMPs start (red) and the other simulations (grey). The lines show the median and the shaded areas the 5th--95th percentiles of the predicted index."
-knitr::include_graphics('../figures/diagnostics/interim_collapse/CPUE_fit.png')
+knitr::include_graphics(BookFig('../figures/diagnostics/interim_collapse/CPUE_fit.png'))
 ```
 
 ```{r}
