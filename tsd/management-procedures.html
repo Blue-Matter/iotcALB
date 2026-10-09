@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.38">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
-<title>7&nbsp; Management Procedures – Trial Specifications Document</title>
+<title>5&nbsp; Candidate Management Procedures – Trial Specifications Document</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -25,7 +22,6 @@ ul.task-list li input[type="checkbox"] {
 }
 </style>
 
-
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
@@ -33,19 +29,25 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./performance-metrics.html" rel="next">
-<link href="./forward-projections.html" rel="prev">
+<link href="./results.html" rel="next">
+<link href="./performance-metrics.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-a55b41f70a3cc1b3f7c96c7da63be89b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-a55b41f70a3cc1b3f7c96c7da63be89b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-a55b41f70a3cc1b3f7c96c7da63be89b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -71,17 +73,38 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-
-
+}</script><script src="site_libs/kePrint-0.0.1/kePrint.js"></script><link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 </head>
-
 <body class="nav-sidebar floating nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Trial Specifications Document</span>
@@ -93,7 +116,7 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="https://iotcalb.bluematterscience.com/"> 
 <span class="menu-text">Albacore MSE Homepage</span></a>
   </li>  
@@ -102,30 +125,24 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">iotcALB R Package</span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
+</div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
     <a href="https://github.com/Blue-Matter/iotcALB" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
 </div>
       </div> <!-- /container-fluid -->
-    </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./management-procedures.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Management Procedures</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./management-procedures.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Candidate Management Procedures</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="sidebar-menu-container"> 
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
@@ -133,66 +150,68 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./operating-model-overview.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Operating Model Conditioning</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./operating-model-base-case.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Base Case Operating Model</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./operating-model-robustness.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Robustness Operating Models</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./fishery-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Fishery Data</span></span></a>
+  <a href="./operating-models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Operating Models</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./forward-projections.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Forward Projections</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./management-procedures.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Management Procedures</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Forward Projections</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./performance-metrics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Performance Metrics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Performance Metrics</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./presentation-results.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Presentation of Results</span></span></a>
+  <a href="./management-procedures.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Candidate Management Procedures</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./results.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Presentation of Results</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
   </div>
 </li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li><a href="#sec-cmps-status" id="toc-sec-cmps-status" class="nav-link active" data-scroll-target="#sec-cmps-status"><span class="header-section-number">5.1</span> Estimated Stock Status</a></li>
+  <li><a href="#sec-hcrs" id="toc-sec-hcrs" class="nav-link" data-scroll-target="#sec-hcrs"><span class="header-section-number">5.2</span> Harvest Control Rules</a></li>
+  <li><a href="#sec-cmps-indexrate" id="toc-sec-cmps-indexrate" class="nav-link" data-scroll-target="#sec-cmps-indexrate"><span class="header-section-number">5.3</span> Index Rate</a></li>
+  <li><a href="#sec-cmps-itb" id="toc-sec-cmps-itb" class="nav-link" data-scroll-target="#sec-cmps-itb"><span class="header-section-number">5.4</span> Index Target with a Buffer HCR</a></li>
+  <li><a href="#sec-cmps-buf" id="toc-sec-cmps-buf" class="nav-link" data-scroll-target="#sec-cmps-buf"><span class="header-section-number">5.5</span> Buffer MP</a></li>
+  <li><a href="#sec-cmps-sp" id="toc-sec-cmps-sp" class="nav-link" data-scroll-target="#sec-cmps-sp"><span class="header-section-number">5.6</span> Surplus Production</a></li>
+  <li><a href="#sec-cmps-data" id="toc-sec-cmps-data" class="nav-link" data-scroll-target="#sec-cmps-data"><span class="header-section-number">5.7</span> Input Data When the MP Is Applied</a></li>
+  <li><a href="#sec-cmps-tac-change" id="toc-sec-cmps-tac-change" class="nav-link" data-scroll-target="#sec-cmps-tac-change"><span class="header-section-number">5.8</span> TAC Change Limits</a></li>
+  <li>
+<a href="#sec-tuning-methodology" id="toc-sec-tuning-methodology" class="nav-link" data-scroll-target="#sec-tuning-methodology"><span class="header-section-number">5.9</span> Tuning Methodology</a>
+  <ul class="collapse">
+<li><a href="#step-1-cmp-settings" id="toc-step-1-cmp-settings" class="nav-link" data-scroll-target="#step-1-cmp-settings"><span class="header-section-number">5.9.1</span> Step 1: CMP Settings</a></li>
+  <li><a href="#step-2-tuning-parameter" id="toc-step-2-tuning-parameter" class="nav-link" data-scroll-target="#step-2-tuning-parameter"><span class="header-section-number">5.9.2</span> Step 2: Tuning Parameter</a></li>
+  </ul>
+</li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Management Procedures</span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title"><span id="sec-cmps" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Candidate Management Procedures</span></span></h1>
 </div>
 
 
@@ -206,17 +225,357 @@ ul.task-list li input[type="checkbox"] {
   
 
 
-</header>
+</header><p>The MSE currently includes four types of candidate management procedure (CMP), all using the LL1 (NW) CPUE index:</p>
+<ol type="1">
+<li>
+<strong>Index Rate (IR)</strong>: the TAC is a catch/index rate multiplied by the current index, with the rate reduced by a harvest control rule (HCR) at low stock status;</li>
+<li>
+<strong>Index Target with a Buffer HCR (ITB)</strong>: the TAC is a reference catch scaled by the ‘buffer’ HCR of the earlier albacore MSE work <span class="citation" data-cites="mosqueiraTechnicalDevelopmentManagement">(Mosqueira &amp; Hillary, 2025)</span>;</li>
+<li>
+<strong>Buffer MP (BUF)</strong>: a replica of the CPUE + buffer HCR MP of the earlier albacore MSE work <span class="citation" data-cites="mosqueiraTechnicalDevelopmentManagement">(Mosqueira &amp; Hillary, 2025)</span>, in which the HCR adjusts the previous TAC;</li>
+<li>
+<strong>Surplus Production (SP)</strong>: the TAC is set from the stock status and F<sub>MSY</sub> estimated by a surplus production model.</li>
+</ol>
+<p>Each CMP type is tuned to two different tuning levels, representing two sets of management objectives (see <a href="#sec-tuning-methodology" class="quarto-xref"><span>Section 5.9</span></a>):</p>
+<ul>
+<li>
+<em>T1</em>: a probability of being in the Kobe green quadrant;</li>
+<li>
+<em>T2:</em> the same probability and a probability of never falling below the limit reference point, with larger TAC decreases allowed.</li>
+</ul>
+<p>Each CMP is named by its type and tuning level; e.g., <em>IR_T2</em> is the Index Rate CMP tuned to <em>T2</em>.</p>
+<p>All CMPs limit increases in the TAC between management cycles to 15%. Decreases are limited to 15% in the <em>T1</em> CMPs and 30% in the <em>T2</em> CMPs (<a href="#sec-cmps-tac-change" class="quarto-xref"><span>Section 5.8</span></a>). Variants with a symmetric 30% limit were explored in preliminary runs, where they gave little or no increase in catch with more variable TACs, and were not retained.</p>
+<p>All CMPs set a single TAC for the total catch (removals, in t) of all fleets. The CMPs use data aggregated to calendar years: annual catches (summed over the quarters) and annual CPUE indices (averaged over the quarters with data).</p>
+<section id="sec-cmps-status" class="level2" data-number="5.1"><h2 data-number="5.1" class="anchored" data-anchor-id="sec-cmps-status">
+<span class="header-section-number">5.1</span> Estimated Stock Status</h2>
+<p>The index-based CMPs estimate stock status from the LL1 CPUE index. The index is expressed relative to its level at SB<sub>MSY</sub>, I<sub>MSY</sub>, calculated from the mean index over 2016–2020 and the median (over simulations) of the mean SB/SB<sub>MSY</sub> over the same years in the Base Case OM (1.75):</p>
+<p><span id="eq-imsy"><span class="math display">\[I_{\text{MSY}} = \frac{\bar{I}}{\overline{SB/SB_{\text{MSY}}}} \tag{5.1}\]</span></span></p>
+<p>giving I<sub>MSY</sub> = 0.411.</p>
+<p>The current status of the index, <span class="math inline">\(S\)</span>, is the index averaged over the most recent years, after optional loess smoothing (the number of years and the smoothing are CMP settings; <a href="#sec-tuning-methodology" class="quarto-xref"><span>Section 5.9</span></a>). The estimated stock status, in units of SB/SB<sub>MSY</sub>, is <span class="math inline">\(x = S / I_{\text{MSY}}\)</span>.</p>
+<p>The Surplus Production CMPs estimate stock status as the estimated biomass relative to B<sub>MSY</sub> at the start of the year the TAC applies (<a href="#sec-cmps-sp" class="quarto-xref"><span>Section 5.6</span></a>).</p>
+</section><section id="sec-hcrs" class="level2" data-number="5.2"><h2 data-number="5.2" class="anchored" data-anchor-id="sec-hcrs">
+<span class="header-section-number">5.2</span> Harvest Control Rules</h2>
+<p>The HCRs are specified in terms of estimated stock status relative to SB<sub>MSY</sub> (or B<sub>MSY</sub>), with the limit reference point (LRP; 0.4 SB<sub>MSY</sub>) as a control point <span class="citation" data-cites="IOTCRes1510">(IOTC, 2015)</span>.</p>
+<p>The output of each HCR is a multiplier on a quantity specific to each CMP type, from which the TAC is calculated (<a href="#fig-hcrs" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>):</p>
+<ul>
+<li>Index Rate: the catch/index rate;</li>
+<li>Index Target with a Buffer HCR: a reference catch;</li>
+<li>Buffer MP: the previous TAC;</li>
+<li>Surplus Production: F<sub>MSY</sub> estimated by the surplus production model.</li>
+</ul>
+<p>The intensity of fishing is set by the tuning parameter (<a href="#sec-tuning-methodology" class="quarto-xref"><span>Section 5.9</span></a>).</p>
+<p>The HCRs of the Index Rate and Surplus Production CMPs act on a harvest rate (the catch/index rate or the fishing mortality), so the TAC follows the stock, and the fishing intensity is reduced as the estimated stock status declines below the threshold. The HCRs of the Index Target with a Buffer HCR and Buffer MP CMPs act on the TAC itself. These are the buffer MPs of the earlier work, designed to keep the TAC stable while the index is within the buffer, with sharp reductions in the TAC below the lower buffer and the limit.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-hcrs" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-hcrs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="management-procedures_files/figure-html/fig-hcrs-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;5.1: The harvest control rules of each CMP type, as a function of estimated stock status. The multiplier applies to the catch/index rate (Index Rate), the reference catch (Index Target with a Buffer HCR), the previous TAC (Buffer MP, shown with tunepar = 1), or the estimated FMSY (Surplus Production). The dashed line shows the LRP."><img src="management-procedures_files/figure-html/fig-hcrs-1.png" class="img-fluid figure-img" width="864"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hcrs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.1: The harvest control rules of each CMP type, as a function of estimated stock status. The multiplier applies to the catch/index rate (Index Rate), the reference catch (Index Target with a Buffer HCR), the previous TAC (Buffer MP, shown with tunepar = 1), or the estimated F<sub>MSY</sub> (Surplus Production). The dashed line shows the LRP.
+</figcaption></figure>
+</div>
+</div>
+</div>
+</section><section id="sec-cmps-indexrate" class="level2" data-number="5.3"><h2 data-number="5.3" class="anchored" data-anchor-id="sec-cmps-indexrate">
+<span class="header-section-number">5.3</span> Index Rate</h2>
+<p>The Index Rate CMPs set the TAC as a catch/index rate multiplied by the current index. The catch/index rate, <span class="math inline">\(\hat{r}\)</span>, is the mean total catch over the last 2 historical years divided by the mean index over the same years. The trial TAC is:</p>
+<p><span id="eq-ir-tac"><span class="math display">\[\text{TrialTAC} = m \times \hat{r} \times S \times \theta(x) \tag{5.2}\]</span></span></p>
+<p>where <span class="math inline">\(m\)</span> is the tuning parameter and <span class="math inline">\(\theta(x)\)</span> is the HCR multiplier: 0 at and below the LRP, increasing linearly to 1 at SB<sub>MSY</sub>, and 1 above (<a href="#fig-hcrs" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>). Because the catch/index rate is calibrated to the recent catch, <span class="math inline">\(m\)</span> = 1 corresponds to the recent catch/index ratio.</p>
+<p>The Index Rate CMPs use current status calculated from the index averaged over the most recent year after loess smoothing (<a href="#sec-tuning-methodology" class="quarto-xref"><span>Section 5.9</span></a>).</p>
+</section><section id="sec-cmps-itb" class="level2" data-number="5.4"><h2 data-number="5.4" class="anchored" data-anchor-id="sec-cmps-itb">
+<span class="header-section-number">5.4</span> Index Target with a Buffer HCR</h2>
+<p>The Index Target with a Buffer HCR CMPs set the TAC as a reference catch, the mean total catch over the last 5 historical years (<span class="math inline">\(\bar{C}\)</span>), scaled by the tuning parameter and the HCR:</p>
+<p><span id="eq-itb-tac"><span class="math display">\[\text{TrialTAC} = m \times \bar{C} \times \theta_C(x) \tag{5.3}\]</span></span></p>
+<p>The HCR, <span class="math inline">\(\theta_C(x)\)</span>, has the shape of the buffer HCR of the earlier albacore MSE work <span class="citation" data-cites="mosqueiraTechnicalDevelopmentManagement">(Mosqueira &amp; Hillary, 2025)</span> (<a href="#fig-hcrs" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>):</p>
+<ul>
+<li>1 (the reference catch) between the lower and upper buffers (1 and 1.5 SB<sub>MSY</sub>);</li>
+<li>decreasing linearly below the lower buffer to 0.5 at the LRP, and more rapidly below the LRP, to zero at 0.2 SB<sub>MSY</sub>;</li>
+<li>increasing above the upper buffer at a quarter of the rate of the decrease between the LRP and the lower buffer, to 1.1 at 2 SB<sub>MSY</sub>.</li>
+</ul>
+<p>The output is applied to a fixed reference catch (the first formulation tested in the earlier work), so the TAC remains stable while the index is between the buffers, and the reference catch is the tuning parameter. The position of the buffers is a CMP setting (<a href="#sec-tuning-methodology" class="quarto-xref"><span>Section 5.9</span></a>).</p>
+<p>The Index Target with a Buffer HCR CMPs use current status calculated from the index averaged over the most recent year, and buffers at 1 and 1.5 SB<sub>MSY</sub> (<a href="#sec-tuning-methodology" class="quarto-xref"><span>Section 5.9</span></a>).</p>
+</section><section id="sec-cmps-buf" class="level2" data-number="5.5"><h2 data-number="5.5" class="anchored" data-anchor-id="sec-cmps-buf">
+<span class="header-section-number">5.5</span> Buffer MP</h2>
+<p>The Buffer MP CMPs replicate the CPUE + buffer HCR MP of the earlier albacore MSE work <span class="citation" data-cites="mosqueiraTechnicalDevelopmentManagement">(Mosqueira &amp; Hillary, 2025)</span>. In each management cycle, the MP calculates an index metric, applies the buffer HCR to it, and multiplies the previous TAC by the output of the HCR.</p>
+<p>The index metric, <span class="math inline">\(x\)</span>, is a weighted mean of the LL1 index over the last 4 data years, relative to its level at SB<sub>MSY</sub> (I<sub>MSY</sub>; <a href="#sec-cmps-status" class="quarto-xref"><span>Section 5.1</span></a>):</p>
+<p><span id="eq-buf-index"><span class="math display">\[
+x = \frac{1}{I_{\text{MSY}}} \sum_{i=1}^{4} w_i \, I_{y_i}
+\tag{5.4}\]</span></span></p>
+<p>where <span class="math inline">\(y_1, \ldots, y_4\)</span> are the last four data years, from the oldest to the most recent. The most recent year has a weight of 0.5, and the other 0.5 is shared among the three earlier years in proportion to their position (1, 2, and 3), giving weights of <span class="math inline">\(w_i\)</span> = 1/12, 2/12, 3/12, and 6/12. The metric therefore responds mainly to the most recent index value, with some smoothing from the earlier years. For example, the first TAC (2029) uses the index in 2023–2026, with the highest weight on 2026.</p>
+<p>The HCR multiplier, <span class="math inline">\(\theta_B(x)\)</span>, is (<a href="#fig-hcrs" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>):</p>
+<p><span id="eq-buf-hcr"><span class="math display">\[
+\theta_B(x) =
+\begin{cases}
+\dfrac{1}{2}\left(\dfrac{x}{L}\right)^2 &amp; x \le L \\[8pt]
+\dfrac{1}{2}\left(1 + \dfrac{x - L}{B_1 - L}\right) &amp; L &lt; x \le B_1 \\[8pt]
+1 &amp; B_1 &lt; x &lt; B_2 \\[4pt]
+1 + s \dfrac{0.5}{B_1 - L}(x - B_2) &amp; x \ge B_2
+\end{cases}
+\tag{5.5}\]</span></span></p>
+<p>where <span class="math inline">\(L\)</span> is the limit, <span class="math inline">\(B_1\)</span> and <span class="math inline">\(B_2\)</span> are the lower and upper buffers, and <span class="math inline">\(s\)</span> is the ratio of the slope of the increase above the upper buffer to the slope of the decrease between the limit and the lower buffer.</p>
+<p>The TAC is the previous TAC multiplied by the HCR output:</p>
+<p><span id="eq-buf-tac"><span class="math display">\[
+\text{TrialTAC} = \text{TAC}_{\text{prev}} \times \theta_B(x)
+\tag{5.6}\]</span></span></p>
+<p>The TAC is therefore held while the index metric is between the buffers, reduced in every management cycle while it is below the lower buffer, and increased in every management cycle while it is above the upper buffer. Unlike the other CMPs, changes in the TAC of less than 1% are not ignored (<a href="#sec-cmps-tac-change" class="quarto-xref"><span>Section 5.8</span></a>).</p>
+<p>As in the earlier work, the CMP is tuned by the position of the upper buffer, which is set to <span class="math inline">\(B_1 + (B_2 - B_1)/m\)</span>, where larger values of the tuning parameter <span class="math inline">\(m\)</span> move the upper buffer towards the lower buffer, so that the TAC increases at lower values of the index and the catch is higher. The tuning parameter does not change the lower buffer or the limit, which determine how quickly the TAC is reduced.</p>
+</section><section id="sec-cmps-sp" class="level2" data-number="5.6"><h2 data-number="5.6" class="anchored" data-anchor-id="sec-cmps-sp">
+<span class="header-section-number">5.6</span> Surplus Production</h2>
+<p>Model-based MPs combining a surplus production model with an HCR were also proposed in the earlier albacore MSE work <span class="citation" data-cites="mosqueiraTechnicalDevelopmentManagement mosqueira2026albacore">(Mosqueira &amp; Hillary, 2025, 2026)</span>. The Surplus Production CMPs fit a Schaefer surplus production model to the annual total catch and the annual LL1 CPUE index from 2000. F<sub>MSY</sub> and MSY are estimated, the catchability and the observation standard deviation of the index are estimated at their maximum likelihood values, and the catch is assumed known.</p>
+<p>To match the dynamics of the Base Case OM, the initial depletion is fixed at the Base Case OM value, and informative priors are used for F<sub>MSY</sub> and MSY (<a href="#tbl-sp-settings" class="quarto-xref">Table&nbsp;<span>5.1</span></a>). The surplus production model has a single biomass pool, so the OM quantities are calculated for the total biomass of both sexes:</p>
+<ul>
+<li>
+<strong>Initial depletion</strong>: the median total biomass relative to unfished at the start of 2000;</li>
+<li>
+<strong>F<sub>MSY</sub> prior</strong>: lognormal, with median equal to the median harvest rate at MSY (MSY / B<sub>MSY</sub>) of the Base Case OM;</li>
+<li>
+<strong>MSY prior</strong>: lognormal, with median equal to the median MSY of the Base Case OM.</li>
+</ul>
+<p>The CVs of the priors are the CV of the OM values over simulations, or a minimum of 0.3 (F<sub>MSY</sub>) and 0.4 (MSY), so the priors are informative but allow the data to update the estimates.</p>
+<p>In each management cycle, the model is fitted to the available data, starting from the estimates of the previous management cycle, and projected to the start of the year the TAC applies, assuming the catch in the intervening years is the TAC in force. The fishing mortality is:</p>
+<p><span id="eq-sp-f"><span class="math display">\[F = m \times \hat{F}_{\text{MSY}} \times \theta\!\left(\hat{B}/\hat{B}_{\text{MSY}}\right) \tag{5.7}\]</span></span></p>
+<p>where <span class="math inline">\(m\)</span> is the tuning parameter and <span class="math inline">\(\theta\)</span> is the HCR multiplier: 0 at and below the LRP (0.4 B/B<sub>MSY</sub>), increasing linearly to 1 at the HCR threshold, and 1 above (<a href="#fig-hcrs" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>). The TAC is the mean annual catch when the model is projected at <span class="math inline">\(F\)</span> over the 3-year management cycle. If the model fit fails or does not converge, the previous TAC is kept.</p>
+<p>The Surplus Production CMPs use an HCR threshold of 0.8 B/B<sub>MSY</sub> (<a href="#sec-tuning-methodology" class="quarto-xref"><span>Section 5.9</span></a>).</p>
+<div class="cell">
+<div id="tbl-sp-settings" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-sp-settings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5.1: Fixed parameters and priors of the surplus production model, from the Base Case OM.
+</figcaption><div aria-describedby="tbl-sp-settings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 32%">
+<col style="width: 36%">
+<col style="width: 31%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: left;">Treatment</th>
+<th style="text-align: left;">Value</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Shape (n)</td>
+<td style="text-align: left;">Fixed (Schaefer)</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Initial depletion (B/K)</td>
+<td style="text-align: left;">Fixed</td>
+<td style="text-align: left;">0.84</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">F<sub>MSY</sub>
+</td>
+<td style="text-align: left;">Estimated, lognormal prior</td>
+<td style="text-align: left;">median 0.199, CV 0.30</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MSY (t)</td>
+<td style="text-align: left;">Estimated, lognormal prior</td>
+<td style="text-align: left;">median 51,055, CV 0.40</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section><section id="sec-cmps-data" class="level2" data-number="5.7"><h2 data-number="5.7" class="anchored" data-anchor-id="sec-cmps-data">
+<span class="header-section-number">5.7</span> Input Data When the MP Is Applied</h2>
+<p>In the MSE, each CMP is applied in every management cycle to the historical catch and CPUE data, plus the observations added since the previous cycle. Once a data value has been observed, it does not change in later management cycles. The performance of the CMPs, and the tuning of their catch level, therefore assume that the MP will be applied in the same way: new data are added to the existing series, but the existing values are not revised.</p>
+<p>This matters because the CMPs are calibrated to the historical data. For example, the index level at SB<sub>MSY</sub> (I<sub>MSY</sub>), which sets the position of the HCR control points of the index-based CMPs, is calculated from the historical LL1 index (<a href="#sec-cmps-status" class="quarto-xref"><span>Section 5.1</span></a>). If the historical index were revised after an MP is adopted, for example by a new standardisation of the CPUE, the same stock status would give a different index relative to I<sub>MSY</sub>, and therefore a different TAC. The MP applied would then no longer be the MP that was tested. The revision of the historical LL1 index between the 2022 and 2025 stock assessments (<a href="operating-models.html#sec-updated-data" class="quarto-xref"><span>Section 2.1.4</span></a>) shows that revisions of this size can occur.</p>
+<p>When an MP is adopted, its specification should therefore include the data it uses:</p>
+<ul>
+<li>
+<strong>The index</strong>: The standardisation model, fleets, areas, seasons, and data selection should be fixed, so that new years can be added without changing the historical values (for example, by fixing the historical index and scaling new values to it);</li>
+<li>
+<strong>The catch data</strong>: The catch series used by the MP should be defined in the same way;</li>
+<li>
+<strong>A review process</strong>: Changes to the input data that cannot be avoided (e.g.&nbsp;revisions to the reported catches, or changes in the fishery that require a new standardisation) should be reviewed by the scientific committee, and may require the MP to be re-calibrated and re-tested in the MSE before it is applied.</li>
+</ul></section><section id="sec-cmps-tac-change" class="level2" data-number="5.8"><h2 data-number="5.8" class="anchored" data-anchor-id="sec-cmps-tac-change">
+<span class="header-section-number">5.8</span> TAC Change Limits</h2>
+<p>The TAC calculated by a CMP (the trial TAC) is constrained so that it does not change by more than a set proportion from the TAC in force:</p>
+<p><span id="eq-tac-limit"><span class="math display">\[
+\text{TAC} = \text{TAC}_{\text{prev}} \times \min\left(\max\left(\frac{\text{TrialTAC}}{\text{TAC}_{\text{prev}}},\ 1 - \delta_{\text{down}}\right),\ 1 + \delta_{\text{up}}\right)
+\tag{5.8}\]</span></span></p>
+<p>where <span class="math inline">\(\text{TAC}_{\text{prev}}\)</span> is the TAC in force, and <span class="math inline">\(\delta_{\text{up}}\)</span> and <span class="math inline">\(\delta_{\text{down}}\)</span> are the maximum proportional increase and decrease. In the first management cycle, <span class="math inline">\(\text{TAC}_{\text{prev}}\)</span> is the catch in the last initial projection year (<a href="forward-projections.html#sec-interim-years" class="quarto-xref"><span>Section 3.2</span></a>). For all CMPs except the Buffer MP, changes of less than 1% are ignored, and the TAC is left unchanged.</p>
+<p>The limits differ between the tuning levels:</p>
+<ul>
+<li>
+<em>T1</em>: TAC increases and decreases are both limited to 15%, as in the earlier albacore MSE work;</li>
+<li>
+<em>T2</em>: TAC increases are limited to 15%, and TAC decreases to 30%.</li>
+</ul>
+<p>The T2 CMPs allow larger decreases because, with a 15% limit, no CMP could meet the safety constraint of T2 (<a href="#sec-tuning-methodology" class="quarto-xref"><span>Section 5.9</span></a>). With a 15% limit, the TAC can fall by at most 15% every 3 years, i.e., to 61% of its initial level after three management cycles. In the simulations where the stock is already depleted by the catches of the initial projection years (<a href="forward-projections.html#sec-interim-collapse" class="quarto-xref"><span>Section 3.2.1</span></a>), this is not fast enough to prevent the stock from falling below the LRP, even if the CMP sets a TAC close to zero.</p>
+</section><section id="sec-tuning-methodology" class="level2" data-number="5.9"><h2 data-number="5.9" class="anchored" data-anchor-id="sec-tuning-methodology">
+<span class="header-section-number">5.9</span> Tuning Methodology</h2>
+<p>Each CMP has a single tuning parameter, <span class="math inline">\(m\)</span>, that scales the target fishing intensity.</p>
+<p>The CMPs are tuned for the Base Case OM to maximise the mean annual catch over 2029–2058, subject to the constraints of two tuning levels (<a href="performance-metrics.html" class="quarto-xref"><span>Chapter 4</span></a>):</p>
+<ul>
+<li>
+<em>T1 (Status):</em> a probability of at least 0.6 of being in the Kobe green quadrant over 2044–2058 (the proportion of simulations and years);</li>
+<li>
+<em>T2 (Status and Safety):</em> the <em>T1</em> constraint, and a probability of at least 0.9 that spawning biomass stays above the LRP (0.4 SB<sub>MSY</sub>) in every year over 2034–2058. A simulation in which spawning biomass falls below the LRP in any year is a breach, so at most 10% of simulations may breach the LRP. The <em>T2</em> CMPs allow TAC decreases of up to 30% (<a href="#sec-cmps-tac-change" class="quarto-xref"><span>Section 5.8</span></a>).</li>
+</ul>
+<p>The two tuning levels show the trade-off between catch and the risk of depleting the stock. In preliminary runs, maximising the catch subject only to the probability of the Kobe green quadrant (<em>T1</em>) led to CMPs that depleted the low-productivity simulations (low MSY; <a href="operating-models.html#sec-conditioning-review" class="quarto-xref"><span>Section 2.2</span></a>) to well below the LRP, while the probability of the Kobe green quadrant, averaged over all simulations and years, was kept at its minimum by the other simulations. The safety constraint of <em>T2</em> limits the proportion of simulations where this happens.</p>
+<p>The safety constraint excludes the first 5 years the CMPs are active (2029–2033), one management cycle and two years, so that the stock can recover from the catches in the initial projection years, which the CMPs do not control (<a href="forward-projections.html#sec-interim-years" class="quarto-xref"><span>Section 3.2</span></a>).</p>
+<p>The CMPs were tuned with 80 of the 500 simulations. The 80 simulations were a stratified random sample where the simulations were split into 8 groups of equal size by MSY, and each group then split into 10 groups of equal size by female SB/SB<sub>0</sub> in 2020, and one simulation drawn from each group. The tuning simulations therefore have the same distribution of productivity and stock status as all simulations, including the simulations where the stock collapses before the CMPs start (<a href="forward-projections.html#sec-interim-collapse" class="quarto-xref"><span>Section 3.2.1</span></a>).</p>
+<p>The tuning is done in two steps.</p>
+<section id="step-1-cmp-settings" class="level3" data-number="5.9.1"><h3 data-number="5.9.1" class="anchored" data-anchor-id="step-1-cmp-settings">
+<span class="header-section-number">5.9.1</span> Step 1: CMP Settings</h3>
+<p>In addition to the tuning parameter <span class="math inline">\(m\)</span>, the Index Rate, Index Target with a Buffer HCR, and Surplus Production CMPs have other settings that affect their performance, including for example the number of years used to calculate the current index (<a href="#tbl-config-candidates" class="quarto-xref">Table&nbsp;<span>5.2</span></a>). For each of these CMP types, the settings were chosen from a small set of candidate values, as the configuration of values that gives the highest catch when the CMP is tuned to the <em>T1</em> constraint:</p>
+<ol type="1">
+<li>Each configuration was projected at 5 values of <span class="math inline">\(m\)</span> over 0.1–3, using 40 of the tuning simulations, and the catch at the value of <span class="math inline">\(m\)</span> that meets the constraint was interpolated;</li>
+<li>The configuration with the highest catch was then fully tuned (Step 2) with all 80 tuning simulations.</li>
+</ol>
+<p>The selected settings are used for the CMPs of that type at both tuning levels. The Buffer MP CMPs use the settings of the earlier work, so no settings were selected for them.</p>
+<div class="cell">
+<div id="tbl-config-candidates" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-config-candidates-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5.2: The candidate values of the CMP settings compared in step 1, and the selected values.
+</figcaption><div aria-describedby="tbl-config-candidates-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="table table-striped table-condensed cell caption-top table-sm small">
+<thead><tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Setting</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Candidate values</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Selected</th>
+</tr></thead>
+<tbody>
+<tr class="odd" data-grouplength="2">
+<td colspan="3" style="font-weight: bold; border-bottom: 1px solid #ddd"><strong>Index Rate</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Years averaged for current status</td>
+<td style="text-align: left;">1, 3</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Index smoothing</td>
+<td style="text-align: left;">yes, no</td>
+<td style="text-align: left;">yes</td>
+</tr>
+<tr class="even" data-grouplength="2">
+<td colspan="3" style="font-weight: bold; border-bottom: 1px solid #ddd"><strong>Index Target (Buffer HCR)</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Years averaged for current status</td>
+<td style="text-align: left;">1, 3</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Lower and upper buffer (SB/SB<sub>MSY</sub>)</td>
+<td style="text-align: left;">0.8–1.2, 1–1.5</td>
+<td style="text-align: left;">1–1.5</td>
+</tr>
+<tr class="odd" data-grouplength="1">
+<td colspan="3" style="font-weight: bold; border-bottom: 1px solid #ddd"><strong>Surplus Production</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">HCR threshold (B/B<sub>MSY</sub>)</td>
+<td style="text-align: left;">0.8, 1</td>
+<td style="text-align: left;">0.8</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section><section id="step-2-tuning-parameter" class="level3" data-number="5.9.2"><h3 data-number="5.9.2" class="anchored" data-anchor-id="step-2-tuning-parameter">
+<span class="header-section-number">5.9.2</span> Step 2: Tuning Parameter</h3>
+<p><span class="math inline">\(m\)</span> was then tuned for each of the 8 CMPs (4 CMP types at 2 tuning levels). It was first evaluated on a grid of 7 log-spaced values over 0.1–3, which was extended by a factor of 3 up to 3 times if necessary, and then refined towards the largest value that meets the constraints (or the value with the highest catch, if that is lower), until the range of <span class="math inline">\(m\)</span> is within 1% or the binding constraint is within 0.5% of its minimum (<a href="#tbl-tuning" class="quarto-xref">Table&nbsp;<span>5.3</span></a>). A CMP for which no value of <span class="math inline">\(m\)</span> meets the constraints is reported as infeasible and is not projected.</p>
+<div class="cell">
+<div id="tbl-tuning" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-tuning-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5.3: The tuned value of the tuning parameter (m) for each CMP, and the mean annual catch (2029–2058), probability of being in the Kobe green quadrant (2044–2058), and probability that SB stays above the LRP in every year (2034–2058; a tuning constraint for T2 only, shown for T1 for comparison) in the Base Case OM (tuning simulations). The settings of each CMP are shown in <a href="#tbl-config-candidates" class="quarto-xref">Table&nbsp;<span>5.2</span></a>. † No value of m met the constraints, so the CMP was not projected.
+</figcaption><div aria-describedby="tbl-tuning-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="table table-striped table-condensed cell caption-top table-sm small">
+<thead><tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">CMP</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">m</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Mean catch (t)</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">P(Kobe green)</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">P(SB &gt; LRP every year)</th>
+</tr></thead>
+<tbody>
+<tr class="odd" data-grouplength="4">
+<td colspan="5" style="font-weight: bold; border-bottom: 1px solid #ddd"><strong>T1 (TAC decreases of up to 15%)</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">IR_T1</td>
+<td style="text-align: right;">1.59</td>
+<td style="text-align: right;">43,808</td>
+<td style="text-align: right;">0.60</td>
+<td style="text-align: right;">0.68</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">ITB_T1</td>
+<td style="text-align: right;">1.18</td>
+<td style="text-align: right;">40,770</td>
+<td style="text-align: right;">0.60</td>
+<td style="text-align: right;">0.70</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">BUF_T1</td>
+<td style="text-align: right;">0.21</td>
+<td style="text-align: right;">41,811</td>
+<td style="text-align: right;">0.60</td>
+<td style="text-align: right;">0.66</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">SP_T1</td>
+<td style="text-align: right;">1.01</td>
+<td style="text-align: right;">43,577</td>
+<td style="text-align: right;">0.60</td>
+<td style="text-align: right;">0.61</td>
+</tr>
+<tr class="even" data-grouplength="4">
+<td colspan="5" style="font-weight: bold; border-bottom: 1px solid #ddd"><strong>T2 (TAC decreases of up to 30%)</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">IR_T2</td>
+<td style="text-align: right;">1.29</td>
+<td style="text-align: right;">39,617</td>
+<td style="text-align: right;">0.82</td>
+<td style="text-align: right;">0.90</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">ITB_T2</td>
+<td style="text-align: right;">0.86</td>
+<td style="text-align: right;">33,384</td>
+<td style="text-align: right;">0.86</td>
+<td style="text-align: right;">0.90</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-style: italic; color: rgba(119, 119, 119, 1) !important; padding-left: 2em;" data-indentlevel="1">BUF_T2†</td>
+<td style="text-align: right; font-style: italic; color: rgba(119, 119, 119, 1) !important;">–</td>
+<td style="text-align: right; font-style: italic; color: rgba(119, 119, 119, 1) !important;">–</td>
+<td style="text-align: right; font-style: italic; color: rgba(119, 119, 119, 1) !important;">–</td>
+<td style="text-align: right; font-style: italic; color: rgba(119, 119, 119, 1) !important;">–</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">SP_T2</td>
+<td style="text-align: right;">0.63</td>
+<td style="text-align: right;">33,424</td>
+<td style="text-align: right;">0.88</td>
+<td style="text-align: right;">0.90</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
 
 
-<blockquote class="blockquote">
-<p>This chapter is incomplete</p>
-</blockquote>
-
-
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -615,22 +974,50 @@ ul.task-list li input[type="checkbox"] {
       }
     }
   });
-  </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./forward-projections.html" class="pagination-link" aria-label="Forward Projections">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Forward Projections</span></span>
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./performance-metrics.html" class="pagination-link" aria-label="Performance Metrics">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Performance Metrics</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./performance-metrics.html" class="pagination-link" aria-label="Performance Metrics">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Performance Metrics</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./results.html" class="pagination-link" aria-label="Presentation of Results">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Presentation of Results</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
-
-
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 </body></html>

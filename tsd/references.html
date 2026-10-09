@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Adrian Hordyk">
-<meta name="dcterms.date" content="2026-10-08">
 
-<title>Trial Specifications Document</title>
+<title>References – Trial Specifications Document</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -25,7 +23,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -35,7 +52,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./operating-models.html" rel="next">
+<link href="./results.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -118,7 +135,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html">References</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -132,7 +149,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
@@ -168,7 +185,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
+  <a href="./references.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -177,52 +194,22 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a>
-  <ul class="collapse">
-  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background"><span class="header-section-number">1.1</span> Background</a></li>
-  <li><a href="#about-the-albacore-mse" id="toc-about-the-albacore-mse" class="nav-link" data-scroll-target="#about-the-albacore-mse"><span class="header-section-number">1.2</span> About the Albacore MSE</a></li>
-  </ul></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Trial Specifications Document</h1>
-<p class="subtitle lead">Indian Ocean Albacore MSE</p>
+<h1 class="title">References</h1>
 </div>
 
 
-<div class="quarto-title-meta-author">
-  <div class="quarto-title-meta-heading">Author</div>
-  <div class="quarto-title-meta-heading">Affiliation</div>
-  
-    <div class="quarto-title-meta-contents">
-    <p class="author">Adrian Hordyk <a href="mailto:adrian@bluematterscience.com" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
-  </div>
-  <div class="quarto-title-meta-contents">
-        <p class="affiliation">
-            Blue Matter Science
-          </p>
-      </div>
-  </div>
 
 <div class="quarto-title-meta">
 
-      
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">8 October 2026</p>
-    </div>
-  </div>
+    
   
     
   </div>
@@ -232,25 +219,48 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="introduction" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
-<p>This Trial Specifications Document (TSD) describes the design and technical details of the Management Strategy Evaluation (MSE) of Indian Ocean albacore tuna (<em>Thunnus alalunga</em>), including the operating models, candidate management procedures, and performance metrics used to evaluate them.</p>
-<p>The TSD is a <strong>living document</strong> that will be updated as the MSE progresses to reflect the current state of the analysis.</p>
-<p>For more information on the Indian Ocean Albacore MSE process see the project <a href="https://iotcalb.bluematterscience.com/">homepage</a>.</p>
-<section id="background" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="background"><span class="header-section-number">1.1</span> Background</h2>
-<p>Indian Ocean albacore tuna is managed by the <a href="https://www.iotc.org">Indian Ocean Tuna Commission (IOTC)</a>. MSE is being used as a tool to support harvest strategy development for this stock, providing a structured framework for testing candidate management procedures against a range of plausible representations of stock and fishery dynamics before adoption of a management procedure.</p>
-<p>The initial development of the MSE framework, including the design and conditioning of the Base Case and Robustness Operating Models (OMs) and exploratory runs of candidate management procedures, was conducted by R. Hillary (CSIRO, Australia) and I. Mosqueira (Wageningen Marine Research, Netherlands) <span class="citation" data-cites="hillaryConditioningIOTCAlbacore mosqueiraSimulationTestingManagement mosqueiraTechnicalDevelopmentManagement mosqueira2026albacore">(Hillary &amp; Mosqueira, 2024; Mosqueira &amp; Hillary, 2025a, 2025b, 2026)</span>.</p>
-<p>In 2026, <a href="https://www.bluematterscience.com/">Blue Matter Science</a> was contracted to continue work on the Albacore MSE. The MSE builds directly on the OM conditioning outputs and the candidate management procedures of the earlier phase of work.</p>
-</section>
-<section id="about-the-albacore-mse" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="about-the-albacore-mse"><span class="header-section-number">1.2</span> About the Albacore MSE</h2>
-<p>The Indian Ocean Albacore MSE is built and maintained by <a href="https://bluematterscience.com">Blue Matter Science</a> using the <a href="https://openMSE.com">openMSE</a> framework.</p>
-<p>The analysis is fully reproducible: all code, functions, and objects used to build the operating models, candidate management procedures, and performance metrics are available in the <a href="https://github.com/Blue-Matter/iotcALB"><code>iotcALB</code></a> R package. To reproduce the analysis, download the GitHub repository and work through the scripts in the <code>analysis</code> directory.</p>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-hillaryConditioningIOTCAlbacore" class="csl-entry" role="listitem">
+Hillary, R., &amp; Mosqueira, I. (2024). <em>Conditioning <span>IOTC
+Albacore OMs</span> using the <span>ABC</span> approach</em> (No.
+IOTC-2024-WPM15-08). Indian Ocean Tuna Commission (IOTC). Retrieved from
+Indian Ocean Tuna Commission (IOTC) website: <a href="https://iotc.org/sites/default/files/documents/2024/10/IOTC-2024-WPM15-08_-_ALB_MSE_0.pdf">https://iotc.org/sites/default/files/documents/2024/10/IOTC-2024-WPM15-08_-_ALB_MSE_0.pdf</a>
+</div>
+<div id="ref-IOTCRes1510" class="csl-entry" role="listitem">
+IOTC. (2015). <em>Resolution 15/10 on target and limit reference points
+and a decision framework</em>. Indian Ocean Tuna Commission. Retrieved
+from <a href="https://iotc.org/cmm/resolution-1510-target-and-limit-reference-points-and-decision-framework">https://iotc.org/cmm/resolution-1510-target-and-limit-reference-points-and-decision-framework</a>
+</div>
+<div id="ref-IOTC2022WPTmT08ASRE__FINAL" class="csl-entry" role="listitem">
+IOTC. (2022). <em>Report of the 8th <span>Session</span> of the
+<span>IOTC Working Party</span> on <span>Temperate Tunas</span>:
+<span>Assessment Meeting</span></em> (No. IOTC–2022–WPTmT08(AS)–R[E]).
+Indian Ocean Tuna Commission (IOTC). Retrieved from Indian Ocean Tuna
+Commission (IOTC) website: <a href="https://iotc.org/sites/default/files/documents/2025/10/IOTC-2025-WPM16-11-ALB_MSE.pdf">https://iotc.org/sites/default/files/documents/2025/10/IOTC-2025-WPM16-11-ALB_MSE.pdf</a>
+</div>
+<div id="ref-mosqueiraSimulationTestingManagement" class="csl-entry" role="listitem">
+Mosqueira, I., &amp; Hillary, R. (2025a). <em>Simulation testing of
+management procedures for <span>Indian</span> ocean albacore tuna based
+on <span>ABC</span> operating models: Report on progress</em> (No.
+IOTC-2025-WPM16-11). Indian Ocean Tuna Commission (IOTC). Retrieved from
+Indian Ocean Tuna Commission (IOTC) website: <a href="https://iotc.org/sites/default/files/documents/2025/10/IOTC-2025-WPM16-11-ALB_MSE.pdf">https://iotc.org/sites/default/files/documents/2025/10/IOTC-2025-WPM16-11-ALB_MSE.pdf</a>
+</div>
+<div id="ref-mosqueiraTechnicalDevelopmentManagement" class="csl-entry" role="listitem">
+Mosqueira, I., &amp; Hillary, R. (2025b). <em>Technical development of
+<span>Management Strategy Evaluation</span> for <span>Indian</span>
+ocean albacore tuna: 2025 progress report and current status</em> (No.
+IOTC-20260WPM17(MSE)-03). Indian Ocean Tuna Commission (IOTC). Retrieved
+from Indian Ocean Tuna Commission (IOTC) website: <a href="https://iotc.org/sites/default/files/documents/2026/03/IOTC-2026-WPM17MSE-03-ALB_MSE.pdf">https://iotc.org/sites/default/files/documents/2026/03/IOTC-2026-WPM17MSE-03-ALB_MSE.pdf</a>
+</div>
+<div id="ref-mosqueira2026albacore" class="csl-entry" role="listitem">
+Mosqueira, I., &amp; Hillary, R. (2026). <em>Progress of the
+<span>Indian Ocean Albacore MSE</span></em>. Online: Presentation to the
+10th IOTC Technical Committee on Management Procedures (TCMP10); Indian
+Ocean Tuna Commission. Retrieved from <a href="https://iotc.org/sites/default/files/documents/2026/05/IOTC-2026-TCMP10-04-presenation.pdf">https://iotc.org/sites/default/files/documents/2026/05/IOTC-2026-TCMP10-04-presenation.pdf</a>
+</div>
+</div>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -655,11 +665,11 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./results.html" class="pagination-link" aria-label="Presentation of Results">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Presentation of Results</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./operating-models.html" class="pagination-link" aria-label="Operating Models">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Operating Models</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

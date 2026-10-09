@@ -2,38 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://iotcalb.bluematterscience.com/tsd/index.html</loc>
-    <lastmod>2026-07-10T16:58:00.914Z</lastmod>
+    <lastmod>2026-10-08T18:28:08.357Z</lastmod>
   </url>
   <url>
-    <loc>https://iotcalb.bluematterscience.com/tsd/operating-model-overview.html</loc>
-    <lastmod>2026-07-10T17:41:21.697Z</lastmod>
-  </url>
-  <url>
-    <loc>https://iotcalb.bluematterscience.com/tsd/operating-model-base-case.html</loc>
-    <lastmod>2026-07-10T17:41:29.871Z</lastmod>
-  </url>
-  <url>
-    <loc>https://iotcalb.bluematterscience.com/tsd/operating-model-robustness.html</loc>
-    <lastmod>2026-07-10T16:41:36.349Z</lastmod>
-  </url>
-  <url>
-    <loc>https://iotcalb.bluematterscience.com/tsd/fishery-data.html</loc>
-    <lastmod>2026-07-10T17:03:58.532Z</lastmod>
+    <loc>https://iotcalb.bluematterscience.com/tsd/operating-models.html</loc>
+    <lastmod>2026-10-08T19:36:51.507Z</lastmod>
   </url>
   <url>
     <loc>https://iotcalb.bluematterscience.com/tsd/forward-projections.html</loc>
-    <lastmod>2026-07-10T17:05:21.613Z</lastmod>
-  </url>
-  <url>
-    <loc>https://iotcalb.bluematterscience.com/tsd/management-procedures.html</loc>
-    <lastmod>2026-07-09T22:39:47.846Z</lastmod>
+    <lastmod>2026-10-08T20:15:09.261Z</lastmod>
   </url>
   <url>
     <loc>https://iotcalb.bluematterscience.com/tsd/performance-metrics.html</loc>
-    <lastmod>2026-07-08T21:00:51.778Z</lastmod>
+    <lastmod>2026-10-09T04:00:03.718Z</lastmod>
   </url>
   <url>
-    <loc>https://iotcalb.bluematterscience.com/tsd/presentation-results.html</loc>
-    <lastmod>2026-07-08T21:01:16.877Z</lastmod>
+    <loc>https://iotcalb.bluematterscience.com/tsd/management-procedures.html</loc>
+    <lastmod>2026-10-08T21:10:56.747Z</lastmod>
+  </url>
+  <url>
+    <loc>https://iotcalb.bluematterscience.com/tsd/results.html</loc>
+    <lastmod>2026-10-09T05:01:18.237Z</lastmod>
+  </url>
+  <url>
+    <loc>https://iotcalb.bluematterscience.com/tsd/references.html</loc>
+    <lastmod>2026-10-08T18:28:08.387Z</lastmod>
   </url>
 </urlset>
