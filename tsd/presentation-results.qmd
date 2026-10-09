@@ -1,8 +1,0 @@
-# Presentation of Results
-
-```{r}
-#| include: false
-rnorm(5)
-```
-
-> This chapter is incomplete 

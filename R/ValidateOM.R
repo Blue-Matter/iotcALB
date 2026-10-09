@@ -113,12 +113,17 @@ ValidateOM <- function(Hist,
     n   <- data.frame(Sim = sim, Year = CalYears, N = apply(it$N, 1, sum))
     ssb <- data.frame(Sim = sim, Year = CalYears, SSB = it$SSB)
 
-    catch_fl <- matrix(0, nYear, nFleet)
+    nCondFleet <- dim(it$H)[3]
+    catch_fl <- matrix(0, nYear, nCondFleet)
     for (s in seq_len(Seasons))
       for (sex in seq_len(nSex)) {
         sw       <- it$sela[, s, sex, ] * albMSE_Biology$wta[, s, sex]
         catch_fl <- catch_fl + it$N[, , s, sex] %*% sw * it$H[, s, ]
       }
+
+    # fleets combined in the OM (MSEtool::CombineFleets): compare total catch
+    if (nFleet == 1 && nCondFleet > 1)
+      catch_fl <- matrix(rowSums(catch_fl), nYear, 1)
 
     catch <- data.frame(Sim   = sim,
                         Year  = rep(CalYears, nFleet),

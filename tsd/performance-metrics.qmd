@@ -1,8 +1,225 @@
-# Performance Metrics
+---
+suppress-bibliography: true
+---
+
+# Performance Metrics {#sec-performance-metrics}
 
 ```{r}
 #| include: false
-rnorm(5)
+library(MSEtool)
+OM <- readRDS("../objects/OM/OM5b.om")
+
+# reference levels, as set in analysis/02-define-CMPs.R (tuning) and
+# analysis/04-make-slick.R (performance metrics)
+Assigned <- function(File, Names) {
+  for (e in parse(File))
+    if (is.call(e) && identical(e[[1]], as.name("<-")) && is.name(e[[2]]) &&
+        as.character(e[[2]]) %in% Names)
+      eval(e, envir = globalenv())
+}
+Assigned("../analysis/02-define-CMPs.R", c("PGKMin", "PSafety", "TACChange", "TACChangeDown", "nSimTune"))
+Assigned("../analysis/04-make-slick.R", c("SBLim", "FLim"))
+
+MPYears <- seq(MPStartYear(OM), by = 1, length.out = max(floor(Years(OM, "P"))) - MPStartYear(OM) + 1)
+TuneYears <- utils::tail(MPYears, 15)
+SafetyYears <- MPYears[-seq_len(5)]   # MSEtool::PMYears(OM, Skip = 5)
+Windows <- list(Short  = utils::head(MPYears, 10),
+                Medium = setdiff(MPYears, c(utils::head(MPYears, 10), utils::tail(MPYears, 10))),
+                Long   = utils::tail(MPYears, 10))
+yr_range <- function(x) paste(range(x), collapse = "--")
+
+SlickFile <- "../objects/slick.rds"
+HasSlick  <- file.exists(SlickFile)
+if (HasSlick) slick <- readRDS(SlickFile)
 ```
 
-> This chapter is incomplete
+## Management Objectives
+
+The IOTC has adopted interim target and limit reference points for albacore: targets of SB~MSY~ and F~MSY~, and limits of `r SBLim` SB~MSY~ and `r FLim` F~MSY~ [@IOTCRes1510]. As SB~MSY~ is less than 20% of SB~0~ in the OMs, the limit reference point corresponds to less than 10% of SB~0~ (@sec-om-status), and therefore performance relative to SB~0~ is also reported.
+
+Consistent with the tuning objectives used for the earlier albacore MSE work [@mosqueiraTechnicalDevelopmentManagement; @mosqueira2026albacore], the CMPs are evaluated against the following candidate management objectives:
+
+1.  **Status:** Maintain the stock in the green quadrant of the Kobe plot (SB \> SB~MSY~ and F \< F~MSY~) with at least `r 100 * PGKMin`% probability;
+2.  **Safety:** Spawning biomass should not fall below the limit reference point, with at least `r 100 * PSafety`% probability, and fishing mortality should be below the limit reference point with a high probability;
+3.  **Yield:** Maximise catches;
+4.  **Stability:** Changes in the TAC between management periods should be relatively gradual.
+
+The CMPs are tuned for the Base Case OM to maximise the mean annual catch over the years the CMPs are active (`r yr_range(MPYears)`), at two tuning levels (@sec-tuning-methodology):
+
+1.  *T1*: a probability of at least `r PGKMin` of being in the Kobe green quadrant over the last 15 years of the projection period (`r yr_range(TuneYears)`);
+
+2.  *T2*: the *T1* constraint plus a requirement of a probability of at least `r PSafety` that spawning biomass stays above the LRP (`r SBLim` SB~MSY~) in every year over `r yr_range(SafetyYears)`.
+
+```{r}
+#| echo: false
+#| label: tbl-pm-summary
+#| tbl-cap: "The candidate management objectives and the corresponding performance metrics."
+PMTab <- data.frame(
+    Category  = c(rep('Status', 4), rep('Safety', 3), rep('Yield', 2), rep('Stability', 2)),
+    Objective = c(paste0('Maintain the stock in the Kobe green quadrant with at least ', 100 * PGKMin, '% probability'), '', '', '',
+                  paste0('SB should not fall below the LRP, with at least ', 100 * PSafety, '% probability, and F should be below the limit with high probability'), '', '',
+                  'Maximise catches', '',
+                  'Change in TAC between management periods should be relatively gradual', ''),
+    Metric    = c(paste0('Probability that SB > SB~MSY~ and F < F~MSY~ over ', yr_range(TuneYears), ' (tuning constraint, T1 and T2), over ', yr_range(MPYears), ', and in each time window'),
+                  'Probability that SB < SB~MSY~ and F > F~MSY~ (Kobe red quadrant)',
+                  'Mean SB/SB~MSY~ and mean F/F~MSY~',
+                  'Minimum SB/SB~MSY~',
+                  paste0('Probability that SB > ', SBLim, ' SB~MSY~ in every year over ', yr_range(SafetyYears), ' (tuning constraint, T2)'),
+                  paste0('Probability that SB > ', SBLim, ' SB~MSY~ (proportion of simulations and years)'),
+                  paste0('Probability that F < ', FLim, ' F~MSY~'),
+                  paste0('Mean annual catch over ', yr_range(MPYears), ' (maximised in tuning)'),
+                  'Mean annual catch in each time window',
+                  'Mean absolute proportional change in the TAC between management periods',
+                  'Probability that the TAC change limit is binding')
+  )
+# HTML table (kableExtra), so markdown is converted by hand: subscripts, comparison signs, and dashes
+Sub <- function(x) {
+  x <- gsub(' < ', ' &lt; ', gsub(' > ', ' &gt; ', x, fixed = TRUE), fixed = TRUE)
+  x <- gsub('--', '&ndash;', x, fixed = TRUE)
+  gsub('~([A-Za-z0-9]+)~', '<sub>\\1</sub>', x)
+}
+PMTab$Objective <- Sub(PMTab$Objective)
+PMTab$Metric    <- Sub(PMTab$Metric)
+Groups <- rle(PMTab$Category)
+kt <- knitr::kable(PMTab[, c('Objective', 'Metric')], format = 'html', escape = FALSE, row.names = FALSE,
+                   col.names = c('Management Objective', 'Performance Metric')) |>
+  kableExtra::kable_styling(bootstrap_options = c('striped', 'condensed'), full_width = TRUE)
+Start <- 1
+for (i in seq_along(Groups$values)) {
+  kt <- kableExtra::pack_rows(kt, Groups$values[i], Start, Start + Groups$lengths[i] - 1,
+                              label_row_css = 'font-weight: bold; border-bottom: 1px solid #ddd;')
+  Start <- Start + Groups$lengths[i]
+}
+kt
+```
+
+## Performance Metrics
+
+All performance metrics are calculated over the `r length(MPYears)` years in which the CMPs set the TAC (`r yr_range(MPYears)`), unless a different set of years is specified, for each OM and CMP. The following notation is used:
+
+- $s = 1, \ldots, S$ indexes the simulations and $y \in \mathcal{Y}$ the $N_Y$ years;
+- $SB_{s,y}$ is the female spawning biomass in the reference season of year $y$;
+- $F_{s,y}$ is the annual apical fishing mortality, summed over the quarters of year $y$, on the same basis as F~MSY~;
+- $C_{s,y}$ is the annual catch (total removals of all fleets, in t);
+- $\text{TAC}_{s,c}$ is the TAC set in management cycle $c = 1, \ldots, N_C$, where $\text{TAC}_{s,0}$ is the TAC (catch) in the year before the first management cycle, $\Delta_{s,c} = \lvert \text{TAC}_{s,c} - \text{TAC}_{s,c-1} \rvert / \text{TAC}_{s,c-1}$ is the relative change in the TAC, and $\delta_{s,c}$ is the maximum TAC change allowed by the CMP in the direction of the change (increases: `r paste0(100 * TACChange, '%')`; decreases: `r paste0(100 * TACChangeDown[['T1']], '%')` for T1 and `r paste0(100 * TACChangeDown[['T2']], '%')` for T2);
+- $\mathrm{I}(\cdot)$ is 1 if the condition is true and 0 otherwise.
+
+### Status
+
+The probability of being in the green quadrant of the Kobe plot:
+
+$$
+P_{\text{Kobe}} = \frac{1}{S N_Y} \sum_{s} \sum_{y} \mathrm{I}\left(\frac{SB_{s,y}}{SB_{\text{MSY}}} > 1 \ \text{and} \ \frac{F_{s,y}}{F_{\text{MSY}}} < 1\right)
+$$ {#eq-pgk}
+
+calculated for all years the CMPs are active (`r yr_range(MPYears)`), the tuning period (`r yr_range(TuneYears)`), and each time window (@sec-pm-windows). The other Status metrics are calculated over all years the CMPs are active (`r yr_range(MPYears)`).
+
+The probability of being in the red quadrant:
+
+$$
+P_{\text{Red}} = \frac{1}{S N_Y} \sum_{s} \sum_{y} \mathrm{I}\left(\frac{SB_{s,y}}{SB_{\text{MSY}}} < 1 \ \text{and} \ \frac{F_{s,y}}{F_{\text{MSY}}} > 1\right)
+$$ {#eq-pred}
+
+The mean SB/SB~MSY~:
+
+$$
+\overline{SB/SB_{\text{MSY}}} = \frac{1}{S N_Y} \sum_{s} \sum_{y} \frac{SB_{s,y}}{SB_{\text{MSY}}}
+$$ {#eq-sbmean}
+
+the mean F/F~MSY~:
+
+$$
+\overline{F/F_{\text{MSY}}} = \frac{1}{S N_Y} \sum_{s} \sum_{y} \frac{F_{s,y}}{F_{\text{MSY}}}
+$$ {#eq-fmean}
+
+and the minimum SB/SB~MSY~ over the years the CMPs are active in each simulation, $\min_{y} SB_{s,y}/SB_{\text{MSY}}$.
+
+### Safety
+
+The probability that spawning biomass does not fall below the limit reference point (`r SBLim` SB~MSY~; @IOTCRes1510) in any year; i.e., the proportion of simulations in which spawning biomass is above the LRP in every year over `r yr_range(SafetyYears)`:
+
+$$
+P_{\text{Safety}} = \frac{1}{S} \sum_{s} \mathrm{I}\left(\min_{y \in \mathcal{Y}_{\text{S}}} \frac{SB_{s,y}}{SB_{\text{MSY}}} > `r SBLim`\right)
+$$ {#eq-safety}
+
+where $\mathcal{Y}_{\text{S}}$ are the years `r yr_range(SafetyYears)`. A single year below the LRP is a breach. This is the safety constraint of tuning level **T2**.
+
+The first 5 years the CMPs are active are excluded, so that the stock can recover from the catches of the initial projection years, which are not controlled by the CMPs (@sec-tuning-methodology).
+
+The probabilities that spawning biomass is above, and fishing mortality is below, the limit reference points (`r SBLim` SB~MSY~ and `r FLim` F~MSY~), as the proportion of simulations and years, are also reported:
+
+$$
+P_{SB_{\text{lim}}} = \frac{1}{S N_Y} \sum_{s} \sum_{y} \mathrm{I}\left(\frac{SB_{s,y}}{SB_{\text{MSY}}} > `r SBLim`\right)
+$$ {#eq-sblim}
+
+and
+
+$$
+P_{F_{\text{lim}}} = \frac{1}{S N_Y} \sum_{s} \sum_{y} \mathrm{I}\left(\frac{F_{s,y}}{F_{\text{MSY}}} < `r FLim`\right)
+$$ {#eq-flim}
+
+### Yield
+
+The mean annual catch:
+
+$$
+\bar{C} = \frac{1}{S N_Y} \sum_{s} \sum_{y} C_{s,y}
+$$ {#eq-yield}
+
+calculated over all years the CMPs are active and each time window.
+
+### Stability
+
+The mean absolute proportional change in the TAC between management cycles:
+
+$$
+\text{AAV} = \frac{1}{S N_C} \sum_{s} \sum_{c} \Delta_{s,c}
+$$ {#eq-aav}
+
+and the probability that the TAC change limit is binding:
+
+$$
+P_{\delta} = \frac{1}{S N_C} \sum_{s} \sum_{c} \mathrm{I}\left(\Delta_{s,c} \geq \delta_{s,c}\right)
+$$ {#eq-taclimited}
+
+As all CMPs limit TAC increases to `r paste0(100 * TACChange, '%')`, and the *T1* CMPs also limit decreases to `r paste0(100 * TACChangeDown[['T1']], '%')`, the probability that the TAC changes by no more than `r paste0(100 * TACChange, '%')` is not reported. The larger decreases allowed in the *T2* CMPs are reflected in the mean TAC change.
+
+## Time Windows {#sec-pm-windows}
+
+The probability of being in the Kobe green quadrant and the mean catch are also calculated for three time windows:
+
+1.  **Short**: the first 10 years (`r yr_range(Windows$Short)`);
+2.  **Medium**: the second 10 years (`r yr_range(Windows$Medium)`);
+3.  **Long**: the last 10 years (`r yr_range(Windows$Long)`).
+
+## Summary of Performance Metrics
+
+The performance metrics reported for every CMP and OM combination are listed in @tbl-pm-all.
+
+```{r}
+#| echo: false
+#| label: tbl-pm-all
+#| tbl-cap: "Performance metrics computed for every CMP and OM combination."
+#| eval: !expr HasSlick
+bp <- slick@Boxplot
+# plain-text labels from the Slick object: HTML subscripts, comparison signs, and year ranges
+Fmt <- function(x) {
+  x <- gsub('<', '&lt;', gsub('>', '&gt;', x, fixed = TRUE), fixed = TRUE)
+  x <- gsub('\\b(SB|F|B)(MSY|0)\\b', '\\1<sub>\\2</sub>', x, perl = TRUE)
+  gsub('([0-9]+)-([0-9]+)', '\\1&ndash;\\2', x)
+}
+knitr::kable(
+  data.frame(Label = Fmt(Slick::Label(bp)), Description = Fmt(Slick::Description(bp))),
+  format = 'html', escape = FALSE, row.names = FALSE,
+  col.names = c('Metric', 'Description')
+) |>
+  kableExtra::kable_styling(bootstrap_options = c('striped', 'condensed'), full_width = TRUE) |>
+  kableExtra::column_spec(1, width_min = '15em')
+```
+
+```{r}
+#| echo: false
+#| results: asis
+if (!HasSlick)
+  cat("*The table of performance metrics will be added once the results are available.*")
+```

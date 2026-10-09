@@ -1,8 +1,392 @@
-# Management Procedures
+---
+suppress-bibliography: true
+---
+
+# Candidate Management Procedures {#sec-cmps}
 
 ```{r}
 #| include: false
-rnorm(5)
+library(MSEtool)
+library(ggplot2)
+
+# CMP definitions: 02-define-CMPs.R uses paths relative to the project root
+owd <- setwd('..')
+source('analysis/02-define-CMPs.R')
+Assigned <- function(File, Names) {
+  Env <- new.env(parent = globalenv())
+  for (e in parse(File))
+    if (is.call(e) && identical(e[[1]], as.name('<-')) && is.name(e[[2]]) &&
+        as.character(e[[2]]) %in% Names)
+      eval(e, Env)
+  Env
+}
+Env02a <- Assigned('analysis/02a-select-configs.R', c('ConfigTACChange', 'Control'))
+Env02c <- Assigned('analysis/02c-check-SP.R', c('MinConvergence'))
+setwd(owd)
+
+ConfigControl <- Env02a$Control
+TuneCtl       <- MSEtool::TuneControl(Interval = TuneInterval, MaxExpand = 3)
+
+Arg <- function(MP, name) eval(formals(CMPs$Fn[[match(MP, CMPs$MP)]])[[name]])
+pct <- function(x) paste0(round(100 * x), '%')
+yr_range <- function(x) paste(range(x), collapse = '--')
+r2 <- function(x) format(round(x, 2), nsmall = 2)
+
+MPLabels <- c(IR = 'Index Rate', ITB = 'Index Target (Buffer HCR)',
+              BUF = 'Buffer MP', SP = 'Surplus Production')
+SettingName <- c(RecentYears = 'Years averaged for current status', Smooth = 'Index smoothing',
+                 Buffer = 'Lower and upper buffer (SB/SB~MSY~)', HCRThreshold = 'HCR threshold (B/B~MSY~)')
+SettingValue <- function(x) {
+  if (is.logical(x)) return(ifelse(x, 'yes', 'no'))
+  paste(x, collapse = '--')
+}
+
+ConfigText <- function(MP) {
+  Config <- TypeConfig(MP)
+  Text <- character(0)
+  if (!is.null(Config$RecentYears))
+    Text <- c(Text, paste0('current status calculated from the index averaged over the most recent ',
+                           if (Config$RecentYears == 1) 'year' else paste(Config$RecentYears, 'years'),
+                           if (isTRUE(Config$Smooth)) ' after loess smoothing' else if (isFALSE(Config$Smooth)) ' without smoothing' else ''))
+  if (!is.null(Config$Buffer))
+    Text <- c(Text, paste0('buffers at ', paste(Config$Buffer, collapse = ' and '), ' SB~MSY~'))
+  if (!is.null(Config$HCRThreshold))
+    Text <- c(Text, paste0('an HCR threshold of ', Config$HCRThreshold, ' B/B~MSY~'))
+  paste(Text, collapse = ', and ')
+}
+
+TuneDirTSD   <- file.path('..', 'objects', 'Tune')
+SummaryFile  <- file.path(TuneDirTSD, 'Summary.csv')
+HasTune      <- file.exists(SummaryFile)
+if (HasTune) TuneSummary <- utils::read.csv(SummaryFile)
+SPConvFile   <- file.path(TuneDirTSD, 'SP_Convergence.csv')
+HasSPConv    <- file.exists(SPConvFile)
+if (HasSPConv) SPConv <- utils::read.csv(SPConvFile)
 ```
 
-> This chapter is incomplete 
+The MSE currently includes four types of candidate management procedure (CMP), all using the LL1 (NW) CPUE index:
+
+1.  **Index Rate (IR)**: the TAC is a catch/index rate multiplied by the current index, with the rate reduced by a harvest control rule (HCR) at low stock status;
+2.  **Index Target with a Buffer HCR (ITB)**: the TAC is a reference catch scaled by the 'buffer' HCR of the earlier albacore MSE work [@mosqueiraTechnicalDevelopmentManagement];
+3.  **Buffer MP (BUF)**: a replica of the CPUE + buffer HCR MP of the earlier albacore MSE work [@mosqueiraTechnicalDevelopmentManagement], in which the HCR adjusts the previous TAC;
+4.  **Surplus Production (SP)**: the TAC is set from the stock status and F~MSY~ estimated by a surplus production model.
+
+Each CMP type is tuned to two different tuning levels, representing two sets of management objectives (see @sec-tuning-methodology):
+
+-  *T1*: a probability of being in the Kobe green quadrant;
+-  *T2:* the same probability and a probability of never falling below the limit reference point, with larger TAC decreases allowed.
+
+Each CMP is named by its type and tuning level; e.g., *IR_T2* is the Index Rate CMP tuned to *T2*.
+
+All CMPs limit increases in the TAC between management cycles to `r pct(TACChange)`. Decreases are limited to `r pct(TACChangeDown[['T1']])` in the *T1* CMPs and `r pct(TACChangeDown[['T2']])` in the *T2* CMPs (@sec-cmps-tac-change). Variants with a symmetric 30% limit were explored in preliminary runs, where they gave little or no increase in catch with more variable TACs, and were not retained.
+
+All CMPs set a single TAC for the total catch (removals, in t) of all fleets. The CMPs use data aggregated to calendar years: annual catches (summed over the quarters) and annual CPUE indices (averaged over the quarters with data).
+
+## Estimated Stock Status {#sec-cmps-status}
+
+The index-based CMPs estimate stock status from the LL1 CPUE index. The index is expressed relative to its level at SB~MSY~, I~MSY~, calculated from the mean index over `r yr_range(IndexCalYears)` and the median (over simulations) of the mean SB/SB~MSY~ over the same years in the Base Case OM (`r r2(attr(IndexSBMSY, 'SB_SBMSY'))`):
+
+$$I_{\text{MSY}} = \frac{\bar{I}}{\overline{SB/SB_{\text{MSY}}}}$$ {#eq-imsy}
+
+giving I~MSY~ = `r round(IndexSBMSY[[IndexName]], 3)`.
+
+The current status of the index, $S$, is the index averaged over the most recent years, after optional loess smoothing (the number of years and the smoothing are CMP settings; @sec-tuning-methodology). The estimated stock status, in units of SB/SB~MSY~, is $x = S / I_{\text{MSY}}$.
+
+The Surplus Production CMPs estimate stock status as the estimated biomass relative to B~MSY~ at the start of the year the TAC applies (@sec-cmps-sp).
+
+## Harvest Control Rules {#sec-hcrs}
+
+The HCRs are specified in terms of estimated stock status relative to SB~MSY~ (or B~MSY~), with the limit reference point (LRP; `r LRP` SB~MSY~) as a control point [@IOTCRes1510]. 
+
+The output of each HCR is a multiplier on a quantity specific to each CMP type, from which the TAC is calculated (@fig-hcrs):
+
+- Index Rate: the catch/index rate; 
+- Index Target with a Buffer HCR: a reference catch;
+- Buffer MP: the previous TAC;
+- Surplus Production: F~MSY~ estimated by the surplus production model.
+
+The intensity of fishing is set by the tuning parameter (@sec-tuning-methodology).
+
+The HCRs of the Index Rate and Surplus Production CMPs act on a harvest rate (the catch/index rate or the fishing mortality), so the TAC follows the stock, and the fishing intensity is reduced as the estimated stock status declines below the threshold. The HCRs of the Index Target with a Buffer HCR and Buffer MP CMPs act on the TAC itself. These are the buffer MPs of the earlier work, designed to keep the TAC stable while the index is within the buffer, with sharp reductions in the TAC below the lower buffer and the limit.
+
+
+```{r}
+#| label: fig-hcrs
+#| echo: false
+#| fig-width: 9
+#| fig-height: 6
+#| fig-cap: "The harvest control rules of each CMP type, as a function of estimated stock status. The multiplier applies to the catch/index rate (Index Rate), the reference catch (Index Target with a Buffer HCR), the previous TAC (Buffer MP, shown with tunepar = 1), or the estimated F~MSY~ (Surplus Production). The dashed line shows the LRP."
+x <- seq(0, 2.2, length.out = 500)
+HCRCurve <- function(MP) {
+  A <- formals(CMPs$Fn[[match(MP, CMPs$MP)]])
+  if (MP == 'BUF') {
+    L <- eval(A$Limit); B1 <- eval(A$LowerBuffer); B2 <- eval(A$UpperBuffer); SR <- eval(A$SlopeRatio)
+    y <- ifelse(x <= L, (x / L)^2 / 2, ifelse(x <= B1, 0.5 * (1 + (x - L) / (B1 - L)),
+                ifelse(x < B2, 1, 1 + SR * (0.5 / (B1 - L)) * (x - B2))))
+  } else {
+    CPI <- eval(A$HCRControlPointsIndex %||% A$HCRControlPointsBiomass)
+    CPR <- eval(A$HCRControlPointsRate)
+    y <- vapply(x, \(xi) MSEtool::HockeyStickHCR(1, Est = xi, Ref = 1, ControlPointsIndex = CPI,
+                                                 ControlPointsRate = CPR), numeric(1))
+  }
+  data.frame(MP = MPLabels[[MP]], x = x, y = y)
+}
+HCRTypes <- c('IR', 'ITB', 'BUF', 'SP')
+HCRDF <- do.call(rbind, lapply(HCRTypes, HCRCurve))
+HCRDF$MP <- factor(HCRDF$MP, levels = MPLabels[HCRTypes])
+ggplot(HCRDF, aes(x, y)) +
+  geom_vline(xintercept = LRP, linetype = 2, colour = 'darkgray') +
+  geom_line(linewidth = 0.9, colour = '#006DA3') +
+  facet_wrap(~MP, ncol = 2) +
+  expand_limits(y = 0) +
+  labs(x = expression(Estimated~SB/SB[MSY]~or~B/B[MSY]), y = 'Multiplier') +
+  theme_bw()
+```
+
+
+## Index Rate {#sec-cmps-indexrate}
+
+The Index Rate CMPs set the TAC as a catch/index rate multiplied by the current index. The catch/index rate, $\hat{r}$, is the mean total catch over the last `r Arg('IR', 'CalibYears')` historical years divided by the mean index over the same years. The trial TAC is:
+
+$$\text{TrialTAC} = m \times \hat{r} \times S \times \theta(x)$$ {#eq-ir-tac}
+
+where $m$ is the tuning parameter and $\theta(x)$ is the HCR multiplier: 0 at and below the LRP, increasing linearly to 1 at SB~MSY~, and 1 above (@fig-hcrs). Because the catch/index rate is calibrated to the recent catch, $m$ = 1 corresponds to the recent catch/index ratio.
+
+The Index Rate CMPs use `r ConfigText('IR')` (@sec-tuning-methodology).
+
+## Index Target with a Buffer HCR {#sec-cmps-itb}
+
+```{r}
+#| include: false
+BufferCP <- BufferHCR(TypeConfig('ITB')$Buffer, Limit = LRP)
+```
+
+The Index Target with a Buffer HCR CMPs set the TAC as a reference catch, the mean total catch over the last `r Arg('ITB', 'CalibYears')` historical years ($\bar{C}$), scaled by the tuning parameter and the HCR:
+
+$$\text{TrialTAC} = m \times \bar{C} \times \theta_C(x)$$ {#eq-itb-tac}
+
+The HCR, $\theta_C(x)$, has the shape of the buffer HCR of the earlier albacore MSE work [@mosqueiraTechnicalDevelopmentManagement] (@fig-hcrs):
+
+- 1 (the reference catch) between the lower and upper buffers (`r paste(TypeConfig('ITB')$Buffer, collapse = ' and ')` SB~MSY~);
+- decreasing linearly below the lower buffer to `r BufferCP$HCRControlPointsRate[2]` at the LRP, and more rapidly below the LRP, to zero at `r BufferCP$HCRControlPointsIndex[1]` SB~MSY~;
+- increasing above the upper buffer at a quarter of the rate of the decrease between the LRP and the lower buffer, to `r round(utils::tail(BufferCP$HCRControlPointsRate, 1), 2)` at `r utils::tail(BufferCP$HCRControlPointsIndex, 1)` SB~MSY~.
+
+The output is applied to a fixed reference catch (the first formulation tested in the earlier work), so the TAC remains stable while the index is between the buffers, and the reference catch is the tuning parameter. The position of the buffers is a CMP setting (@sec-tuning-methodology).
+
+The Index Target with a Buffer HCR CMPs use `r ConfigText('ITB')` (@sec-tuning-methodology).
+
+## Buffer MP {#sec-cmps-buf}
+
+```{r}
+#| include: false
+# data years used for the first TAC set by the Buffer MP
+BUFLastData  <- MSEtool::MPStartYear(Hist@OM) - MSEtool::DataLag(Hist@OM) - 1
+BUFDataYears <- (BUFLastData - BUFArgs$nYears + 1):BUFLastData
+```
+
+The Buffer MP CMPs replicate the CPUE + buffer HCR MP of the earlier albacore MSE work [@mosqueiraTechnicalDevelopmentManagement]. In each management cycle, the MP calculates an index metric, applies the buffer HCR to it, and multiplies the previous TAC by the output of the HCR.
+
+The index metric, $x$, is a weighted mean of the LL1 index over the last `r BUFArgs$nYears` data years, relative to its level at SB~MSY~ (I~MSY~; @sec-cmps-status):
+
+$$
+x = \frac{1}{I_{\text{MSY}}} \sum_{i=1}^{4} w_i \, I_{y_i}
+$$ {#eq-buf-index}
+
+where $y_1, \ldots, y_4$ are the last four data years, from the oldest to the most recent. The most recent year has a weight of 0.5, and the other 0.5 is shared among the three earlier years in proportion to their position (1, 2, and 3), giving weights of $w_i$ = 1/12, 2/12, 3/12, and 6/12. The metric therefore responds mainly to the most recent index value, with some smoothing from the earlier years. For example, the first TAC (`r MSEtool::MPStartYear(Hist@OM)`) uses the index in `r paste(range(BUFDataYears), collapse = '--')`, with the highest weight on `r BUFLastData`.
+
+The HCR multiplier, $\theta_B(x)$, is (@fig-hcrs):
+
+$$
+\theta_B(x) =
+\begin{cases}
+\dfrac{1}{2}\left(\dfrac{x}{L}\right)^2 & x \le L \\[8pt]
+\dfrac{1}{2}\left(1 + \dfrac{x - L}{B_1 - L}\right) & L < x \le B_1 \\[8pt]
+1 & B_1 < x < B_2 \\[4pt]
+1 + s \dfrac{0.5}{B_1 - L}(x - B_2) & x \ge B_2
+\end{cases}
+$$ {#eq-buf-hcr}
+
+where $L$ is the limit, $B_1$ and $B_2$ are the lower and upper buffers, and $s$ is the ratio of the slope of the increase above the upper buffer to the slope of the decrease between the limit and the lower buffer.
+
+The TAC is the previous TAC multiplied by the HCR output:
+
+$$
+\text{TrialTAC} = \text{TAC}_{\text{prev}} \times \theta_B(x)
+$$ {#eq-buf-tac}
+
+The TAC is therefore held while the index metric is between the buffers, reduced in every management cycle while it is below the lower buffer, and increased in every management cycle while it is above the upper buffer. Unlike the other CMPs, changes in the TAC of less than 1% are not ignored (@sec-cmps-tac-change).
+
+As in the earlier work, the CMP is tuned by the position of the upper buffer, which is set to $B_1 + (B_2 - B_1)/m$, where larger values of the tuning parameter $m$ move the upper buffer towards the lower buffer, so that the TAC increases at lower values of the index and the catch is higher. The tuning parameter does not change the lower buffer or the limit, which determine how quickly the TAC is reduced.
+
+## Surplus Production {#sec-cmps-sp}
+
+Model-based MPs combining a surplus production model with an HCR were also proposed in the earlier albacore MSE work [@mosqueiraTechnicalDevelopmentManagement; @mosqueira2026albacore]. The Surplus Production CMPs fit a Schaefer surplus production model to the annual total catch and the annual LL1 CPUE index from `r min(floor(Years(Hist@OM, 'H')))`. F~MSY~ and MSY are estimated, the catchability and the observation standard deviation of the index are estimated at their maximum likelihood values, and the catch is assumed known. 
+
+To match the dynamics of the Base Case OM, the initial depletion is fixed at the Base Case OM value, and informative priors are used for F~MSY~ and MSY (@tbl-sp-settings). The surplus production model has a single biomass pool, so the OM quantities are calculated for the total biomass of both sexes:
+
+- **Initial depletion**: the median total biomass relative to unfished at the start of `r min(floor(Years(Hist@OM, 'H')))`;
+- **F~MSY~ prior**: lognormal, with median equal to the median harvest rate at MSY (MSY / B~MSY~) of the Base Case OM;
+- **MSY prior**: lognormal, with median equal to the median MSY of the Base Case OM.
+
+The CVs of the priors are the CV of the OM values over simulations, or a minimum of 0.3 (F~MSY~) and 0.4 (MSY), so the priors are informative but allow the data to update the estimates.
+
+In each management cycle, the model is fitted to the available data, starting from the estimates of the previous management cycle, and projected to the start of the year the TAC applies, assuming the catch in the intervening years is the TAC in force. The fishing mortality is:
+
+$$F = m \times \hat{F}_{\text{MSY}} \times \theta\!\left(\hat{B}/\hat{B}_{\text{MSY}}\right)$$ {#eq-sp-f}
+
+where $m$ is the tuning parameter and $\theta$ is the HCR multiplier: 0 at and below the LRP (`r LRP` B/B~MSY~), increasing linearly to 1 at the HCR threshold, and 1 above (@fig-hcrs). The TAC is the mean annual catch when the model is projected at $F$ over the `r Interval(Hist@OM)`-year management cycle. If the model fit fails or does not converge, the previous TAC is kept.
+
+The Surplus Production CMPs use `r ConfigText('SP')` (@sec-tuning-methodology).
+
+```{r}
+#| label: tbl-sp-settings
+#| echo: false
+#| tbl-cap: "Fixed parameters and priors of the surplus production model, from the Base Case OM."
+knitr::kable(data.frame(
+  Parameter = c('Shape (n)', 'Initial depletion (B/K)', 'F~MSY~', 'MSY (t)'),
+  Treatment = c('Fixed (Schaefer)', 'Fixed', 'Estimated, lognormal prior', 'Estimated, lognormal prior'),
+  Value     = c('2', r2(SPSet$Depletion),
+                sprintf('median %.3f, CV %.2f', SPSet$Priors$FMSY[1], SPSet$Priors$FMSY[2]),
+                sprintf('median %s, CV %.2f', format(round(SPSet$Priors$MSY[1]), big.mark = ','), SPSet$Priors$MSY[2]))),
+  row.names = FALSE)
+```
+
+
+
+## Input Data When the MP Is Applied {#sec-cmps-data}
+
+In the MSE, each CMP is applied in every management cycle to the historical catch and CPUE data, plus the observations added since the previous cycle. Once a data value has been observed, it does not change in later management cycles. The performance of the CMPs, and the tuning of their catch level, therefore assume that the MP will be applied in the same way: new data are added to the existing series, but the existing values are not revised.
+
+This matters because the CMPs are calibrated to the historical data. For example, the index level at SB~MSY~ (I~MSY~), which sets the position of the HCR control points of the index-based CMPs, is calculated from the historical LL1 index (@sec-cmps-status). If the historical index were revised after an MP is adopted, for example by a new standardisation of the CPUE, the same stock status would give a different index relative to I~MSY~, and therefore a different TAC. The MP applied would then no longer be the MP that was tested. The revision of the historical LL1 index between the 2022 and 2025 stock assessments (@sec-updated-data) shows that revisions of this size can occur.
+
+When an MP is adopted, its specification should therefore include the data it uses:
+
+- **The index**: The standardisation model, fleets, areas, seasons, and data selection should be fixed, so that new years can be added without changing the historical values (for example, by fixing the historical index and scaling new values to it);
+- **The catch data**: The catch series used by the MP should be defined in the same way;
+- **A review process**: Changes to the input data that cannot be avoided (e.g. revisions to the reported catches, or changes in the fishery that require a new standardisation) should be reviewed by the scientific committee, and may require the MP to be re-calibrated and re-tested in the MSE before it is applied.
+
+## TAC Change Limits {#sec-cmps-tac-change}
+
+The TAC calculated by a CMP (the trial TAC) is constrained so that it does not change by more than a set proportion from the TAC in force:
+
+$$
+\text{TAC} = \text{TAC}_{\text{prev}} \times \min\left(\max\left(\frac{\text{TrialTAC}}{\text{TAC}_{\text{prev}}},\ 1 - \delta_{\text{down}}\right),\ 1 + \delta_{\text{up}}\right)
+$$ {#eq-tac-limit}
+
+where $\text{TAC}_{\text{prev}}$ is the TAC in force, and $\delta_{\text{up}}$ and $\delta_{\text{down}}$ are the maximum proportional increase and decrease. In the first management cycle, $\text{TAC}_{\text{prev}}$ is the catch in the last initial projection year (@sec-interim-years). For all CMPs except the Buffer MP, changes of less than 1% are ignored, and the TAC is left unchanged.
+
+The limits differ between the tuning levels:
+
+- *T1*: TAC increases and decreases are both limited to `r pct(TACChange)`, as in the earlier albacore MSE work;
+- *T2*: TAC increases are limited to `r pct(TACChange)`, and TAC decreases to `r pct(TACChangeDown[['T2']])`.
+
+The T2 CMPs allow larger decreases because, with a `r pct(TACChangeDown[['T1']])` limit, no CMP could meet the safety constraint of T2 (@sec-tuning-methodology). With a `r pct(TACChangeDown[['T1']])` limit, the TAC can fall by at most `r pct(TACChangeDown[['T1']])` every `r Interval(Hist@OM)` years, i.e., to `r pct((1 - TACChangeDown[['T1']])^3)` of its initial level after three management cycles. In the simulations where the stock is already depleted by the catches of the initial projection years (@sec-interim-collapse), this is not fast enough to prevent the stock from falling below the LRP, even if the CMP sets a TAC close to zero.
+
+## Tuning Methodology {#sec-tuning-methodology}
+
+Each CMP has a single tuning parameter, $m$, that scales the target fishing intensity.
+
+The CMPs are tuned for the Base Case OM to maximise the mean annual catch over `r yr_range(CatchYears)`, subject to the constraints of two tuning levels (@sec-performance-metrics):
+
+- *T1 (Status):* a probability of at least `r PGKMin` of being in the Kobe green quadrant over `r yr_range(TuneYears)` (the proportion of simulations and years);
+- *T2 (Status and Safety):* the *T1* constraint, and a probability of at least `r PSafety` that spawning biomass stays above the LRP (`r LRP` SB~MSY~) in every year over `r yr_range(SafetyYears)`. A simulation in which spawning biomass falls below the LRP in any year is a breach, so at most `r pct(1 - PSafety)` of simulations may breach the LRP. The *T2* CMPs allow TAC decreases of up to `r pct(TACChangeDown[['T2']])` (@sec-cmps-tac-change).
+
+The two tuning levels show the trade-off between catch and the risk of depleting the stock. In preliminary runs, maximising the catch subject only to the probability of the Kobe green quadrant (*T1*) led to CMPs that depleted the low-productivity simulations (low MSY; @sec-conditioning-review) to well below the LRP, while the probability of the Kobe green quadrant, averaged over all simulations and years, was kept at its minimum by the other simulations. The safety constraint of *T2* limits the proportion of simulations where this happens.
+
+The safety constraint excludes the first 5 years the CMPs are active (`r yr_range(setdiff(CatchYears, SafetyYears))`), one management cycle and two years, so that the stock can recover from the catches in the initial projection years, which the CMPs do not control (@sec-interim-years). 
+
+The CMPs were tuned with `r nSimTune` of the `r nSim(Hist)` simulations. The `r nSimTune` simulations were a stratified random sample where the simulations were split into `r nMSYGroups` groups of equal size by MSY, and each group then split into `r nSimTune / nMSYGroups` groups of equal size by female SB/SB~0~ in `r OMSpecs$CurrentYear`, and one simulation drawn from each group. The tuning simulations therefore have the same distribution of productivity and stock status as all simulations, including the simulations where the stock collapses before the CMPs start (@sec-interim-collapse). 
+
+The tuning is done in two steps.
+
+### Step 1: CMP Settings
+
+In addition to the tuning parameter $m$, the Index Rate, Index Target with a Buffer HCR, and Surplus Production CMPs have other settings that affect their performance, including for example the number of years used to calculate the current index (@tbl-config-candidates). For each of these CMP types, the settings were chosen from a small set of candidate values, as the configuration of values that gives the highest catch when the CMP is tuned to the *T1* constraint:
+
+1.  Each configuration was projected at `r ConfigControl$nGridConfig` values of $m$ over `r paste(TuneInterval, collapse = '--')`, using `r ConfigControl$nSimConfig` of the tuning simulations, and the catch at the value of $m$ that meets the constraint was interpolated;
+2.  The configuration with the highest catch was then fully tuned (Step 2) with all `r nSimTune` tuning simulations.
+
+The selected settings are used for the CMPs of that type at both tuning levels. The Buffer MP CMPs use the settings of the earlier work, so no settings were selected for them. 
+
+```{r}
+#| label: tbl-config-candidates
+#| echo: false
+#| tbl-cap: "The candidate values of the CMP settings compared in step 1, and the selected values."
+ConfigDF <- do.call(rbind, lapply(names(ConfigCandidates), \(mp) {
+  data.frame(CMP = MPLabels[[mp]],
+             Setting = unname(SettingName[names(ConfigCandidates[[mp]])]),
+             Candidates = vapply(ConfigCandidates[[mp]], \(x) paste(vapply(x, SettingValue, ''), collapse = ', '),
+                                 character(1)),
+             Selected = vapply(names(ConfigCandidates[[mp]]), \(nm) {
+               v <- SelectedConfigs[[mp]][[nm]]
+               if (is.null(v)) '--' else SettingValue(v)
+             }, character(1)))
+}))
+# HTML table (kableExtra), grouped by CMP type: subscripts and dashes converted by hand
+Html <- function(x) {
+  x <- gsub('--', '&ndash;', x, fixed = TRUE)
+  x <- gsub('~([A-Za-z0-9]+)~', '<sub>\\1</sub>', x)
+  gsub('\\b(SB|B)(MSY)\\b', '\\1<sub>\\2</sub>', x, perl = TRUE)
+}
+ConfigDF[] <- lapply(ConfigDF, Html)
+Groups <- rle(ConfigDF$CMP)
+kt <- knitr::kable(ConfigDF[, c('Setting', 'Candidates', 'Selected')], format = 'html', escape = FALSE,
+                   row.names = FALSE, col.names = c('Setting', 'Candidate values', 'Selected')) |>
+  kableExtra::kable_styling(bootstrap_options = c('striped', 'condensed'), full_width = TRUE)
+Start <- 1
+for (i in seq_along(Groups$values)) {
+  kt <- kableExtra::pack_rows(kt, Groups$values[i], Start, Start + Groups$lengths[i] - 1,
+                              label_row_css = 'font-weight: bold; border-bottom: 1px solid #ddd;')
+  Start <- Start + Groups$lengths[i]
+}
+kt
+```
+
+### Step 2: Tuning Parameter
+
+$m$ was then tuned for each of the `r nrow(CMPs)` CMPs (`r length(unique(CMPs$MP))` CMP types at `r length(TuneLevels)` tuning levels). It was first evaluated on a grid of `r TuneCtl$nGrid` log-spaced values over `r paste(TuneInterval, collapse = '--')`, which was extended by a factor of `r TuneCtl$ExpandFactor` up to `r TuneCtl$MaxExpand` times if necessary, and then refined towards the largest value that meets the constraints (or the value with the highest catch, if that is lower), until the range of $m$ is within `r pct(TuneCtl$TolTune)` or the binding constraint is within `r 100 * TuneCtl$TolPM`% of its minimum (@tbl-tuning). A CMP for which no value of $m$ meets the constraints is reported as infeasible and is not projected.
+
+```{r}
+#| label: tbl-tuning
+#| echo: false
+#| eval: !expr HasTune
+#| tbl-cap: !expr "paste0('The tuned value of the tuning parameter (m) for each CMP, and the mean annual catch (', yr_range(CatchYears), '), probability of being in the Kobe green quadrant (', yr_range(TuneYears), '), and probability that SB stays above the LRP in every year (', yr_range(SafetyYears), '; a tuning constraint for T2 only, shown for T1 for comparison) in the Base Case OM (tuning simulations). The settings of each CMP are shown in @tbl-config-candidates. &dagger; No value of m met the constraints, so the CMP was not projected.')"
+TuneTab <- TuneSummary
+TuneTab <- TuneTab[order(TuneTab$Tuning), ]
+Dash <- '&ndash;'
+f2 <- function(x) ifelse(is.na(x), Dash, formatC(x, format = 'f', digits = 2))
+Infeasible <- TuneTab$TuneStatus == 'infeasible'
+# safety is not a tuning constraint for T1: values from the projections of the tuned CMPs
+# in the tuning simulations (analysis/02d-tuned-performance.R)
+TunedPMFile <- file.path(TuneDirTSD, 'Tuned_PMs_80sims.csv')
+if (file.exists(TunedPMFile)) {
+  TunedPM <- utils::read.csv(TunedPMFile)
+  Fill <- is.na(TuneTab$Safety) & TuneTab$Name %in% TunedPM$MP
+  TuneTab$Safety[Fill] <- TunedPM$Safety[match(TuneTab$Name[Fill], TunedPM$MP)]
+}
+TuneOut <- data.frame(
+  CMP       = ifelse(Infeasible, paste0(TuneTab$Name, '&dagger;'), TuneTab$Name),
+  m         = ifelse(TuneTab$TuneStatus == 'infeasible', Dash, formatC(TuneTab$tunepar, format = 'f', digits = 2)),
+  MeanCatch = ifelse(TuneTab$TuneStatus == 'infeasible', Dash, format(round(TuneTab$MeanCatch), big.mark = ',')),
+  PGK       = ifelse(TuneTab$TuneStatus == 'infeasible', Dash, f2(TuneTab$PGK)),
+  Safety    = ifelse(TuneTab$TuneStatus == 'infeasible', Dash, f2(TuneTab$Safety)))
+# one group of rows per tuning level, labelled with its TAC decrease limit
+GroupLab <- vapply(unique(TuneTab$Tuning), \(t) {
+  d <- TuneTab$TACChangeDown[TuneTab$Tuning == t][1]
+  paste0(t, ' (TAC decreases of up to ', pct(d), ')')
+}, character(1))
+Groups <- rle(TuneTab$Tuning)
+kt <- knitr::kable(TuneOut, format = 'html', escape = FALSE, row.names = FALSE, align = c('l', rep('r', 4)),
+                   col.names = c('CMP', 'm', 'Mean catch (t)', 'P(Kobe green)', 'P(SB &gt; LRP every year)')) |>
+  kableExtra::kable_styling(bootstrap_options = c('striped', 'condensed'), full_width = TRUE)
+# infeasible tunings in grey italics
+if (any(Infeasible))
+  kt <- kableExtra::row_spec(kt, which(Infeasible), italic = TRUE, color = '#777777')
+Start <- 1
+for (i in seq_along(Groups$values)) {
+  kt <- kableExtra::pack_rows(kt, GroupLab[[Groups$values[i]]], Start, Start + Groups$lengths[i] - 1,
+                              label_row_css = 'font-weight: bold; border-bottom: 1px solid #ddd;')
+  Start <- Start + Groups$lengths[i]
+}
+kt
+```

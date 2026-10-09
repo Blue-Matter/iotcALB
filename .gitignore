@@ -10,3 +10,12 @@ docs
 homepage/_site
 objects/Hist
 tsd/figures
+objects/MSE
+objects/Tune/*.tune
+logs
+objects/Tune/*.mse
+objects/Tune/archive-*
+
+# working paper drafts (not tracked)
+IOTC-ALB-MSE-WorkingPaper*.docx
+~$*.docx

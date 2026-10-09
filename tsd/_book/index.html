@@ -6,6 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Adrian Hordyk">
+<meta name="dcterms.date" content="2026-10-08">
 
 <title>Trial Specifications Document</title>
 <style>
@@ -23,27 +25,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -53,17 +35,21 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./operating-model-overview.html" rel="next">
+<link href="./operating-models.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-a55b41f70a3cc1b3f7c96c7da63be89b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-a55b41f70a3cc1b3f7c96c7da63be89b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-a55b41f70a3cc1b3f7c96c7da63be89b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -152,50 +138,38 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./operating-model-overview.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Operating Model Conditioning</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./operating-model-base-case.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Base Case Operating Model</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./operating-model-robustness.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Robustness Operating Models</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./fishery-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Fishery Data</span></span></a>
+  <a href="./operating-models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Operating Models</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./forward-projections.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Forward Projections</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./management-procedures.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Management Procedures</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Forward Projections</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./performance-metrics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Performance Metrics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Performance Metrics</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./presentation-results.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Presentation of Results</span></span></a>
+  <a href="./management-procedures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Candidate Management Procedures</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./results.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Presentation of Results</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
   </div>
 </li>
     </ul>
@@ -204,14 +178,14 @@ div.csl-indent {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a>
   <ul class="collapse">
   <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background"><span class="header-section-number">1.1</span> Background</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">1.2</span> References</a></li>
+  <li><a href="#about-the-albacore-mse" id="toc-about-the-albacore-mse" class="nav-link" data-scroll-target="#about-the-albacore-mse"><span class="header-section-number">1.2</span> About the Albacore MSE</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -226,10 +200,29 @@ div.csl-indent {
 </div>
 
 
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Adrian Hordyk <a href="mailto:adrian@bluematterscience.com" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Blue Matter Science
+          </p>
+      </div>
+  </div>
 
 <div class="quarto-title-meta">
 
-    
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">8 October 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -241,42 +234,21 @@ div.csl-indent {
 
 <section id="introduction" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
-<p>This Trial Specifications Document (TSD) describes the design and technical details of the Management Strategy Evaluation (MSE) for Indian Ocean albacore tuna (<em>Thunnus alalunga</em>), including the operating models, candidate management procedures, and performance metrics used to evaluate them.</p>
-<p>It is a <strong>living document</strong> that will be updated as the MSE progresses to reflect the current state of the analysis.</p>
+<p>This Trial Specifications Document (TSD) describes the design and technical details of the Management Strategy Evaluation (MSE) of Indian Ocean albacore tuna (<em>Thunnus alalunga</em>), including the operating models, candidate management procedures, and performance metrics used to evaluate them.</p>
+<p>The TSD is a <strong>living document</strong> that will be updated as the MSE progresses to reflect the current state of the analysis.</p>
+<p>For more information on the Indian Ocean Albacore MSE process see the project <a href="https://iotcalb.bluematterscience.com/">homepage</a>.</p>
 <section id="background" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="background"><span class="header-section-number">1.1</span> Background</h2>
 <p>Indian Ocean albacore tuna is managed by the <a href="https://www.iotc.org">Indian Ocean Tuna Commission (IOTC)</a>. MSE is being used as a tool to support harvest strategy development for this stock, providing a structured framework for testing candidate management procedures against a range of plausible representations of stock and fishery dynamics before adoption of a management procedure.</p>
-<p>The initial development of the MSE framework, including the design and conditioning of the Base Case and Robustness Operating Models (OMs), was conducted by R. Hillary (CSIRO, Australia) and I. Mosqueira (Wageningen Marine Research, Netherlands). Key outputs of that work include:</p>
-<ul>
-<li><p><span class="citation" data-cites="mosqueira2026albacore">Mosqueira &amp; Hillary (<a href="#ref-mosqueira2026albacore" role="doc-biblioref">2026</a>)</span></p></li>
-<li><p><span class="citation" data-cites="mosqueiraSimulationTestingManagement">Mosqueira &amp; Hillary (<a href="#ref-mosqueiraSimulationTestingManagement" role="doc-biblioref">2025a</a>)</span></p></li>
-<li><p><span class="citation" data-cites="mosqueiraTechnicalDevelopmentManagement">Mosqueira &amp; Hillary (<a href="#ref-mosqueiraTechnicalDevelopmentManagement" role="doc-biblioref">2025b</a>)</span></p></li>
-</ul>
-<!-- -->
-<ul>
-<li><span class="citation" data-cites="hillaryConditioningIOTCAlbacore">Hillary &amp; Mosqueira (<a href="#ref-hillaryConditioningIOTCAlbacore" role="doc-biblioref">2024</a>)</span></li>
-</ul>
-<p>In 2026, <a href="https://www.bluematterscience.com/">Blue Matter Science</a> was contracted to continue work on the Albacore MSE. The analysis is implemented in the <a href="https://github.com/Blue-Matter/iotcALB"><code>iotcALB</code></a> R package, built using the <a href="https://openmse.com/">openMSE</a> framework, and builds directly on the conditioning outputs produced in the earlier phase of work.</p>
-<p>For more information on the IO Albacore MSE process see the project <a href="https://iotcalb.bluematterscience.com/">homepage</a>.</p>
+<p>The initial development of the MSE framework, including the design and conditioning of the Base Case and Robustness Operating Models (OMs) and exploratory runs of candidate management procedures, was conducted by R. Hillary (CSIRO, Australia) and I. Mosqueira (Wageningen Marine Research, Netherlands) <span class="citation" data-cites="hillaryConditioningIOTCAlbacore mosqueiraSimulationTestingManagement mosqueiraTechnicalDevelopmentManagement mosqueira2026albacore">(Hillary &amp; Mosqueira, 2024; Mosqueira &amp; Hillary, 2025a, 2025b, 2026)</span>.</p>
+<p>In 2026, <a href="https://www.bluematterscience.com/">Blue Matter Science</a> was contracted to continue work on the Albacore MSE. The MSE builds directly on the OM conditioning outputs and the candidate management procedures of the earlier phase of work.</p>
 </section>
-<section id="references" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="references"><span class="header-section-number">1.2</span> References</h2>
+<section id="about-the-albacore-mse" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="about-the-albacore-mse"><span class="header-section-number">1.2</span> About the Albacore MSE</h2>
+<p>The Indian Ocean Albacore MSE is built and maintained by <a href="https://bluematterscience.com">Blue Matter Science</a> using the <a href="https://openMSE.com">openMSE</a> framework.</p>
+<p>The analysis is fully reproducible: all code, functions, and objects used to build the operating models, candidate management procedures, and performance metrics are available in the <a href="https://github.com/Blue-Matter/iotcALB"><code>iotcALB</code></a> R package. To reproduce the analysis, download the GitHub repository and work through the scripts in the <code>analysis</code> directory.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
-<div id="ref-hillaryConditioningIOTCAlbacore" class="csl-entry" role="listitem">
-Hillary, R., &amp; Mosqueira, I. (2024). <em>Conditioning <span>IOTC Albacore OMs</span> using the <span>ABC</span> approach</em> (No. IOTC-2024-WPM15-08). Indian Ocean Tuna Commission (IOTC). Retrieved from Indian Ocean Tuna Commission (IOTC) website: <a href="https://iotc.org/sites/default/files/documents/2024/10/IOTC-2024-WPM15-08_-_ALB_MSE_0.pdf">https://iotc.org/sites/default/files/documents/2024/10/IOTC-2024-WPM15-08_-_ALB_MSE_0.pdf</a>
-</div>
-<div id="ref-mosqueiraSimulationTestingManagement" class="csl-entry" role="listitem">
-Mosqueira, I., &amp; Hillary, R. (2025a). <em>Simulation testing of management procedures for <span>Indian</span> ocean albacore tuna based on <span>ABC</span> operating models: Report on progress</em> (No. IOTC-2025-WPM16-11). Indian Ocean Tuna Commission (IOTC). Retrieved from Indian Ocean Tuna Commission (IOTC) website: <a href="https://iotc.org/sites/default/files/documents/2025/10/IOTC-2025-WPM16-11-ALB_MSE.pdf">https://iotc.org/sites/default/files/documents/2025/10/IOTC-2025-WPM16-11-ALB_MSE.pdf</a>
-</div>
-<div id="ref-mosqueiraTechnicalDevelopmentManagement" class="csl-entry" role="listitem">
-Mosqueira, I., &amp; Hillary, R. (2025b). <em>Technical development of <span>Management Strategy Evaluation</span> for <span>Indian</span> ocean albacore tuna: 2025 progress report and current status</em> (No. IOTC-20260WPM17(MSE)-03). Indian Ocean Tuna Commission (IOTC). Retrieved from Indian Ocean Tuna Commission (IOTC) website: <a href="https://iotc.org/sites/default/files/documents/2026/03/IOTC-2026-WPM17MSE-03-ALB_MSE.pdf">https://iotc.org/sites/default/files/documents/2026/03/IOTC-2026-WPM17MSE-03-ALB_MSE.pdf</a>
-</div>
-<div id="ref-mosqueira2026albacore" class="csl-entry" role="listitem">
-Mosqueira, I., &amp; Hillary, R. (2026). <em>Progress of the <span>Indian Ocean Albacore MSE</span></em>. Online: Presentation to the 10th IOTC Technical Committee on Management Procedures (TCMP10); Indian Ocean Tuna Commission. Retrieved from <a href="https://iotc.org/sites/default/files/documents/2026/05/IOTC-2026-TCMP10-04-presenation.pdf">https://iotc.org/sites/default/files/documents/2026/05/IOTC-2026-TCMP10-04-presenation.pdf</a>
-</div>
-</div>
 </section>
 </section>
 
@@ -685,8 +657,8 @@ Mosqueira, I., &amp; Hillary, R. (2026). <em>Progress of the <span>Indian Ocean 
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./operating-model-overview.html" class="pagination-link" aria-label="Operating Model Conditioning">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Operating Model Conditioning</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./operating-models.html" class="pagination-link" aria-label="Operating Models">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Operating Models</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

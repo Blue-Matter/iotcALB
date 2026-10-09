@@ -1,0 +1,31 @@
+meta:
+  name: "Blue Matter Science"
+
+color:
+  palette:
+    ink: "#1f2937"
+    ink-light: "#5b6472"
+    navy: "#006DA3"
+    teal: "#014F47"
+    hairline: "#e2e5e9"
+  foreground: ink
+  background: "#ffffff"
+  primary: navy
+  secondary: teal
+  link: navy
+
+typography:
+  fonts:
+    - family: "Source Sans Pro"
+      source: google
+    - family: "Merriweather"
+      source: google
+  base:
+    family: "Source Sans Pro"
+  headings:
+    family: "Merriweather"
+    weight: 600
+    color: ink
+  link:
+    color: navy
+    decoration: none

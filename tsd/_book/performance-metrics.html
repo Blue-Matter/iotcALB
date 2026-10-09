@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.38">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
-<title>8&nbsp; Performance Metrics – Trial Specifications Document</title>
+<title>4&nbsp; Performance Metrics – Trial Specifications Document</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -25,7 +22,6 @@ ul.task-list li input[type="checkbox"] {
 }
 </style>
 
-
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
@@ -33,19 +29,22 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./presentation-results.html" rel="next">
-<link href="./management-procedures.html" rel="prev">
+<link href="./management-procedures.html" rel="next">
+<link href="./forward-projections.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-a55b41f70a3cc1b3f7c96c7da63be89b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-a55b41f70a3cc1b3f7c96c7da63be89b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-a55b41f70a3cc1b3f7c96c7da63be89b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -71,17 +70,38 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-
-
+}</script><script src="site_libs/kePrint-0.0.1/kePrint.js"></script><link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 </head>
-
 <body class="nav-sidebar floating nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Trial Specifications Document</span>
@@ -93,7 +113,7 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="https://iotcalb.bluematterscience.com/"> 
 <span class="menu-text">Albacore MSE Homepage</span></a>
   </li>  
@@ -102,30 +122,24 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">iotcALB R Package</span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
+</div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
     <a href="https://github.com/Blue-Matter/iotcALB" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
 </div>
       </div> <!-- /container-fluid -->
-    </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./performance-metrics.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Performance Metrics</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./performance-metrics.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Performance Metrics</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="sidebar-menu-container"> 
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
@@ -133,66 +147,65 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./operating-model-overview.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Operating Model Conditioning</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./operating-model-base-case.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Base Case Operating Model</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./operating-model-robustness.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Robustness Operating Models</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./fishery-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Fishery Data</span></span></a>
+  <a href="./operating-models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Operating Models</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./forward-projections.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Forward Projections</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./management-procedures.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Management Procedures</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Forward Projections</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./performance-metrics.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Performance Metrics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Performance Metrics</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./presentation-results.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Presentation of Results</span></span></a>
+  <a href="./management-procedures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Candidate Management Procedures</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./results.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Presentation of Results</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
   </div>
 </li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li><a href="#management-objectives" id="toc-management-objectives" class="nav-link active" data-scroll-target="#management-objectives"><span class="header-section-number">4.1</span> Management Objectives</a></li>
+  <li>
+<a href="#performance-metrics" id="toc-performance-metrics" class="nav-link" data-scroll-target="#performance-metrics"><span class="header-section-number">4.2</span> Performance Metrics</a>
+  <ul class="collapse">
+<li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status"><span class="header-section-number">4.2.1</span> Status</a></li>
+  <li><a href="#safety" id="toc-safety" class="nav-link" data-scroll-target="#safety"><span class="header-section-number">4.2.2</span> Safety</a></li>
+  <li><a href="#yield" id="toc-yield" class="nav-link" data-scroll-target="#yield"><span class="header-section-number">4.2.3</span> Yield</a></li>
+  <li><a href="#stability" id="toc-stability" class="nav-link" data-scroll-target="#stability"><span class="header-section-number">4.2.4</span> Stability</a></li>
+  </ul>
+</li>
+  <li><a href="#sec-pm-windows" id="toc-sec-pm-windows" class="nav-link" data-scroll-target="#sec-pm-windows"><span class="header-section-number">4.3</span> Time Windows</a></li>
+  <li><a href="#summary-of-performance-metrics" id="toc-summary-of-performance-metrics" class="nav-link" data-scroll-target="#summary-of-performance-metrics"><span class="header-section-number">4.4</span> Summary of Performance Metrics</a></li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Performance Metrics</span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title"><span id="sec-performance-metrics" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Performance Metrics</span></span></h1>
 </div>
 
 
@@ -206,17 +219,284 @@ ul.task-list li input[type="checkbox"] {
   
 
 
-</header>
+</header><section id="management-objectives" class="level2" data-number="4.1"><h2 data-number="4.1" class="anchored" data-anchor-id="management-objectives">
+<span class="header-section-number">4.1</span> Management Objectives</h2>
+<p>The IOTC has adopted interim target and limit reference points for albacore: targets of SB<sub>MSY</sub> and F<sub>MSY</sub>, and limits of 0.4 SB<sub>MSY</sub> and 1.4 F<sub>MSY</sub><span class="citation" data-cites="IOTCRes1510">(IOTC, 2015)</span>. As SB<sub>MSY</sub> is less than 20% of SB<sub>0</sub> in the OMs, the limit reference point corresponds to less than 10% of SB<sub>0</sub> (<a href="operating-models.html#sec-om-status" class="quarto-xref"><span>Section 2.3</span></a>), and therefore performance relative to SB<sub>0</sub> is also reported.</p>
+<p>Consistent with the tuning objectives used for the earlier albacore MSE work <span class="citation" data-cites="mosqueiraTechnicalDevelopmentManagement mosqueira2026albacore">(Mosqueira &amp; Hillary, 2025, 2026)</span>, the CMPs are evaluated against the following candidate management objectives:</p>
+<ol type="1">
+<li>
+<strong>Status:</strong> Maintain the stock in the green quadrant of the Kobe plot (SB &gt; SB<sub>MSY</sub> and F &lt; F<sub>MSY</sub>) with at least 60% probability;</li>
+<li>
+<strong>Safety:</strong> Spawning biomass should not fall below the limit reference point, with at least 90% probability, and fishing mortality should be below the limit reference point with a high probability;</li>
+<li>
+<strong>Yield:</strong> Maximise catches;</li>
+<li>
+<strong>Stability:</strong> Changes in the TAC between management periods should be relatively gradual.</li>
+</ol>
+<p>The CMPs are tuned for the Base Case OM to maximise the mean annual catch over the years the CMPs are active (2029–2058), at two tuning levels (<a href="management-procedures.html#sec-tuning-methodology" class="quarto-xref"><span>Section 5.9</span></a>):</p>
+<ol type="1">
+<li><p><em>T1</em>: a probability of at least 0.6 of being in the Kobe green quadrant over the last 15 years of the projection period (2044–2058);</p></li>
+<li><p><em>T2</em>: the <em>T1</em> constraint plus a requirement of a probability of at least 0.9 that spawning biomass stays above the LRP (0.4 SB<sub>MSY</sub>) in every year over 2034–2058.</p></li>
+</ol>
+<div class="cell">
+<div id="tbl-pm-summary" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-pm-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4.1: The candidate management objectives and the corresponding performance metrics.
+</figcaption><div aria-describedby="tbl-pm-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="table table-striped table-condensed cell caption-top table-sm small">
+<thead><tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Management Objective</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Performance Metric</th>
+</tr></thead>
+<tbody>
+<tr class="odd" data-grouplength="4">
+<td colspan="2" style="font-weight: bold; border-bottom: 1px solid #ddd"><strong>Status</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Maintain the stock in the Kobe green quadrant with at least 60% probability</td>
+<td style="text-align: left;">Probability that SB &gt; SB<sub>MSY</sub> and F &lt; F<sub>MSY</sub> over 2044–2058 (tuning constraint, T1 and T2), over 2029–2058, and in each time window</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1"></td>
+<td style="text-align: left;">Probability that SB &lt; SB<sub>MSY</sub> and F &gt; F<sub>MSY</sub> (Kobe red quadrant)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1"></td>
+<td style="text-align: left;">Mean SB/SB<sub>MSY</sub> and mean F/F<sub>MSY</sub>
+</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1"></td>
+<td style="text-align: left;">Minimum SB/SB<sub>MSY</sub>
+</td>
+</tr>
+<tr class="even" data-grouplength="3">
+<td colspan="2" style="font-weight: bold; border-bottom: 1px solid #ddd"><strong>Safety</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">SB should not fall below the LRP, with at least 90% probability, and F should be below the limit with high probability</td>
+<td style="text-align: left;">Probability that SB &gt; 0.4 SB<sub>MSY</sub> in every year over 2034–2058 (tuning constraint, T2)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1"></td>
+<td style="text-align: left;">Probability that SB &gt; 0.4 SB<sub>MSY</sub> (proportion of simulations and years)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1"></td>
+<td style="text-align: left;">Probability that F &lt; 1.4 F<sub>MSY</sub>
+</td>
+</tr>
+<tr class="even" data-grouplength="2">
+<td colspan="2" style="font-weight: bold; border-bottom: 1px solid #ddd"><strong>Yield</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Maximise catches</td>
+<td style="text-align: left;">Mean annual catch over 2029–2058 (maximised in tuning)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1"></td>
+<td style="text-align: left;">Mean annual catch in each time window</td>
+</tr>
+<tr class="odd" data-grouplength="2">
+<td colspan="2" style="font-weight: bold; border-bottom: 1px solid #ddd"><strong>Stability</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Change in TAC between management periods should be relatively gradual</td>
+<td style="text-align: left;">Mean absolute proportional change in the TAC between management periods</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1"></td>
+<td style="text-align: left;">Probability that the TAC change limit is binding</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section><section id="performance-metrics" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="performance-metrics">
+<span class="header-section-number">4.2</span> Performance Metrics</h2>
+<p>All performance metrics are calculated over the 30 years in which the CMPs set the TAC (2029–2058), unless a different set of years is specified, for each OM and CMP. The following notation is used:</p>
+<ul>
+<li>
+<span class="math inline">\(s = 1, \ldots, S\)</span> indexes the simulations and <span class="math inline">\(y \in \mathcal{Y}\)</span> the <span class="math inline">\(N_Y\)</span> years;</li>
+<li>
+<span class="math inline">\(SB_{s,y}\)</span> is the female spawning biomass in the reference season of year <span class="math inline">\(y\)</span>;</li>
+<li>
+<span class="math inline">\(F_{s,y}\)</span> is the annual apical fishing mortality, summed over the quarters of year <span class="math inline">\(y\)</span>, on the same basis as F<sub>MSY</sub>;</li>
+<li>
+<span class="math inline">\(C_{s,y}\)</span> is the annual catch (total removals of all fleets, in t);</li>
+<li>
+<span class="math inline">\(\text{TAC}_{s,c}\)</span> is the TAC set in management cycle <span class="math inline">\(c = 1, \ldots, N_C\)</span>, where <span class="math inline">\(\text{TAC}_{s,0}\)</span> is the TAC (catch) in the year before the first management cycle, <span class="math inline">\(\Delta_{s,c} = \lvert \text{TAC}_{s,c} - \text{TAC}_{s,c-1} \rvert / \text{TAC}_{s,c-1}\)</span> is the relative change in the TAC, and <span class="math inline">\(\delta_{s,c}\)</span> is the maximum TAC change allowed by the CMP in the direction of the change (increases: 15%; decreases: 15% for T1 and 30% for T2);</li>
+<li>
+<span class="math inline">\(\mathrm{I}(\cdot)\)</span> is 1 if the condition is true and 0 otherwise.</li>
+</ul>
+<section id="status" class="level3" data-number="4.2.1"><h3 data-number="4.2.1" class="anchored" data-anchor-id="status">
+<span class="header-section-number">4.2.1</span> Status</h3>
+<p>The probability of being in the green quadrant of the Kobe plot:</p>
+<p><span id="eq-pgk"><span class="math display">\[
+P_{\text{Kobe}} = \frac{1}{S N_Y} \sum_{s} \sum_{y} \mathrm{I}\left(\frac{SB_{s,y}}{SB_{\text{MSY}}} &gt; 1 \ \text{and} \ \frac{F_{s,y}}{F_{\text{MSY}}} &lt; 1\right)
+\tag{4.1}\]</span></span></p>
+<p>calculated for all years the CMPs are active (2029–2058), the tuning period (2044–2058), and each time window (<a href="#sec-pm-windows" class="quarto-xref"><span>Section 4.3</span></a>). The other Status metrics are calculated over all years the CMPs are active (2029–2058).</p>
+<p>The probability of being in the red quadrant:</p>
+<p><span id="eq-pred"><span class="math display">\[
+P_{\text{Red}} = \frac{1}{S N_Y} \sum_{s} \sum_{y} \mathrm{I}\left(\frac{SB_{s,y}}{SB_{\text{MSY}}} &lt; 1 \ \text{and} \ \frac{F_{s,y}}{F_{\text{MSY}}} &gt; 1\right)
+\tag{4.2}\]</span></span></p>
+<p>The mean SB/SB<sub>MSY</sub>:</p>
+<p><span id="eq-sbmean"><span class="math display">\[
+\overline{SB/SB_{\text{MSY}}} = \frac{1}{S N_Y} \sum_{s} \sum_{y} \frac{SB_{s,y}}{SB_{\text{MSY}}}
+\tag{4.3}\]</span></span></p>
+<p>the mean F/F<sub>MSY</sub>:</p>
+<p><span id="eq-fmean"><span class="math display">\[
+\overline{F/F_{\text{MSY}}} = \frac{1}{S N_Y} \sum_{s} \sum_{y} \frac{F_{s,y}}{F_{\text{MSY}}}
+\tag{4.4}\]</span></span></p>
+<p>and the minimum SB/SB<sub>MSY</sub> over the years the CMPs are active in each simulation, <span class="math inline">\(\min_{y} SB_{s,y}/SB_{\text{MSY}}\)</span>.</p>
+</section><section id="safety" class="level3" data-number="4.2.2"><h3 data-number="4.2.2" class="anchored" data-anchor-id="safety">
+<span class="header-section-number">4.2.2</span> Safety</h3>
+<p>The probability that spawning biomass does not fall below the limit reference point (0.4 SB<sub>MSY</sub>; <span class="citation" data-cites="IOTCRes1510">IOTC (2015)</span>) in any year; i.e., the proportion of simulations in which spawning biomass is above the LRP in every year over 2034–2058:</p>
+<p><span id="eq-safety"><span class="math display">\[
+P_{\text{Safety}} = \frac{1}{S} \sum_{s} \mathrm{I}\left(\min_{y \in \mathcal{Y}_{\text{S}}} \frac{SB_{s,y}}{SB_{\text{MSY}}} &gt; 0.4\right)
+\tag{4.5}\]</span></span></p>
+<p>where <span class="math inline">\(\mathcal{Y}_{\text{S}}\)</span> are the years 2034–2058. A single year below the LRP is a breach. This is the safety constraint of tuning level <strong>T2</strong>.</p>
+<p>The first 5 years the CMPs are active are excluded, so that the stock can recover from the catches of the initial projection years, which are not controlled by the CMPs (<a href="management-procedures.html#sec-tuning-methodology" class="quarto-xref"><span>Section 5.9</span></a>).</p>
+<p>The probabilities that spawning biomass is above, and fishing mortality is below, the limit reference points (0.4 SB<sub>MSY</sub> and 1.4 F<sub>MSY</sub>), as the proportion of simulations and years, are also reported:</p>
+<p><span id="eq-sblim"><span class="math display">\[
+P_{SB_{\text{lim}}} = \frac{1}{S N_Y} \sum_{s} \sum_{y} \mathrm{I}\left(\frac{SB_{s,y}}{SB_{\text{MSY}}} &gt; 0.4\right)
+\tag{4.6}\]</span></span></p>
+<p>and</p>
+<p><span id="eq-flim"><span class="math display">\[
+P_{F_{\text{lim}}} = \frac{1}{S N_Y} \sum_{s} \sum_{y} \mathrm{I}\left(\frac{F_{s,y}}{F_{\text{MSY}}} &lt; 1.4\right)
+\tag{4.7}\]</span></span></p>
+</section><section id="yield" class="level3" data-number="4.2.3"><h3 data-number="4.2.3" class="anchored" data-anchor-id="yield">
+<span class="header-section-number">4.2.3</span> Yield</h3>
+<p>The mean annual catch:</p>
+<p><span id="eq-yield"><span class="math display">\[
+\bar{C} = \frac{1}{S N_Y} \sum_{s} \sum_{y} C_{s,y}
+\tag{4.8}\]</span></span></p>
+<p>calculated over all years the CMPs are active and each time window.</p>
+</section><section id="stability" class="level3" data-number="4.2.4"><h3 data-number="4.2.4" class="anchored" data-anchor-id="stability">
+<span class="header-section-number">4.2.4</span> Stability</h3>
+<p>The mean absolute proportional change in the TAC between management cycles:</p>
+<p><span id="eq-aav"><span class="math display">\[
+\text{AAV} = \frac{1}{S N_C} \sum_{s} \sum_{c} \Delta_{s,c}
+\tag{4.9}\]</span></span></p>
+<p>and the probability that the TAC change limit is binding:</p>
+<p><span id="eq-taclimited"><span class="math display">\[
+P_{\delta} = \frac{1}{S N_C} \sum_{s} \sum_{c} \mathrm{I}\left(\Delta_{s,c} \geq \delta_{s,c}\right)
+\tag{4.10}\]</span></span></p>
+<p>As all CMPs limit TAC increases to 15%, and the <em>T1</em> CMPs also limit decreases to 15%, the probability that the TAC changes by no more than 15% is not reported. The larger decreases allowed in the <em>T2</em> CMPs are reflected in the mean TAC change.</p>
+</section></section><section id="sec-pm-windows" class="level2" data-number="4.3"><h2 data-number="4.3" class="anchored" data-anchor-id="sec-pm-windows">
+<span class="header-section-number">4.3</span> Time Windows</h2>
+<p>The probability of being in the Kobe green quadrant and the mean catch are also calculated for three time windows:</p>
+<ol type="1">
+<li>
+<strong>Short</strong>: the first 10 years (2029–2038);</li>
+<li>
+<strong>Medium</strong>: the second 10 years (2039–2048);</li>
+<li>
+<strong>Long</strong>: the last 10 years (2049–2058).</li>
+</ol></section><section id="summary-of-performance-metrics" class="level2" data-number="4.4"><h2 data-number="4.4" class="anchored" data-anchor-id="summary-of-performance-metrics">
+<span class="header-section-number">4.4</span> Summary of Performance Metrics</h2>
+<p>The performance metrics reported for every CMP and OM combination are listed in <a href="#tbl-pm-all" class="quarto-xref">Table&nbsp;<span>4.2</span></a>.</p>
+<div class="cell">
+<div id="tbl-pm-all" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-pm-all-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4.2: Performance metrics computed for every CMP and OM combination.
+</figcaption><div aria-describedby="tbl-pm-all-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="table table-striped table-condensed cell caption-top table-sm small">
+<thead><tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Metric</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Description</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left; min-width: 15em;">P(Kobe green) 2044–2058</td>
+<td style="text-align: left;">Probability of being in the green quadrant of the Kobe plot (SB &gt; SB<sub>MSY</sub> and F &lt; F<sub>MSY</sub>) over 2044–2058, the last 15 projection years (the tuning objective).</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; min-width: 15em;">P(Kobe green)</td>
+<td style="text-align: left;">Probability of being in the green quadrant of the Kobe plot (SB &gt; SB<sub>MSY</sub> and F &lt; F<sub>MSY</sub>) over all years the MP is active (2029–2058).</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; min-width: 15em;">P(Kobe green) (years 1–10)</td>
+<td style="text-align: left;">Probability of being in the green quadrant of the Kobe plot over the first 10 years the MP is active (2029–2038).</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; min-width: 15em;">P(Kobe green) (years 11–20)</td>
+<td style="text-align: left;">Probability of being in the green quadrant of the Kobe plot over the middle 10 years the MP is active (2039–2048).</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; min-width: 15em;">P(Kobe green) (years 21–30)</td>
+<td style="text-align: left;">Probability of being in the green quadrant of the Kobe plot over the last 10 years the MP is active (2049–2058).</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; min-width: 15em;">P(Kobe red)</td>
+<td style="text-align: left;">Probability of being in the red quadrant of the Kobe plot (SB &lt; SB<sub>MSY</sub> and F &gt; F<sub>MSY</sub>) over all years the MP is active.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; min-width: 15em;">Mean SB/SB<sub>MSY</sub>
+</td>
+<td style="text-align: left;">Mean annual female spawning biomass relative to SB<sub>MSY</sub> over all years the MP is active.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; min-width: 15em;">Mean F/F<sub>MSY</sub>
+</td>
+<td style="text-align: left;">Mean annual fishing mortality relative to F<sub>MSY</sub> over all years the MP is active.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; min-width: 15em;">Minimum SB/SB<sub>MSY</sub>
+</td>
+<td style="text-align: left;">Lowest annual SB/SB<sub>MSY</sub> reached in the years the MP is active.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; min-width: 15em;">P(SB &gt; 0.4 SB<sub>MSY</sub> every year) 2034–2058</td>
+<td style="text-align: left;">Probability that spawning biomass is above the limit reference point (0.4 SB<sub>MSY</sub>) in every year 2034–2058, i.e. the proportion of simulations that never fall below the limit (the safety tuning constraint of T2). The first 5 years the MP is active are excluded so the stock can recover from the interim catches.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; min-width: 15em;">P(SB &gt; 0.4 SB<sub>MSY</sub>)</td>
+<td style="text-align: left;">Probability that spawning biomass is above the limit reference point (0.4 SB<sub>MSY</sub>) over all years the MP is active (proportion of simulations and years).</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; min-width: 15em;">P(F &lt; 1.4 F<sub>MSY</sub>)</td>
+<td style="text-align: left;">Probability that fishing mortality is below the limit reference point (1.4 F<sub>MSY</sub>) over all years the MP is active.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; min-width: 15em;">Mean catch</td>
+<td style="text-align: left;">Mean annual catch (t) over all years the MP is active (2029–2058).</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; min-width: 15em;">Mean catch (years 1–10)</td>
+<td style="text-align: left;">Mean annual catch (t) over the first 10 years the MP is active (2029–2038).</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; min-width: 15em;">Mean catch (years 11–20)</td>
+<td style="text-align: left;">Mean annual catch (t) over the middle 10 years the MP is active (2039–2048).</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; min-width: 15em;">Mean catch (years 21–30)</td>
+<td style="text-align: left;">Mean annual catch (t) over the last 10 years the MP is active (2049–2058).</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; min-width: 15em;">Mean TAC change</td>
+<td style="text-align: left;">Mean absolute proportional change in the TAC between management cycles.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; min-width: 15em;">P(TAC change limited)</td>
+<td style="text-align: left;">Probability that the change in the TAC between management cycles is at the maximum allowed by the MP (the TAC change limit is binding).</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
 
 
-<blockquote class="blockquote">
-<p>This chapter is incomplete</p>
-</blockquote>
-
-
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -615,21 +895,18 @@ ul.task-list li input[type="checkbox"] {
       }
     }
   });
-  </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./management-procedures.html" class="pagination-link" aria-label="Management Procedures">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Management Procedures</span></span>
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./forward-projections.html" class="pagination-link" aria-label="Forward Projections">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Forward Projections</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./presentation-results.html" class="pagination-link" aria-label="Presentation of Results">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Presentation of Results</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./management-procedures.html" class="pagination-link" aria-label="Candidate Management Procedures">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Candidate Management Procedures</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
-
 
 
 

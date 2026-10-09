@@ -13,3 +13,7 @@
 ^homepage$
 ^analysis$
 ^_quarto\.yml$
+^objects$
+^figures$
+^logs$
+^notes$

@@ -38,4 +38,8 @@ in the observed catches.
 
 The data are replaced in both the OM data (\code{Hist@OM@Data}) and the
 simulated data (\code{Hist@Data}) for the combined stock.
+
+If the fleets of the OM have been combined with \code{\link[MSEtool:CombineFleets]{MSEtool::CombineFleets()}},
+the new landings are summed over fleets, and the CPUE indices, which
+\code{\link[MSEtool:CombineFleets]{MSEtool::CombineFleets()}} moves to the \code{Survey} slot, are replaced there.
 }

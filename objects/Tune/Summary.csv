@@ -1,0 +1,9 @@
+"Name","MP","Tuning","TACChange","TACChangeDown","TuningLabel","Config","tunepar","TuneStatus","MeanCatch","PGK","Safety"
+"IR_T1","IR","T1",0.15,0.15,"P(Kobe green, 2044-2058) >= 0.6","RecentYears = 1, Smooth = TRUE",1.58853963366786,"boundary",43808.1480031435,0.5975,NA
+"ITB_T1","ITB","T1",0.15,0.15,"P(Kobe green, 2044-2058) >= 0.6","RecentYears = 1, Buffer = 1-1.5",1.18191700298397,"boundary",40769.9507652728,0.599166666666667,NA
+"BUF_T1","BUF","T1",0.15,0.15,"P(Kobe green, 2044-2058) >= 0.6","Earlier MP settings",0.21267868630027,"boundary",41810.6739490319,0.5975,NA
+"SP_T1","SP","T1",0.15,0.15,"P(Kobe green, 2044-2058) >= 0.6","HCRThreshold = 0.8",1.00571043944717,"boundary",43577.1043836317,0.598333333333333,NA
+"IR_T2","IR","T2",0.15,0.3,"P(Kobe green, 2044-2058) >= 0.6 and P(SB > 0.4 SBMSY in every year 2034-2058) >= 0.9, with TAC decreases of up to 30%","RecentYears = 1, Smooth = TRUE",1.29295372456894,"boundary",39617.4197697002,0.8175,0.9
+"ITB_T2","ITB","T2",0.15,0.3,"P(Kobe green, 2044-2058) >= 0.6 and P(SB > 0.4 SBMSY in every year 2034-2058) >= 0.9, with TAC decreases of up to 30%","RecentYears = 1, Buffer = 1-1.5",0.862005680923777,"boundary",33383.9463606172,0.859166666666667,0.9
+"BUF_T2","BUF","T2",0.15,0.3,"P(Kobe green, 2044-2058) >= 0.6 and P(SB > 0.4 SBMSY in every year 2034-2058) >= 0.9, with TAC decreases of up to 30%","Earlier MP settings",0.0037037037037037,"infeasible",36371.3719086461,0.7675,0.7875
+"SP_T2","SP","T2",0.15,0.3,"P(Kobe green, 2044-2058) >= 0.6 and P(SB > 0.4 SBMSY in every year 2034-2058) >= 0.9, with TAC decreases of up to 30%","HCRThreshold = 0.8",0.626408553846174,"interior",33423.6290168386,0.881666666666667,0.9

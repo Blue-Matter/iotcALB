@@ -200,6 +200,12 @@ ImportOM <- function(OMName, Interval, Seasons, DataLag, CurrentYear, nYear,
   # ---- Data ----
   OM@Data <- list(Combined = iotcALB::albMSE_Data)
 
+  # one Timing per CPUE index: a single value is not recycled when the indices
+  # are moved to the Survey slot by MSEtool::CombineFleets(), and an index with
+  # no Timing is not used by MSEtool::FitSP()
+  CPUE <- OM@Data$Combined@CPUE
+  OM@Data$Combined@CPUE@Timing <- rep_len(CPUE@Timing, ncol(CPUE@Value))
+
   Complexes(OM) <- list('Combined' = 1:2)
 
   OM

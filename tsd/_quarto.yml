@@ -5,6 +5,12 @@ project:
 book:
   title: "Trial Specifications Document"
   subtitle: "Indian Ocean Albacore MSE"
+  author:
+    - name: Adrian Hordyk
+      affiliation: Blue Matter Science
+      email: adrian@bluematterscience.com
+  date: today
+  date-format: "D MMMM YYYY"
   site-url: https://iotcalb.bluematterscience.com/tsd/
   repo-url: https://github.com/Blue-Matter/iotcALB
   navbar:
@@ -13,22 +19,28 @@ book:
         href: https://iotcalb.bluematterscience.com/
       - text: "iotcALB R Package"
         href: https://iotcalb.bluematterscience.com/pkg/
-
   chapters:
     - index.qmd
-    - operating-model-overview.qmd
-    - operating-model-base-case.qmd
-    - operating-model-robustness.qmd
-    - fishery-data.qmd
+    - operating-models.qmd
     - forward-projections.qmd
-    - management-procedures.qmd
     - performance-metrics.qmd
-    - presentation-results.qmd
+    - management-procedures.qmd
+    - results.qmd
+    - references.qmd
 
-bibliography: references.bib
+bibliography:
+  - references.bib
+  - references-extra.bib
 csl: apa.csl
 link-citations: true
 
+brand: _blue-matter.yml
+
 format:
   html:
-    theme: cosmo
+    theme:
+    - cosmo
+    code-link: true
+    toc-depth: 3
+    toc-expand: true
+    lightbox: true

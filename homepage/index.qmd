@@ -63,31 +63,3 @@ organised as follows:
 | `tsd/` | Quarto source for the Trial Specifications Document |
 | `homepage/` | Quarto source for this website |
 
-### Key package components
-
-**Functions**
-
-- `ImportOM()`: converts MCMC conditioning output into a multi-stock,
-  multi-fleet `MSEtool` `OM` object (quarterly, sex-structured, 6
-  fleets)
-- `ValidateOM()`: validates OM dynamics against the ABC conditioning model output
-
-**Datasets**
-
-- `CondData_OM5a`, `CondData_OM5b`, `CondData_OM6b`: ABC conditioning model output
-  containing MCMC-derived variables for the OM5a (SW CPUE), OM5b (base case, NW
-  CPUE), and OM6b (1% effort creep robustness) operating models; 
-- `StockObjectList`: `MSEtool::Stock` objects (Female, Male) with
-  seasonal age structure and length, weight, maturity, and fecundity
-  schedules
-- `albMSE_Biology`: raw biological schedules (length, weight, maturity
-  at annual age and season) used to build `StockObjectList`
-- `albMSE_Data`: observed catch and CPUE data as an `MSEtool::Data`
-  object, for use with candidate management procedures
-
-### Analysis workflow
-
-```         
-analysis/01-import-OMs.R   import conditioning output → OM objects → objects/OM/
-                           simulate historical period  → Hist objects → objects/Hist/
-```

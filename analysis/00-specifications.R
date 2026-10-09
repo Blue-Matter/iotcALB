@@ -15,8 +15,7 @@ DataLag     <- 2
 
 mpyears <- 30 # number of years where the MP is active (ie fromMPStartYear )
 pYear <- c(seq(CurrentYear + 1, by = 1, to = MPStartYear-1),
-           seq(MPStartYear, by = 1, length.out = mpyears)
-) |> length()
+           seq(MPStartYear, by = 1, length.out = mpyears)) |> length()
 
 # Get updated data
 NewData <- ProcessNewData()
