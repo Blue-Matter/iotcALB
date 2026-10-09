@@ -21,6 +21,12 @@ pak::pak("Blue-Matter/iotcALB")
 
 ## All functions
 
+- [`AnnualStatus()`](https://iotcalb.bluematterscience.com/pkg/reference/AnnualStatus.md)
+  : Annual Stock Status Relative to MSY Reference Points
+- [`BufferHCR()`](https://iotcalb.bluematterscience.com/pkg/reference/BufferHCR.md)
+  : Harvest Control Rule Control Points of a Buffer HCR
+- [`BufferMP()`](https://iotcalb.bluematterscience.com/pkg/reference/BufferMP.md)
+  : Buffer Harvest Control Rule Management Procedure
 - [`CondData_OM5a`](https://iotcalb.bluematterscience.com/pkg/reference/CondData_OM5a.md)
   : MCMC-derived variables for OM5a (SW CPUE reference OM)
 - [`CondData_OM5b`](https://iotcalb.bluematterscience.com/pkg/reference/CondData_OM5b.md)
@@ -32,8 +38,15 @@ pak::pak("Blue-Matter/iotcALB")
   Albacore
 - [`ImportOM()`](https://iotcalb.bluematterscience.com/pkg/reference/ImportOM.md)
   : Import an MSEtool OM from Albacore ABC conditioning model output
+- [`IndexAtSBMSY()`](https://iotcalb.bluematterscience.com/pkg/reference/IndexAtSBMSY.md)
+  : Index Level Corresponding to SBMSY
+- [`IndexWeights()`](https://iotcalb.bluematterscience.com/pkg/reference/IndexWeights.md)
+  : Inverse-Variance Weights of Indices from the Conditioned Observation
+  Error
 - [`ProcessNewData()`](https://iotcalb.bluematterscience.com/pkg/reference/ProcessNewData.md)
   : Process new catch and CPUE data from an SS3 data file
+- [`SPSettings()`](https://iotcalb.bluematterscience.com/pkg/reference/SPSettings.md)
+  : Surplus Production Model Settings from the Operating Model
 - [`StockObjectList`](https://iotcalb.bluematterscience.com/pkg/reference/StockObjectList.md)
   : Albacore operating model stock schedules
 - [`UpdateData()`](https://iotcalb.bluematterscience.com/pkg/reference/UpdateData.md)

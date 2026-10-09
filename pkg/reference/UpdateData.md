@@ -60,3 +60,9 @@ interpreted as observation error in the observed catches.
 
 The data are replaced in both the OM data (`Hist@OM@Data`) and the
 simulated data (`Hist@Data`) for the combined stock.
+
+If the fleets of the OM have been combined with
+[`MSEtool::CombineFleets()`](https://msetool.openmse.com/reference/CombineFleets.html),
+the new landings are summed over fleets, and the CPUE indices, which
+[`MSEtool::CombineFleets()`](https://msetool.openmse.com/reference/CombineFleets.html)
+moves to the `Survey` slot, are replaced there.

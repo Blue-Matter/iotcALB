@@ -94,6 +94,9 @@ conditioned and updated data would be interpreted as observation error
 in the observed catches.</p>
 <p>The data are replaced in both the OM data (<code>Hist@OM@Data</code>) and the
 simulated data (<code>Hist@Data</code>) for the combined stock.</p>
+<p>If the fleets of the OM have been combined with <code><a href="https://msetool.openmse.com/reference/CombineFleets.html" class="external-link">MSEtool::CombineFleets()</a></code>,
+the new landings are summed over fleets, and the CPUE indices, which
+<code><a href="https://msetool.openmse.com/reference/CombineFleets.html" class="external-link">MSEtool::CombineFleets()</a></code> moves to the <code>Survey</code> slot, are replaced there.</p>
     </div>
 
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
